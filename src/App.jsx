@@ -1,8 +1,47 @@
-import React, {useState} from 'react'
+import { addDoc, collection, getDocs } from 'firebase/firestore'
+import React, { useEffect, useState } from 'react'
 import RadioButton from './components/RadioButton'
+import db from './db/dbmiddleware'
 
 function App() {
     const [count, setCount] = useState(0);
+  
+    const [data, setData] = useState({})
+
+    useEffect(() => {
+      async function getData(db) {
+        const collectionRef = collection(db, 'test');
+        const citySnapshot = await getDocs(collectionRef);
+        const cityList = citySnapshot.docs.map(doc => doc.data());
+        return cityList;
+      }
+
+      async function getAllDocuments() {
+          try {
+              const req = await getData(db);
+              console.log(req)
+              setData(req)
+          } catch (error) {
+              console.error('Error getting documents:', error);
+          }
+      }
+
+      getAllDocuments();
+
+
+      const setDataInDb = async (value) => {
+        try {
+          const collectionRef = collection(db, 'test');
+          await addDoc(collectionRef, { test: value });
+          console.log('Data added to Firestore');
+        } catch (error) {
+          console.error('Error adding data to Firestore:', error);
+        }
+      };
+
+      setDataInDb('Alex')
+  }, []); 
+
 
     const questionsData = [
         {
@@ -54,6 +93,8 @@ function App() {
                     />
                 </div>
             )}
+
+            
         </div>
     );
 }
