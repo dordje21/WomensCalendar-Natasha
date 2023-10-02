@@ -1,13 +1,16 @@
 import { addDoc, collection, getDocs } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
+import './App.css'
+import CalendarMi from './components/Calendar'
 import RadioButton from './components/RadioButton'
 import db from './db/dbmiddleware'
 
 function App() {
   
     const [count, setCount] = useState(0);
-  
     const [data, setData] = useState({})
+
+    const [date, setDate] = useState(new Date());
 
     useEffect(() => {
         async function getData(db) {
@@ -116,6 +119,8 @@ function App() {
                     />
                 </div>
             )}
+
+            <CalendarMi/>
         </div>
     );
 }
