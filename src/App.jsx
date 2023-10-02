@@ -4,44 +4,43 @@ import RadioButton from './components/RadioButton'
 import db from './db/dbmiddleware'
 
 function App() {
-    const [count, setCount] = useState(0);
   
-    const [data, setData] = useState({})
+    const [count, setCount] = useState(0);
+    const [data, setData] = useState({});
 
     useEffect(() => {
-      async function getData(db) {
-        const collectionRef = collection(db, 'test');
-        const citySnapshot = await getDocs(collectionRef);
-        const cityList = citySnapshot.docs.map(doc => doc.data());
-        return cityList;
-      }
-
-      async function getAllDocuments() {
-          try {
-              const req = await getData(db);
-              console.log(req)
-              setData(req)
-          } catch (error) {
-              console.error('Error getting documents:', error);
-          }
-      }
-
-      getAllDocuments();
-
-
-      const setDataInDb = async (value) => {
-        try {
-          const collectionRef = collection(db, 'test');
-          await addDoc(collectionRef, { test: value });
-          console.log('Data added to Firestore');
-        } catch (error) {
-          console.error('Error adding data to Firestore:', error);
+        async function getData(db) {
+            const collectionRef = collection(db, 'test');
+            const citySnapshot = await getDocs(collectionRef);
+            const cityList = citySnapshot.docs.map(doc => doc.data());
+            return cityList;
         }
-      };
 
-      setDataInDb('Alex')
-  }, []); 
+        async function getAllDocuments() {
+            try {
+                const req = await getData(db);
+                console.log(req);
+                setData(req);
+            } catch (error) {
+                console.error('Error getting documents:', error);
+            }
+        }
 
+        getAllDocuments();
+
+        const setDataInDb = async (value) => {
+            try {
+                const collectionRef = collection(db, 'test');
+                await addDoc(collectionRef, { test: value });
+                console.log('Data added to Firestore');
+            } catch (error) {
+                console.error('Error adding data to Firestore:', error);
+            }
+        };
+
+        // You should pass a valid value to setDataInDb, like a string
+        setDataInDb('Alex');
+    }, []);
 
     const questionsData = [
         {
@@ -64,7 +63,7 @@ function App() {
         },
         {
             id: 3,
-            question: "When you was born?",
+            question: "When you were born?",
             options: {
                 variant1: "Calendar"
             }
@@ -75,7 +74,7 @@ function App() {
     const [selectedValues, setSelectedValues] = useState({});
 
     const handleRadioChange = (value) => {
-        setSelectedValues({...selectedValues, [currentQuestionIndex]: value});
+        setSelectedValues({ ...selectedValues, [currentQuestionIndex]: value });
         setCurrentQuestionIndex(currentQuestionIndex + 1);
     };
 
@@ -93,8 +92,6 @@ function App() {
                     />
                 </div>
             )}
-
-            
         </div>
     );
 }
