@@ -93,8 +93,9 @@ function App() {
             question: "How many days on average is your menstruation?",
             options: {
                 variant1: "Max 12 min 1 day options"
-            }
-    ];
+        }   
+    }
+];
 
     const handleRadioChange = (value) => {
         setSelectedValues({ ...selectedValues, [currentQuestionIndex]: value });
