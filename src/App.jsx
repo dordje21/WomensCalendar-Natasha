@@ -51,8 +51,8 @@ function App() {
         }
       };
 
-      setDataInDb('Alex')
-  }, []); 
+        setDataInDb('Alex')
+    }, []);
 
 
     const questionsData = [
@@ -73,9 +73,27 @@ function App() {
                 variant2: "My cycle is irregular",
                 variant3: "I don't know"
             }
-        }
-
-        
+        },
+        {
+            id: 4,
+            question: "Choose day your last period started",
+            options: {
+                variant1: "Calendar"
+            }
+        },
+        {
+            id: 5,
+            question: "How many days on average is your cycle?",
+            options: {
+                variant1: "Max 56 min 21 day options"
+            }
+        },
+        {
+            id: 6,
+            question: "How many days on average is your menstruation?",
+            options: {
+                variant1: "Max 12 min 1 day options"
+            }
     ];
 
     const handleRadioChange = (value) => {
@@ -88,7 +106,7 @@ function App() {
 
     const currentQuestion = questionsData[currentQuestionIndex];
 
-    let daysFirstLetter = ["S","M", "T", "W", "T", "F", "S"];
+    let daysFirstLetter = ["S", "M", "T", "W", "T", "F", "S"];
 
     function GetDaysFirstLetter(date) {
         return daysFirstLetter[date.getDay()];
@@ -103,7 +121,7 @@ function App() {
         date.setDate(date.getDate() + i);
         dates.push(date);
     }
-    
+
     return (
         <div className="app-wrapper">
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
