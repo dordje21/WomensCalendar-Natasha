@@ -6,7 +6,8 @@ import db from './db/dbmiddleware'
 function App() {
   
     const [count, setCount] = useState(0);
-    const [data, setData] = useState({});
+  
+    const [data, setData] = useState({})
 
     useEffect(() => {
         async function getData(db) {
@@ -16,31 +17,32 @@ function App() {
             return cityList;
         }
 
-        async function getAllDocuments() {
-            try {
-                const req = await getData(db);
-                console.log(req);
-                setData(req);
-            } catch (error) {
-                console.error('Error getting documents:', error);
-            }
+      async function getAllDocuments() {
+          try {
+              const req = await getData(db);
+              console.log(req)
+              setData(req)
+          } catch (error) {
+              console.error('Error getting documents:', error);
+          }
+      }
+
+      getAllDocuments();
+
+
+      const setDataInDb = async (value) => {
+        try {
+          const collectionRef = collection(db, 'test');
+          await addDoc(collectionRef, { test: value });
+          console.log('Data added to Firestore');
+        } catch (error) {
+          console.error('Error adding data to Firestore:', error);
         }
+      };
 
-        getAllDocuments();
+      setDataInDb('Alex')
+  }, []); 
 
-        const setDataInDb = async (value) => {
-            try {
-                const collectionRef = collection(db, 'test');
-                await addDoc(collectionRef, { test: value });
-                console.log('Data added to Firestore');
-            } catch (error) {
-                console.error('Error adding data to Firestore:', error);
-            }
-        };
-
-        // You should pass a valid value to setDataInDb, like a string
-        setDataInDb('Alex');
-    }, []);
 
     const questionsData = [
         {
@@ -80,8 +82,30 @@ function App() {
 
     const currentQuestion = questionsData[currentQuestionIndex];
 
+    let allDays = ["S","M", "T", "W", "T", "F", "S"];
+
+    function GetDaysFirstLetter(date) {
+        return allDays[date.getDay()];
+    }
+
+    let dates = [];
+    for (let i = -3; i <= 3; i++) {
+        let date = new Date();
+        date.setDate(date.getDate() + i);
+        dates.push(date);
+    }
+
     return (
         <div className="app-wrapper">
+            <div style={{display: 'flex', justifyContent: 'space-around'}}>
+                {dates.map((date, index) => (
+                    <div key={index} style={{margin: '0 20px'}}>
+                        <h2>{GetDaysFirstLetter(date)}</h2>
+                        <h2>{date.getDate()}</h2>
+                    </div>
+                ))}
+            </div>
+
             {currentQuestion && (
                 <div className="question">
                     <RadioButton
