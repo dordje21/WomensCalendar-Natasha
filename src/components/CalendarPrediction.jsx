@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Calendar } from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
 // Very rough implementation of multiple date selection
-export default function CalendarMi() {
+export default function CalendarPrediction() {
   const [selectedDates, setSelectedDates] = useState([])
   const modifiers = {
     selected: date => selectedDates.some(selectedDate => isSameDay(selectedDate, date)),
@@ -21,7 +21,7 @@ export default function CalendarMi() {
   }
   return (
     <Calendar 
-		// onDayClick={handleDayClick} 
+		onDayClick={handleDayClick} 
 		modifiers={modifiers} 
 		modifiersClassNames={modifiersClassNames}
 		locale={enGB} 

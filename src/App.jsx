@@ -2,15 +2,23 @@ import { addDoc, collection, getDocs } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import CalendarMi from './components/Calendar'
+import CalendarBirthday from './components/CalendarBirthday'
+import CalendarPrediction from './components/CalendarPrediction'
 import RadioButton from './components/RadioButton'
 import db from './db/dbmiddleware'
 
 function App() {
-  
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [selectedValues, setSelectedValues] = useState({});
+
     const [count, setCount] = useState(0);
     const [data, setData] = useState({})
 
     const [date, setDate] = useState(new Date());
+
+    useEffect(() => {
+        console.log(selectedValues)
+    },[selectedValues])
 
     useEffect(() => {
         async function getData(db) {
@@ -65,22 +73,17 @@ function App() {
                 variant2: "My cycle is irregular",
                 variant3: "I don't know"
             }
-        },
-        {
-            id: 3,
-            question: "When you were born?",
-            options: {
-                variant1: "Calendar"
-            }
         }
-    ];
 
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [selectedValues, setSelectedValues] = useState({});
+        
+    ];
 
     const handleRadioChange = (value) => {
         setSelectedValues({ ...selectedValues, [currentQuestionIndex]: value });
         setCurrentQuestionIndex(currentQuestionIndex + 1);
+        if(questionsData.length <= currentQuestionIndex){
+
+        }
     };
 
     const currentQuestion = questionsData[currentQuestionIndex];
@@ -123,7 +126,15 @@ function App() {
                 </div>
             )}
 
+            <div>
+                    <label>Enter your birthday
+                    <CalendarBirthday/>
+                    </label>
+            </div>
+           
+
             <CalendarMi/>
+            <CalendarPrediction/>
         </div>
     );
 }
