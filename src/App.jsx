@@ -81,15 +81,17 @@ function App() {
 
     const currentQuestion = questionsData[currentQuestionIndex];
 
-    let allDays = ["S","M", "T", "W", "T", "F", "S"];
+    let daysFirstLetter = ["S","M", "T", "W", "T", "F", "S"];
 
     function GetDaysFirstLetter(date) {
-        return allDays[date.getDay()];
+        return daysFirstLetter[date.getDay()];
     }
 
     let todayDate = new Date();
+    let minimalDate = -2
+    let maximalDate = 4
     let dates = [];
-    for (let i = -2; i <= 4; i++) {
+    for (let i = minimalDate; i <= maximalDate; i++) {
         let date = new Date();
         date.setDate(date.getDate() + i);
         dates.push(date);
