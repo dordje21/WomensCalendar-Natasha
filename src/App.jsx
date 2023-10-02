@@ -85,25 +85,28 @@ function App() {
 
     const currentQuestion = questionsData[currentQuestionIndex];
 
-    let allDays = ["S","M", "T", "W", "T", "F", "S"];
+    let daysFirstLetter = ["S","M", "T", "W", "T", "F", "S"];
 
     function GetDaysFirstLetter(date) {
-        return allDays[date.getDay()];
+        return daysFirstLetter[date.getDay()];
     }
 
+    let todayDate = new Date();
+    let minimalDate = -2
+    let maximalDate = 4
     let dates = [];
-    for (let i = -3; i <= 3; i++) {
+    for (let i = minimalDate; i <= maximalDate; i++) {
         let date = new Date();
         date.setDate(date.getDate() + i);
         dates.push(date);
     }
-
+    
     return (
         <div className="app-wrapper">
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
                 {dates.map((date, index) => (
                     <div key={index} style={{margin: '0 20px'}}>
-                        <h2>{GetDaysFirstLetter(date)}</h2>
+                        <h2>{date.toDateString() === todayDate.toDateString() ? 'Today' : GetDaysFirstLetter(date)}</h2>
                         <h2>{date.getDate()}</h2>
                     </div>
                 ))}
