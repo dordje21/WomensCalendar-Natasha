@@ -81,12 +81,10 @@ function App() {
 
     const currentQuestion = questionsData[currentQuestionIndex];
 
-    let monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
+    let allDays = ["S","M", "T", "W", "T", "F", "S"];
 
-    function GetMonthToText(date) {
-        return monthNames[date.getMonth()];
+    function GetDaysFirstLetter(date) {
+        return allDays[date.getDay()];
     }
 
     let dates = [];
@@ -101,7 +99,7 @@ function App() {
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
                 {dates.map((date, index) => (
                     <div key={index} style={{margin: '0 20px'}}>
-                        <h2>{GetMonthToText(date)}</h2>
+                        <h2>{GetDaysFirstLetter(date)}</h2>
                         <h2>{date.getDate()}</h2>
                     </div>
                 ))}
