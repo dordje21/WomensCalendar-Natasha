@@ -19,8 +19,8 @@ function App() {
 
 
   return useRoutes([
-    { path: '/', element: <Start user={user}/> },
-    { path: '/home', element: <Home /> },
+    { path: '/', element: <Start /> },
+    { path: '/home', element: <Home user={user}/> },
   ]);
 }
 

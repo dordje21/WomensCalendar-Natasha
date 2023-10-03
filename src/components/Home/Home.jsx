@@ -5,7 +5,7 @@ import '../../App.css'
 import CalendarMi from '../Calendar'
 import CalendarPrediction from '../CalendarPrediction'
 
-function Home() {
+function Home({ user }) {
 
 
     const [count, setCount] = useState(0);
