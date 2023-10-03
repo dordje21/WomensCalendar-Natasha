@@ -1,3 +1,4 @@
+import {default as WebApp} from '@twa-dev/sdk'
 import React, { useState } from 'react'
 import '../../App.css'
 // import db from '../../db/dbmiddleware'
@@ -8,10 +9,10 @@ function Home() {
 
 
     const [count, setCount] = useState(0);
-    const [data, setData] = useState({})
+    const [data, setData] = useState({});
 
     const [date, setDate] = useState(new Date());
-
+    const [user, setUser] = useState('');
     // useEffect(() => {
     //     console.log(selectedValues)
     // },[selectedValues])
@@ -81,6 +82,12 @@ function Home() {
                     </div>
                 ))}
             </div>
+            <div>Start</div>
+            <p>{user.id}</p>
+            <p>{user.first_name}</p>
+            <p>{user.last_name}</p>
+            <p>{user.username}</p>
+            <p>{user.is_premium}</p>
             <CalendarMi/> 
             <CalendarPrediction/>
         </div>
