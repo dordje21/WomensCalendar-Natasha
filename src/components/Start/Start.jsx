@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import {useNavigate} from "react-router-dom"
 import RadioButton from '../RadioButton'
 
-function Start() {
+function Start({ user }) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
 
@@ -64,12 +64,12 @@ function Start() {
 
     return (
         <>
-            {/*	<div>Start</div>*/}
-            {/*	<p>{user.id}</p>*/}
-            {/*<p>{user.first_name}</p>*/}
-            {/*<p>{user.last_name}</p>*/}
-            {/*<p>{user.username}</p>*/}
-            {/*<p>{user.is_premium}</p>*/}
+            	<div>Start</div>
+            	<p>{user.id}</p>
+            <p>{user.first_name}</p>
+            <p>{user.last_name}</p>
+            <p>{user.username}</p>
+            <p>{user.is_premium}</p>
             {currentQuestion && (
                 <div className="question">
                     <RadioButton

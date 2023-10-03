@@ -19,7 +19,7 @@ function App() {
 
 
   return useRoutes([
-    { path: '/', element: <Start /> },
+    { path: '/', element: <Start user={user} /> },
     { path: '/home', element: <Home user={user}/> },
   ]);
 }
