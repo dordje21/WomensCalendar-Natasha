@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import RadioButton from '../RadioButton'
 function Start() {
 
+	const { first_name, username, id } = WebApp.initDataUnsafe.user
+	
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 	const [selectedValues, setSelectedValues] = useState({});
 
@@ -58,6 +60,9 @@ const currentQuestion = questionsData[currentQuestionIndex];
   return (
 		<>
 			<div>Start</div>
+			<p>{ username }</p>
+			<p>{ first_name }</p>
+			<p>{ id }</p>
 								{currentQuestion && (
 									<div className="question">
 											<RadioButton
