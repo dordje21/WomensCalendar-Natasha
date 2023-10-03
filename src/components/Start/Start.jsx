@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import { default as WebApp } from '@twa-dev/sdk'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import RadioButton from '../RadioButton'
 
-function Start({user}) {	
+function Start() {	
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 	const [selectedValues, setSelectedValues] = useState({});
 
+	const [user, setUser] = useState('')
+
+  // useEffect(() => {
+  //   setUser(WebApp.initDataUnsafe.user)
+  // })
 
 	const navigate = useNavigate();
 
@@ -59,9 +65,11 @@ const currentQuestion = questionsData[currentQuestionIndex];
   return (
 		<>
 			<div>Start</div>
+			<p>{user.id}</p>
       <p>{user.first_name}</p>
       <p>{user.last_name}</p>
       <p>{user.username}</p>
+      <p>{user.is_premium}</p>
 								{currentQuestion && (
 									<div className="question">
 											<RadioButton
