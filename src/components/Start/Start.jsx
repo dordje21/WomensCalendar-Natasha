@@ -64,12 +64,12 @@ const currentQuestion = questionsData[currentQuestionIndex];
 
   return (
 		<>
-			<div>Start</div>
-			<p>{user.id}</p>
-      <p>{user.first_name}</p>
-      <p>{user.last_name}</p>
-      <p>{user.username}</p>
-      <p>{user.is_premium}</p>
+		{/*	<div>Start</div>*/}
+		{/*	<p>{user.id}</p>*/}
+      {/*<p>{user.first_name}</p>*/}
+      {/*<p>{user.last_name}</p>*/}
+      {/*<p>{user.username}</p>*/}
+      {/*<p>{user.is_premium}</p>*/}
 								{currentQuestion && (
 									<div className="question">
 											<RadioButton

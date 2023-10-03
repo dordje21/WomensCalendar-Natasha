@@ -81,11 +81,6 @@ function Home() {
                     </div>
                 ))}
             </div>
-
-         
-
-      
-
             <CalendarMi/> 
             <CalendarPrediction/>
         </div>
