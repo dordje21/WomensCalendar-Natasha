@@ -12,7 +12,7 @@ function Home({ user }) {
     const [data, setData] = useState({});
 
     const [date, setDate] = useState(new Date());
-    const [user, setUser] = useState('');
+    // const [user, setUser] = useState('');
     // useEffect(() => {
     //     console.log(selectedValues)
     // },[selectedValues])
