@@ -9,9 +9,9 @@ function Start() {
 
 	const [user, setUser] = useState('')
 
-  useEffect(() => {
-    setUser(WebApp.initDataUnsafe.user)
-  })
+  // useEffect(() => {
+  //   setUser(WebApp.initDataUnsafe.user)
+  // })
 
 	const navigate = useNavigate();
 
