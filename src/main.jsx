@@ -1,5 +1,5 @@
 import { default as WebApp, default as WebAppInitData } from '@twa-dev/sdk'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter, useRoutes } from 'react-router-dom'
 import Home from './components/Home/Home.jsx'
@@ -10,8 +10,16 @@ WebApp.ready();
 WebAppInitData.ready();
 
 function App() {
+
+  const [user, setUser] = useState('')
+
+  useEffect(() => {
+    setUser(WebApp.initDataUnsafe.user)
+  })
+
+
   return useRoutes([
-    { path: '/', element: <Start /> },
+    { path: '/', element: <Start user={user}/> },
     { path: '/home', element: <Home /> },
   ]);
 }
