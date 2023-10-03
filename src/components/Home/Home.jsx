@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import '../../App.css'
 // import db from '../../db/dbmiddleware'
+
 import CalendarMi from '../Calendar'
 import CalendarPrediction from '../CalendarPrediction'
+// import { default as WebApp } from '@twa-dev/sdk'
+import { default as WebApp, default as WebAppInitData } from '@twa-dev/sdk'
 
 function Home() {
 
+    const [user, setUser] = useState('')
+    WebApp.ready();
+    WebAppInitData.ready();
 
+    useEffect(() => {
+        setUser(WebApp.initDataUnsafe.user)
+    })
+
+    
     const [count, setCount] = useState(0);
     const [data, setData] = useState({})
 
@@ -73,6 +84,14 @@ function Home() {
 
     return (
         <div className="app-wrapper">
+            <div>
+                	<div>Start</div>
+                	<p>{user.id}</p>
+                <p>{user.first_name}</p>
+                <p>{user.last_name}</p>
+                <p>{user.username}</p>
+                <p>{user.is_premium}</p>
+                </div>
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
                 {dates.map((date, index) => (
                     <div key={index} style={{margin: '0 20px'}}>
