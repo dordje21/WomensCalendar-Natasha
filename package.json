@@ -19,7 +19,8 @@
     "firebase": "^10.4.0",
     "react": "^18.2.0",
     "react-calendar": "^4.6.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-mobile-picker": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

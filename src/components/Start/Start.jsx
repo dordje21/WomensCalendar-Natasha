@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+
 import RadioButton from '../RadioButton'
+import MyPicker from '../ScrollPicker.jsx'
 
 function Start({user, handleShowStart}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
-
+    
     const questionsData = [
         {
             id: 1,
@@ -33,11 +35,18 @@ function Start({user, handleShowStart}) {
         },
         {
             id: 4,
-            question: "How many days on average is your menstruation?",
+            question: "Select the start date of your last period?",
+            options: {
+                variant1: "calendar"
+            }
+        },
+        {
+            id: 5,
+            question: "Enter the average length of your periods",
             options: {
                 variant1: "Max 12 min 1 day options"
             }
-        }
+        },
     ];
 
 
@@ -60,6 +69,7 @@ function Start({user, handleShowStart}) {
             <p>{user?.last_name}</p>
             <p>{user?.username}</p>
             <p>{user?.is_premium}</p>
+            <MyPicker />
             {currentQuestion && (
                 <div className="question">
                     <RadioButton

@@ -14,7 +14,7 @@ function App() {
     setUser(WebApp.initDataUnsafe.user)
 		setTimeout(() => {
 			setLoading(false)
-		}, 3000)
+		}, 1000)
   }, [])
 
 
