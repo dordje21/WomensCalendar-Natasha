@@ -1,4 +1,4 @@
-// import {default as WebApp} from '@twa-dev/sdk'
+import {default as WebApp} from '@twa-dev/sdk'
 import React, {useEffect, useState} from 'react'
 import {useNavigate} from "react-router-dom"
 import RadioButton from '../RadioButton'
