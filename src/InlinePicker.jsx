@@ -29,7 +29,7 @@ export default function InlinePicker() {
             className="px-4"
             value={pickerValue}
             onChange={setPickerValue}
-            wheelMode="natural"
+            wheelMode="normal"
         >
             <Picker.Column name="title">
                 {renderOptions(['Mr.', 'Mrs.', 'Ms.', 'Dr.'], 'text-red-600')}

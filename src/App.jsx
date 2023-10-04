@@ -16,6 +16,10 @@ function App() {
 			setLoading(false)
 		}, 1000)
   }, [])
+	
+	if(!WebApp.isExpanded){
+		WebApp.expand();
+	}
 
 
 	const handleShowStart = () => {
