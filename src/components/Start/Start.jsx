@@ -1,14 +1,13 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 import RadioButton from '../RadioButton'
 import MyPicker from '../ScrollPicker.jsx'
-import Modal from 'react-modal';
-
+import InlinePicker from "../../InlinePicker.jsx";
 
 function Start({user, handleShowStart}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
-
+    
     const questionsData = [
         {
             id: 1,
@@ -61,18 +60,6 @@ function Start({user, handleShowStart}) {
         console.log(questionsData.length, currentQuestionIndex + 1)
     };
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    // function to open the modal
-    const handleOpenModal = () => {
-        setIsModalOpen(true);
-    };
-
-    // function to close the modal
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-    };
-
     const currentQuestion = questionsData[currentQuestionIndex];
 
     return (
@@ -83,21 +70,10 @@ function Start({user, handleShowStart}) {
             <p>{user?.last_name}</p>
             <p>{user?.username}</p>
             <p>{user?.is_premium}</p>
-            <button onClick={handleOpenModal}>Open Picker</button>
-            <Modal
-                style={{
-                    content: {
-                        backgroundColor: 'pink',
-                    },
-                }}
-                isOpen={isModalOpen}
-                onRequestClose={handleCloseModal}
-                contentLabel="My Picker Modal"
-                overlayClassName="Overlay"
-            >
-                <button onClick={handleCloseModal}>Close</button>
-                <MyPicker/>
-            </Modal>
+            <section>
+                <p className="px-4 mb-1 text-neutral-400">1. As an inline component</p>
+                <InlinePicker />
+            </section>
             {currentQuestion && (
                 <div className="question">
                     <RadioButton
