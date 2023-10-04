@@ -70,16 +70,16 @@ function Start({user}) {
             <p>{user?.last_name}</p>
             <p>{user?.username}</p>
             <p>{user?.is_premium}</p>
-            {currentQuestion && (
-                <div className="question">
-                    <RadioButton
-                        question={currentQuestion.question}
-                        options={currentQuestion.options}
-                        selectedValue={selectedValues[currentQuestionIndex]}
-                        onChangeValue={(e) => handleRadioChange(e.target.value)}
-                    />
-                </div>
-            )}
+            {/*{currentQuestion && (*/}
+            {/*    <div className="question">*/}
+            {/*        <RadioButton*/}
+            {/*            question={currentQuestion.question}*/}
+            {/*            options={currentQuestion.options}*/}
+            {/*            selectedValue={selectedValues[currentQuestionIndex]}*/}
+            {/*            onChangeValue={(e) => handleRadioChange(e.target.value)}*/}
+            {/*        />*/}
+            {/*    </div>*/}
+            {/*)}*/}
         </>
     );
 }
