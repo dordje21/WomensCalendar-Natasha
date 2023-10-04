@@ -3,7 +3,7 @@ import Picker from 'react-mobile-picker'
 
 const selections = {
     title: ['Mr.', 'Mrs.', 'Ms.', 'Dr.'],
-    firstName: ['John', 'Micheal', 'Elizabeth'],
+    firstName: ['5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20'],
     lastName: ['Lennon', 'Jackson', 'Jordan', 'Legend', 'Taylor']
 }
 
