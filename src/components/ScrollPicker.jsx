@@ -15,7 +15,7 @@ function MyPicker() {
     })
 
     return (
-        <Picker wheel="natural" value={pickerValue} onChange={setPickerValue}>
+        <Picker wheel="normal" value={pickerValue} onChange={setPickerValue}>
             {Object.keys(selections).map(name => (
                 <Picker.Column key={name} name={name}>
                     {selections[name].map(option => (
