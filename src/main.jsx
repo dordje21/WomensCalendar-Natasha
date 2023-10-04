@@ -16,8 +16,7 @@ function App() {
   useEffect(() => {
     setUser(WebApp.initDataUnsafe.user)
   })
-
-
+  
   return useRoutes([
     { path: '/', element: <Start user={user} /> },
     { path: '/home', element: <Home user={user}/> },

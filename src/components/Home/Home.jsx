@@ -83,11 +83,11 @@ function Home({ user }) {
                 ))}
             </div>
             <div>Start</div>
-            <p>{user.id}</p>
-            <p>{user.first_name}</p>
-            <p>{user.last_name}</p>
-            <p>{user.username}</p>
-            <p>{user.is_premium}</p>
+            <p>{user?.id}</p>
+            <p>{user?.first_name}</p>
+            <p>{user?.last_name}</p>
+            <p>{user?.username}</p>
+            <p>{user?.is_premium}</p>
             <CalendarMi/> 
             <CalendarPrediction/>
         </div>
