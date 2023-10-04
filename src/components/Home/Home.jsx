@@ -1,4 +1,3 @@
-import {default as WebApp} from '@twa-dev/sdk'
 import React, { useState } from 'react'
 import '../../App.css'
 // import db from '../../db/dbmiddleware'
@@ -82,7 +81,7 @@ function Home({ user }) {
                     </div>
                 ))}
             </div>
-            <div>Start</div>
+
             <p>{user?.id}</p>
             <p>{user?.first_name}</p>
             <p>{user?.last_name}</p>

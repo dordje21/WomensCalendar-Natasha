@@ -1,19 +1,9 @@
-import {default as WebApp} from '@twa-dev/sdk'
-import React, {useEffect, useState} from 'react'
-import {useNavigate} from "react-router-dom"
+import React, { useState } from 'react'
 import RadioButton from '../RadioButton'
 
-function Start({user}) {
+function Start({user, handleShowStart}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
-
-    // const [user, setUser] = useState('')
-
-    // useEffect(() => {
-    //   setUser(WebApp.initDataUnsafe.user)
-    // })
-
-    const navigate = useNavigate();
 
     const questionsData = [
         {
@@ -55,7 +45,7 @@ function Start({user}) {
         setSelectedValues({...selectedValues, [currentQuestionIndex]: value});
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         if (questionsData.length <= currentQuestionIndex + 1) {
-            navigate("/home");
+            handleShowStart()
         }
         console.log(questionsData.length, currentQuestionIndex + 1)
     };
