@@ -57,6 +57,7 @@ function Home({ user }) {
   
 
     let daysFirstLetter = ["S", "M", "T", "W", "T", "F", "S"];
+    const value = ['1','2','3','4','5','6','7'];
 
     function GetDaysFirstLetter(date) {
         return daysFirstLetter[date.getDay()];
