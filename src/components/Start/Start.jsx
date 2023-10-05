@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 
 import RadioButton from '../RadioButton'
-import MyPicker from '../ScrollPicker.jsx'
 import InlinePicker from "../../InlinePicker.jsx";
 
 function Start({user, handleShowStart}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
     
+    
+    /*
+    Formula:
+     Start of new period = last period start + average cycle 
+     */
     const questionsData = [
         {
             id: 1,
@@ -57,10 +61,10 @@ function Start({user, handleShowStart}) {
         if (questionsData.length <= currentQuestionIndex + 1) {
             handleShowStart()
         }
-        console.log(questionsData.length, currentQuestionIndex + 1)
     };
 
     const currentQuestion = questionsData[currentQuestionIndex];
+    const value = ['1','2','3','4','5','6','7'];
 
     return (
         <>
@@ -72,7 +76,7 @@ function Start({user, handleShowStart}) {
             <p>{user?.is_premium}</p>
             <section>
                 <p className="px-4 mb-1 text-neutral-400">1. As an inline component</p>
-                <InlinePicker />
+                <InlinePicker selectionsValue={value} />
             </section>
             {currentQuestion && (
                 <div className="question">

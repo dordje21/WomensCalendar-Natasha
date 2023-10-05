@@ -11,13 +11,11 @@ function renderOptions(options, selectedColor) {
     ))
 }
 
-export default function InlinePicker() {
+export default function InlinePicker({selectionsValue}) {
     const [pickerValue, setPickerValue] = useState({
-        title: 'Mr.',
-        firstName: 'Micheal',
-        lastName: 'Jordan'
+        title: 'How many days on average is your cycle?'
     })
-
+    
     return <>
         <div
             className="
@@ -32,13 +30,7 @@ export default function InlinePicker() {
             wheelMode="normal"
         >
             <Picker.Column name="title">
-                {renderOptions(['Mr.', 'Mrs.', 'Ms.', 'Dr.'], 'text-red-600')}
-            </Picker.Column>
-            <Picker.Column name="firstName">
-                {renderOptions(['John', 'Micheal', 'Elizabeth'], 'text-yellow-600')}
-            </Picker.Column>
-            <Picker.Column name="lastName">
-                {renderOptions(['Lennon', 'Jackson', 'Jordan', 'Legend', 'Taylor'], 'text-green-600')}
+                {renderOptions(selectionsValue, 'text-red-600')}
             </Picker.Column>
         </Picker>
     </>
