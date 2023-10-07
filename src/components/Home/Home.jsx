@@ -17,7 +17,9 @@ function Home({ user }) {
                 console.log('Retrieved data:', data);
                 setUserDataAnswers(data)
         
-              })
+              }).then(
+                console.log(userDataAnswers)
+              )
               .catch(error => {
                 console.error('Error while retrieving data:', error);
               });
@@ -25,7 +27,7 @@ function Home({ user }) {
             console.log(`${e} : catch`)
         }
         // JSON.parse(data)
-        console.log(userDataAnswers)
+
     })
     // const [user, setUser] = useState('');
     // useEffect(() => {
