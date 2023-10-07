@@ -1,4 +1,3 @@
-import { default as WebApp } from '@twa-dev/sdk'
 import React, { useEffect, useRef, useState } from 'react'
 import InlinePicker from "../../InlinePicker.jsx"
 import DatePickerCal from '../DatePickerCal.jsx'
@@ -26,6 +25,7 @@ function Start({handleShowStart}) {
      useEffect(() => {
        if (!isInitialRender.current) {
          console.log(selectedValues);
+         WebApp.CloudStorage.setItem("UserDataAnswers", selectedValues) 
          handleShowStart();
        }
      }, [readyToSave]);
@@ -96,7 +96,6 @@ function Start({handleShowStart}) {
         })
         isInitialRender.current = false;
         setReadyToSave(true)   
-        WebApp.CloudStorage.setItem("UserDataAnswers", selectedValues) 
     }
 
     const selectedValuePicker = (value, question) => {
