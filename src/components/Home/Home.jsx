@@ -15,8 +15,8 @@ function Home({ user }) {
     useEffect(() => {
         const userInfo = WebApp.CloudStorage.getItems("UserDataAnswers")
         setUserDataAnswers(userInfo)
-        console.debug(`${userDataAnswers} : userDataAnswers HOME`)
-        console.debug(`${userInfo[0]} : userDataAnswers HOME 2`)
+        console.debug(`${JSON.stringify(userDataAnswers)} : userDataAnswers HOME`)
+        console.debug(`${JSON.stringify(userInfo)} : userDataAnswers HOME 2`)
     })
     // const [user, setUser] = useState('');
     // useEffect(() => {
