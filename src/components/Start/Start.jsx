@@ -1,25 +1,42 @@
-import React, { useState } from 'react'
-
+import React, { useEffect, useRef, useState } from 'react'
+import InlinePicker from "../../InlinePicker.jsx"
+import DatePickerCal from '../DatePickerCal.jsx'
 import RadioButton from '../RadioButton'
-import InlinePicker from "../../InlinePicker.jsx";
 
-function Start({user, handleShowStart}) {
+function Start({handleShowStart}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
-    
-    
+
+    const [dataPickersIndex, setDataPickersIndex] = useState(0);
+
+    const [showPickers, setShowPickers] = useState(false);
+    const [showCal, setShowCal] = useState(false);
+
+    const [dataPickerVal, setDataPickerVal] = useState({});
+
+    const [readyToSave, setReadyToSave] = useState(false);
     /*
     Formula:
      Start of new period = last period start + average cycle 
      */
+
+     const isInitialRender = useRef(true);
+
+     useEffect(() => {
+       if (!isInitialRender.current) {
+         console.log(selectedValues);
+         handleShowStart();
+       }
+     }, [readyToSave]);
+
     const questionsData = [
         {
             id: 1,
             question: "Are you pregnant??",
             options: {
-                variant1: "No, but want to be",
-                variant2: "No, I'm here to understand my body better",
-                variant3: "Yes, I am"
+                variant1: "Yes, I am",
+                variant2: "No, but want to be",
+                variant3: "No, I'm here to understand my body better"
             }
         },
         {
@@ -30,64 +47,124 @@ function Start({user, handleShowStart}) {
                 variant2: "My cycle is irregular",
                 variant3: "I don't know"
             }
-        },
-        {
-            id: 3,
-            question: "How many days on average is your cycle?",
-            options: {
-                variant1: "Max 56 min 21 day options"
-            }
-        },
-        {
-            id: 4,
-            question: "Select the start date of your last period?",
-            options: {
-                variant1: "calendar"
-            }
-        },
-        {
-            id: 5,
-            question: "Enter the average length of your periods",
-            options: {
-                variant1: "Max 12 min 1 day options"
-            }
-        },
+        }
     ];
 
 
-    const handleRadioChange = (value) => {
-        setSelectedValues({...selectedValues, [currentQuestionIndex]: value});
+    const daysInPeriod = (minDays, maxDays) =>{
+        let result = []
+        for(let i = minDays; i <= maxDays; i++){
+            result.push(i)
+        }
+        return result
+    }
+
+    const daysOfCycle = daysInPeriod(21, 56);
+    const daysOfPeriod = daysInPeriod(1, 12);
+
+    const dataPickers = [
+        {
+            question: "How many days on average is your cycle?",
+            days: daysOfCycle
+        },
+        {
+            question: "Enter the average length of your periods",
+            days: daysOfPeriod
+        }
+    ]
+
+    const pickersNext = () => {
+        setSelectedValues({...selectedValues, [currentQuestionIndex]: {
+            question: dataPickerVal.question,
+            answer: dataPickerVal.answer
+            }
+        });
         setCurrentQuestionIndex(currentQuestionIndex + 1);
+
+      setDataPickersIndex(dataPickersIndex + 1)
+      if (dataPickers.length <= dataPickersIndex + 1) {
+        setShowPickers(false)
+        setShowCal(true)
+        }
+    }
+
+    const saveData = async () => {
+        await setSelectedValues({...selectedValues, [currentQuestionIndex]: {
+            question: dataPickerVal.question,
+            answer: dataPickerVal.answer
+            }
+        })
+        isInitialRender.current = false;
+        setReadyToSave(true)    
+    }
+
+    const selectedValuePicker = (value, question) => {
+        console.log(value, question)
+        setDataPickerVal({
+            question: question,
+            answer: value
+        })
+    }
+
+    const currentDataPickers = dataPickers[dataPickersIndex];
+
+
+    const handleRadioChange = (value, question) => {
+        console.log(questionsData[currentQuestionIndex].options[value], question)
+
+        setSelectedValues({...selectedValues, [currentQuestionIndex]: {
+            question: question,
+            answer: questionsData[currentQuestionIndex].options[value]
+            }
+        });
+
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+       
+
         if (questionsData.length <= currentQuestionIndex + 1) {
-            handleShowStart()
+            // handleShowStart()
+            setShowPickers(true)
         }
     };
 
     const currentQuestion = questionsData[currentQuestionIndex];
-    const value = ['1','2','3','4','5','6','7'];
 
     return (
         <>
             <div>Start</div>
-            <p>{user?.id}</p>
-            <p>{user?.first_name}</p>
-            <p>{user?.last_name}</p>
-            <p>{user?.username}</p>
-            <p>{user?.is_premium}</p>
-            <section>
-                <p className="px-4 mb-1 text-neutral-400">1. As an inline component</p>
-                <InlinePicker selectionsValue={value} />
-            </section>
+
+
+            {/* {Object.values(selectedValues).map((el, index) => {
+                return <div key={index}>{el.question}{el.answer}</div>
+            })} */}
+
             {currentQuestion && (
                 <div className="question">
                     <RadioButton
                         question={currentQuestion.question}
                         options={currentQuestion.options}
                         selectedValue={selectedValues[currentQuestionIndex]}
-                        onChangeValue={(e) => handleRadioChange(e.target.value)}
-                    />
+                        onChangeValue={(e) => handleRadioChange(e.target.value, currentQuestion.question)}
+                    />         
                 </div>
             )}
+
+            {showPickers ? currentDataPickers && (
+                    <div className="question">
+                        <InlinePicker selectionsValue={currentDataPickers.days} question={currentDataPickers.question} 
+                        selectedValue={(e) => selectedValuePicker(e, `${currentDataPickers.question}`)}
+                        />
+                        <button onClick={pickersNext}>Next</button>
+                    </div>
+            ) : <></>}
+
+            {showCal ? 
+         <div className="question-data">
+            <DatePickerCal selectedValue={(e) => {
+                selectedValuePicker(e.toDateString(), 'Select the start date of your last period?')
+            }} question='Select the start date of your last period?' /> 
+            <button onClick={saveData}>Save</button>
+            </div> : <></>}            
         </>
     );
 }

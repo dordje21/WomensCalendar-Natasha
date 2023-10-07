@@ -104,3 +104,19 @@ button:focus-visible {
     opacity: 0;
   }
 }
+
+
+.question-data{
+  min-width: 350px;
+  height: 400px;
+}
+
+.answers-q{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.answers-q label{
+  text-align: left;
+}

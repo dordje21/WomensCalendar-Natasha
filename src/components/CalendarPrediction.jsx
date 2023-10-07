@@ -1,8 +1,8 @@
+import { Calendar } from '@bjarkehs/react-nice-dates'
+import '@bjarkehs/react-nice-dates/build/style.css'
 import { getDay, isSameDay } from 'date-fns'
 import { enGB } from 'date-fns/locale'
 import React, { useState } from 'react'
-import { Calendar } from '@bjarkehs/react-nice-dates'
-import '@bjarkehs/react-nice-dates/build/style.css'
 // Very rough implementation of multiple date selection
 export default function CalendarPrediction() {
   const [selectedDates, setSelectedDates] = useState([])

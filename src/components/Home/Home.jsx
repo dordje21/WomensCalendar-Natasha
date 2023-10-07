@@ -3,7 +3,6 @@ import '../../App.css'
 // import db from '../../db/dbmiddleware'
 import CalendarMi from '../Calendar'
 import CalendarPrediction from '../CalendarPrediction'
-import InlinePicker from "../../InlinePicker.jsx";
 
 function Home({ user }) {
 
@@ -57,7 +56,6 @@ function Home({ user }) {
   
 
     let daysFirstLetter = ["S", "M", "T", "W", "T", "F", "S"];
-    const value = ['1','2','3','4','5','6','7'];
 
     function GetDaysFirstLetter(date) {
         return daysFirstLetter[date.getDay()];
@@ -75,8 +73,7 @@ function Home({ user }) {
 
     return (
         <div className="app-wrapper">
-            <p className="px-4 mb-1 text-neutral-400">1. As an inline component</p>
-            <InlinePicker selectionsValue={value} />
+
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
                 {dates.map((date, index) => (
                     <div key={index} style={{margin: '0 20px'}}>
@@ -93,8 +90,7 @@ function Home({ user }) {
             <p>{user?.is_premium}</p>
             <CalendarMi/> 
             <CalendarPrediction/>
-            <p className="px-4 mb-1 text-neutral-400">1. As an inline component</p>
-            <InlinePicker selectionsValue={value} />
+  
         </div>
     );
 }

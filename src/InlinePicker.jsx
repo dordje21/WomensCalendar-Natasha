@@ -11,22 +11,25 @@ function renderOptions(options, selectedColor) {
     ))
 }
 
-export default function InlinePicker({selectionsValue}) {
-    const [pickerValue, setPickerValue] = useState({
-        title: 'How many days on average is your cycle?'
-    })
-    
+export default function InlinePicker({selectionsValue, selectedValue, question}) {
+    const [pickerValue, setPickerValue] = useState({});
+
+    const handleChange = (newValue) => {
+        setPickerValue(newValue);
+        selectedValue(newValue.title);
+    }
+
     return <>
         <div
             className="
         mb-2 px-4 h-12 flex items-center bg-white
         border-t border-b border-gray-200 border-solid
       "
-        >Hi, {pickerValue.title} {pickerValue.firstName} {pickerValue.lastName}</div>
+        >{question}</div>
         <Picker
             className="px-4"
             value={pickerValue}
-            onChange={setPickerValue}
+            onChange={handleChange}
             wheelMode="normal"
         >
             <Picker.Column name="title">
