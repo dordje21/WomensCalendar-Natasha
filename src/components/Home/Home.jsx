@@ -16,8 +16,8 @@ function Home({ user }) {
     const [userDataAnswers, setUserDataAnswers] = useState();
 
 
-    useEffect(async () => {
-        await setUserDataAnswers(await WebApp.CloudStorage.getItem("UserDataAnswers"))
+    useEffect(() => {
+        setUserDataAnswers(WebApp.CloudStorage.getItem("UserDataAnswers"))
         console.log(userDataAnswers)
     })
     // const [user, setUser] = useState('');
