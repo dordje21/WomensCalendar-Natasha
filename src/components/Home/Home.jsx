@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.css'
 // import db from '../../db/dbmiddleware'
-import { default as WebApp } from '@twa-dev/sdk'
+import { default as useAsyncStorageGetSingleItem } from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
 import CalendarPrediction from '../CalendarPrediction'
-
+ 
 function Home({ user }) {
     const [count, setCount] = useState(0);
     // const [data, setData] = useState({});
@@ -13,10 +13,19 @@ function Home({ user }) {
 
 
     useEffect(() => {
-        const userInfo = WebApp.CloudStorage.getItems("UserDataAnswers")
-        setUserDataAnswers(userInfo)
-        console.debug(`${JSON.stringify(userDataAnswers)} : userDataAnswers HOME`)
-        console.debug(`${JSON.stringify(userInfo)} : userDataAnswers HOME 2`)
+        try{
+            useAsyncStorageGetSingleItem("UserDataAnswers").then(data => {
+                console.log('Retrieved data:', data);
+                setUserDataAnswers(data)
+              })
+              .catch(error => {
+                console.error('Error while retrieving data:', error);
+              });
+        } catch (e){
+            console.log(e)
+        }
+
+        console.log(JSON.stringify(userDataAnswers))
     })
     // const [user, setUser] = useState('');
     // useEffect(() => {
