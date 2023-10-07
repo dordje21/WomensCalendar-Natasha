@@ -17,8 +17,10 @@ function Home({ user }) {
 
 
     useEffect(() => {
-        setUserDataAnswers(WebApp.CloudStorage.getItem("UserDataAnswers"))
-        console.log(userDataAnswers)
+        const userInfo = WebApp.CloudStorage.getItem("UserDataAnswers")
+        setUserDataAnswers(userInfo)
+        console.log(`${userDataAnswers} : userDataAnswers HOME`)
+        console.log(`${userInfo} : userDataAnswers HOME 2`)
     })
     // const [user, setUser] = useState('');
     // useEffect(() => {
@@ -59,11 +61,6 @@ function Home({ user }) {
     //     setDataInDb('Alex')
     // }, []);
 
-
-   
-
-  
-
     let daysFirstLetter = ["S", "M", "T", "W", "T", "F", "S"];
 
     function GetDaysFirstLetter(date) {
@@ -99,7 +96,6 @@ function Home({ user }) {
             <p>{user?.is_premium}</p>
             <CalendarMi/> 
             <CalendarPrediction/>
-  
         </div>
     );
 }
