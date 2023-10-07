@@ -144,9 +144,10 @@ function Home({ user }) {
                     </div>
                 ))}
             </div>
-            <ul>
+            {/* <ul>
                {showJson()}
-            </ul>
+            </ul> */}
+            {date}
             <p>{user?.id}</p>
             <p>{user?.first_name}</p>
             <p>{user?.last_name}</p>
