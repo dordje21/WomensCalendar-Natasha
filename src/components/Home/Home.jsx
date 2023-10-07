@@ -24,6 +24,16 @@ function Home({ user }) {
     
         fetchData();
       }, []);
+
+      const parseJsonData = (data) => {
+        const parsed = JSON.parse(data)
+        return ( 
+            <>
+                {parsed[0].question}
+            </>
+        )
+    }
+
     // const [user, setUser] = useState('');
     // useEffect(() => {
     //     console.log(selectedValues)
@@ -90,7 +100,7 @@ function Home({ user }) {
                     </div>
                 ))}
             </div>
-{userDataAnswers}
+{parseJsonData}
             <p>{user?.id}</p>
             <p>{user?.first_name}</p>
             <p>{user?.last_name}</p>
