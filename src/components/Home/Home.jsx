@@ -105,7 +105,7 @@ function Home({ user }) {
                     </div>
                 ))}
             </div>
-{/*{userDataAnswers}*/}
+{userDataAnswers[1].question}
             <p>{user?.id}</p>
             <p>{user?.first_name}</p>
             <p>{user?.last_name}</p>
