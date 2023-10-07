@@ -1,8 +1,7 @@
 import { default as WebApp } from '@twa-dev/sdk'
 import React, { useEffect, useState } from 'react'
 import Home from '../src/components/Home/Home'
-import Start from '../src/components/Start/Start'
-import Preloader from './components/Preloader'
+// import Start from '../src/components/Start/Start'
 
 
 // WebApp.CloudStorage.setItem("Test", "2");
@@ -43,7 +42,8 @@ function App() {
 
   return (
 		<>
-		{ loading ? <Preloader/> : customRouts() }
+		<Home user={user}/> 
+		{/* { loading ? <Preloader/> : customRouts() } */}
 		</>
 	);
 }
