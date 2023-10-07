@@ -13,8 +13,7 @@ function Home({ user }) {
 
     useEffect(() => {
         try{
-            const getItemAsync = asyncStorageGetItem()
-            getItemAsync("UserDataAnswers").then(data => {
+            asyncStorageGetItem("UserDataAnswers").then(data => {
                 console.log('Retrieved data:', data);
                 setUserDataAnswers(data)
               })
