@@ -101,7 +101,7 @@ function Start({handleShowStart}) {
     }
 
     const selectedValuePicker = (value, question) => {
-        console.log(value, question)
+        // console.log(value, question)
         setDataPickerVal({
             question: question,
             answer: value
@@ -112,7 +112,7 @@ function Start({handleShowStart}) {
 
 
     const handleRadioChange = (value, question) => {
-        console.log(questionsData[currentQuestionIndex].options[value], question)
+        // console.log(questionsData[currentQuestionIndex].options[value], question)
 
         setSelectedValues({...selectedValues, [currentQuestionIndex]: {
             question: question,

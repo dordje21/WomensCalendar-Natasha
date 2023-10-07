@@ -12,23 +12,20 @@ function Home({ user }) {
     const [userDataAnswers, setUserDataAnswers] = useState({});
 
     useEffect(() => {
-        try{
-            asyncStorageGetItem("UserDataAnswers").then(data => {
-                console.log('Retrieved data:', data);
-                setUserDataAnswers(data)
-        
-              }).then(
-                console.log(userDataAnswers)
-              )
-              .catch(error => {
-                console.error('Error while retrieving data:', error);
-              });
-        } catch (e){
-            console.log(`${e} : catch`)
-        }
-        // JSON.parse(data)
-
-    })
+        const fetchData = async () => {
+          try {
+            const data = await asyncStorageGetItem("UserDataAnswers");
+            console.log('Retrieved data:', data);
+            setUserDataAnswers(data);
+            console.log(userDataAnswers); // This will now log the updated value
+    
+          } catch (error) {
+            console.error('Error while retrieving data:', error);
+          }
+        };
+    
+        fetchData();
+      }, []);
     // const [user, setUser] = useState('');
     // useEffect(() => {
     //     console.log(selectedValues)
