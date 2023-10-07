@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.css'
 // import db from '../../db/dbmiddleware'
-import { default as useAsyncStorageGetSingleItem } from '../../hooks/asyncStorageGetItem'
+import { asyncStorageGetItem } from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
 import CalendarPrediction from '../CalendarPrediction'
  
@@ -14,7 +14,8 @@ function Home({ user }) {
 
     useEffect(() => {
         try{
-            useAsyncStorageGetSingleItem("UserDataAnswers").then(data => {
+            const getItemAsync = asyncStorageGetItem()
+            getItemAsync("UserDataAnswers").then(data => {
                 console.log('Retrieved data:', data);
                 setUserDataAnswers(data)
               })
