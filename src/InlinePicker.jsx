@@ -12,7 +12,7 @@ function renderOptions(options, selectedColor) {
 }
 
 export default function InlinePicker({selectionsValue, selectedValue, question}) {
-    const [pickerValue, setPickerValue] = useState({});
+    const [pickerValue, setPickerValue] = useState({title: selectionsValue[0]});
 
     const handleChange = (newValue) => {
         setPickerValue(newValue);

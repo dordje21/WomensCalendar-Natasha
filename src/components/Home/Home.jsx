@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../App.css'
 // import db from '../../db/dbmiddleware'
+import { default as WebApp } from '@twa-dev/sdk'
 import CalendarMi from '../Calendar'
 import CalendarPrediction from '../CalendarPrediction'
 
@@ -11,6 +12,14 @@ function Home({ user }) {
     // const [data, setData] = useState({});
 
     const [date, setDate] = useState(new Date());
+
+    const [userDataAnswers, setUserDataAnswers] = useState();
+
+
+    useEffect(async () => {
+        await setUserDataAnswers(await WebApp.CloudStorage.getItem("UserDataAnswers"))
+        console.log(userDataAnswers)
+    })
     // const [user, setUser] = useState('');
     // useEffect(() => {
     //     console.log(selectedValues)

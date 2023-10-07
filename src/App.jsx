@@ -4,6 +4,15 @@ import Home from '../src/components/Home/Home'
 import Start from '../src/components/Start/Start'
 import Preloader from './components/Preloader'
 
+
+// WebApp.CloudStorage.setItem("Test", "2");
+// WebApp.CloudStorage.setItem("Test", "221");
+// WebApp.CloudStorage.setItem("Testas", "1");
+
+// WebApp.CloudStorage.getKeys();
+// WebApp.CloudStorage.getItems("Test");
+// WebApp.CloudStorage.getItem("Test");
+
 function App() {
 	const [user, setUser] = useState('')
 	const [showStart, setShowStart] = useState(true)
