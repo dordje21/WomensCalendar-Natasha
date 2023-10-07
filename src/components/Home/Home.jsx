@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../../App.css'
 // import db from '../../db/dbmiddleware'
 import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
@@ -10,15 +10,41 @@ function Home({ user }) {
     // const [data, setData] = useState({});
     const [date, setDate] = useState(new Date());
     const [userDataAnswers, setUserDataAnswers] = useState([]);
+
+    const [period, setPeriod] = useState()
+    
+        /*
+     Start of new period = date + (cycle(20) - period(3)) 
+     */
+
+     const isInitialRender = useRef(true);
+
+    useEffect(() => {
+        const startNewPeriod = (data) => {
+            const cycle = data[2].answer
+            const period = data[3].answer
+            const lastDate = data[4].answer
+            setPeriod(period)
+            const dateObj = new Date(lastDate);
+            dateObj.setDate(dateObj.getDate() + (parseInt(cycle) - parseInt(period)));
+            return dateObj
+        }
+
+        if (!isInitialRender.current) {
+           const nextDate = startNewPeriod(userDataAnswers)
+           setDate(nextDate)
+        }
+    },[userDataAnswers])
     
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await asyncStorageGetItem("UserDataAnswers");
-                if(data) { // Check if data is not empty
-                    const jsonData = JSON.parse(data); // Parsing to JSON  
+                if(data) {  
+                    const jsonData = JSON.parse(data); 
                     console.log('Retrieved & parsed data:', jsonData);
-                    setUserDataAnswers(jsonData); // if setUserDataAnswers expects object  
+                    setUserDataAnswers(jsonData); 
+                    isInitialRender.current = false;
                 } else {
                     console.log("No data available");
                 }
@@ -26,7 +52,6 @@ function Home({ user }) {
                 console.error('Error while retrieving/parsing data:', error);
             }
         };
-
         fetchData();
     }, []);
 

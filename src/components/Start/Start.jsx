@@ -16,10 +16,7 @@ function Start({handleShowStart}) {
     const [dataPickerVal, setDataPickerVal] = useState({});
 
     const [readyToSave, setReadyToSave] = useState(false);
-    /*
-    Formula:
-     Start of new period = last period start + average cycle 
-     */
+
 
      const isInitialRender = useRef(true);
 
