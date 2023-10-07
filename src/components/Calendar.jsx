@@ -13,7 +13,7 @@ export default function CalendarMi({nextDate}) {
   }
 
 	useEffect(()=>{
-		setSelectedDates([...selectedDates, nextDate])
+		setSelectedDates([nextDate])
 	})
 
 	const modifiersClassNames = {
