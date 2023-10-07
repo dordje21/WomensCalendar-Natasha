@@ -106,12 +106,7 @@ function Home({ user }) {
                 ))}
             </div>
             <ul>
-                {Object.keys(userDataAnswers).map((key) => (
-                        <li key={key}>
-                            {key}: {userDataAnswers[key]}
-                        </li>
-                    ))
-                }
+               {JSON.stringify(userDataAnswers)}
             </ul>
             <p>{user?.id}</p>
             <p>{user?.first_name}</p>
