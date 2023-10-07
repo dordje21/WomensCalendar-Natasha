@@ -9,7 +9,7 @@ function Home({ user }) {
     const [count, setCount] = useState(0);
     // const [data, setData] = useState({});
     const [date, setDate] = useState(new Date());
-    const [userDataAnswers, setUserDataAnswers] = useState('');
+    const [userDataAnswers, setUserDataAnswers] = useState({});
     
     useEffect(() => {
         const fetchData = async () => {
