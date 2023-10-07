@@ -100,7 +100,7 @@ function Home({ user }) {
                     </div>
                 ))}
             </div>
-{parseJsonData(userDataAnswers)}
+{userDataAnswers}
             <p>{user?.id}</p>
             <p>{user?.first_name}</p>
             <p>{user?.last_name}</p>
