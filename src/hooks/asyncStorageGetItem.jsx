@@ -1,6 +1,6 @@
 import { default as WebApp } from '@twa-dev/sdk'
 
-export default asyncStorageGetItem = () => {
+const asyncStorageGetItem = () => {
 	return (key) => {
 		return new Promise((resolve, reject) => {
 			WebApp.CloudStorage.getItem(key, (err, data) => {
@@ -13,3 +13,5 @@ export default asyncStorageGetItem = () => {
 		});
 	};
 };
+
+export default asyncStorageGetItem;

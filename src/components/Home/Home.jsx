@@ -11,7 +11,6 @@ function Home({ user }) {
     const [date, setDate] = useState(new Date());
     const [userDataAnswers, setUserDataAnswers] = useState({});
 
-
     useEffect(() => {
         try{
             const getItemAsync = asyncStorageGetItem()
