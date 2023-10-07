@@ -1,3 +1,4 @@
+import { default as WebApp } from '@twa-dev/sdk'
 import React, { useEffect, useRef, useState } from 'react'
 import InlinePicker from "../../InlinePicker.jsx"
 import DatePickerCal from '../DatePickerCal.jsx'
