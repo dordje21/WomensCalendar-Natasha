@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import Picker from 'react-mobile-picker'
 
 function renderOptions(options, selectedColor) {
@@ -18,6 +18,10 @@ export default function InlinePicker({selectionsValue, selectedValue, question})
         setPickerValue(newValue);
         selectedValue(newValue.title);
     }
+
+    useEffect(() => {
+        selectedValue(selectionsValue[0]);
+    })
 
     return <>
         <div
