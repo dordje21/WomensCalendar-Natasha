@@ -147,7 +147,7 @@ function Home({ user }) {
             {/* <ul>
                {showJson()}
             </ul> */}
-            {date}
+            {date.toString()}
             <p>{user?.id}</p>
             <p>{user?.first_name}</p>
             <p>{user?.last_name}</p>
