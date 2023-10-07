@@ -94,6 +94,19 @@ function Home({ user }) {
         dates.push(date);
     }
 
+    const showJson = () => {
+        userDataAnswers.map((item, index)=>{
+            return (
+                <>
+                    <li key={index}>
+                        <p>{item.question}</p>
+                        <p>{item.answer}</p>
+                    </li>
+                </>
+            )
+        })
+    }
+
     return (
         <div className="app-wrapper">
 
@@ -106,7 +119,7 @@ function Home({ user }) {
                 ))}
             </div>
             <ul>
-               {JSON.stringify(userDataAnswers)}
+               {showJson()}
             </ul>
             <p>{user?.id}</p>
             <p>{user?.first_name}</p>
