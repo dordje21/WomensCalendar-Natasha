@@ -16,9 +16,7 @@ function Home({ user }) {
           try {
             const data = await asyncStorageGetItem("UserDataAnswers");
             console.log('Retrieved data:', data);
-            setUserDataAnswers(data);
-            console.log(userDataAnswers); // This will now log the updated value
-    
+            setUserDataAnswers(data);    
           } catch (error) {
             console.error('Error while retrieving data:', error);
           }
@@ -92,7 +90,7 @@ function Home({ user }) {
                     </div>
                 ))}
             </div>
-
+{userDataAnswers}
             <p>{user?.id}</p>
             <p>{user?.first_name}</p>
             <p>{user?.last_name}</p>
