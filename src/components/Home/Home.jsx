@@ -25,14 +25,14 @@ function Home({ user }) {
         fetchData();
       }, []);
 
-      const parseJsonData = async (data) => {
-          const parsed = JSON.parse(await data)
-          return (
-              <>
-                  {parsed[0].question}
-              </>
-          )
-      }
+    //   const parseJsonData = (data) => {
+    //     const parsed = JSON.parse(data)
+    //     return ( 
+    //         <>
+    //             {parsed[0].question}
+    //         </>
+    //     )
+    // }
 
     // const [user, setUser] = useState('');
     // useEffect(() => {
