@@ -95,17 +95,18 @@ function Home({ user }) {
     }
 
     const showJson = () => {
-        userDataAnswers.map((item, index)=>{
+        if(userDataAnswers) {
+          return Object.values(userDataAnswers).map((item, index) => {
             return (
-                <>
-                    <li key={index}>
-                        <p>{item.question}</p>
-                        <p>{item.answer}</p>
-                    </li>
-                </>
+              <li key={index}>
+                <p>{item.question}</p>
+                <p>{item.answer}</p>
+              </li>
             )
-        })
-    }
+          })
+        }
+        return null;
+      }
 
     return (
         <div className="app-wrapper">
