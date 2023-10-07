@@ -49,8 +49,7 @@ function Start({handleShowStart}) {
             }
         }
     ];
-
-
+    
     const daysInPeriod = (minDays, maxDays) =>{
         let result = []
         for(let i = minDays; i <= maxDays; i++){
