@@ -16,15 +16,15 @@ function Home({ user }) {
             asyncStorageGetItem("UserDataAnswers").then(data => {
                 console.log('Retrieved data:', data);
                 setUserDataAnswers(data)
+        
               })
               .catch(error => {
                 console.error('Error while retrieving data:', error);
               });
         } catch (e){
-            console.log(e)
+            console.log(`${e} : catch`)
         }
-
-        setUserDataAnswers(JSON.parse(userDataAnswers))
+        // JSON.parse(data)
         console.log(userDataAnswers)
     })
     // const [user, setUser] = useState('');
