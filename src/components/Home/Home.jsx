@@ -6,21 +6,17 @@ import CalendarMi from '../Calendar'
 import CalendarPrediction from '../CalendarPrediction'
 
 function Home({ user }) {
-
-
     const [count, setCount] = useState(0);
     // const [data, setData] = useState({});
-
     const [date, setDate] = useState(new Date());
-
-    const [userDataAnswers, setUserDataAnswers] = useState();
+    const [userDataAnswers, setUserDataAnswers] = useState({});
 
 
     useEffect(() => {
         const userInfo = WebApp.CloudStorage.getItem("UserDataAnswers")
         setUserDataAnswers(userInfo)
         console.log(`${userDataAnswers} : userDataAnswers HOME`)
-        console.log(`${userInfo} : userDataAnswers HOME 2`)
+        console.log(`${userInfo[0]?.question} : userDataAnswers HOME 2`)
     })
     // const [user, setUser] = useState('');
     // useEffect(() => {
