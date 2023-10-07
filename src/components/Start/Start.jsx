@@ -27,7 +27,7 @@ function Start({handleShowStart}) {
        if (!isInitialRender.current) {
          console.log(selectedValues);
         //  WebApp.CloudStorage.setItem("UserDataAnswers", selectedValues) 
-        WebApp.CloudStorage.setItem("UserDataAnswers", "test") 
+        WebApp.CloudStorage.setItem("UserDataAnswers", JSON.stringify(selectedValues)) 
          handleShowStart();
        }
      }, [readyToSave]);
