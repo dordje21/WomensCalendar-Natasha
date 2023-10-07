@@ -10,20 +10,25 @@ function Home({ user }) {
     // const [data, setData] = useState({});
     const [date, setDate] = useState(new Date());
     const [userDataAnswers, setUserDataAnswers] = useState('');
-
+    
     useEffect(() => {
         const fetchData = async () => {
-          try {
-            const data = await asyncStorageGetItem("UserDataAnswers");
-            console.log('Retrieved data:', data);
-            setUserDataAnswers(`${data}`);    
-          } catch (error) {
-            console.error('Error while retrieving data:', error);
-          }
+            try {
+                const data = await asyncStorageGetItem("UserDataAnswers");
+                if(data) { // Check if data is not empty
+                    const jsonData = JSON.parse(data); // Parsing to JSON  
+                    console.log('Retrieved & parsed data:', jsonData);
+                    setUserDataAnswers(jsonData); // if setUserDataAnswers expects object  
+                } else {
+                    console.log("No data available");
+                }
+            } catch (error) {
+                console.error('Error while retrieving/parsing data:', error);
+            }
         };
-    
+
         fetchData();
-      }, []);
+    }, []);
 
     //   const parseJsonData = (data) => {
     //     const parsed = JSON.parse(data)
