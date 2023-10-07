@@ -9,7 +9,7 @@ export default function CalendarMi({nextDate}) {
   const modifiers = {
     selected: date => selectedDates.some(selectedDate => isSameDay(selectedDate, date)),
 		disabled: date => getDay(date) === 1, 
-		highlight: date => getDay(date) === 6
+		highlight: nextDate => getDay(nextDate)
   }
 
 	useEffect(()=>{
