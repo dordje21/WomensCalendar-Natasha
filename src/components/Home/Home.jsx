@@ -23,8 +23,6 @@ function Home({ user }) {
         } catch (e){
             console.log(e)
         }
-
-        console.log(JSON.stringify(userDataAnswers))
     })
     // const [user, setUser] = useState('');
     // useEffect(() => {
