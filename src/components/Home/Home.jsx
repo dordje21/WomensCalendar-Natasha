@@ -153,7 +153,7 @@ function Home({ user }) {
             <p>{user?.last_name}</p>
             <p>{user?.username}</p>
             <p>{user?.is_premium}</p>
-            <CalendarMi/> 
+            <CalendarMi nextDate={date}/> 
             <CalendarPrediction/>
         </div>
     );
