@@ -8,7 +8,13 @@ import './index.css'
 WebApp.ready();
 WebAppInitData.ready();
 WebApp.CloudStorage.setItem("Test", "2");
+WebApp.CloudStorage.setItem("Test", "221");
+WebApp.CloudStorage.setItem("Testas", "1");
+
+
 WebApp.CloudStorage.getKeys();
+WebApp.CloudStorage.getItems("Test");
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
