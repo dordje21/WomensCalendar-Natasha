@@ -58,14 +58,15 @@ function Home({ user }) {
         const fetchData = async () => {
             try {
                 // const data = await asyncStorageGetItem("UserDataAnswers");
-                const data = WebApp.CloudStorage.getItem("UserDataAnswers")
-                if(data) {  
-                    const jsonData = JSON.parse(data); 
-                    console.log('Retrieved & parsed data:', jsonData);
-                    setUserDataAnswers(jsonData); 
-                } else {
-                    console.log("No data available");
-                }
+                WebApp.CloudStorage.getItem("UserDataAnswers").then((data) => {
+                    if(data) {  
+                        const jsonData = JSON.parse(data); 
+                        console.log('Retrieved & parsed data:', jsonData);
+                        setUserDataAnswers(jsonData); 
+                    } else {
+                        console.log("No data available");
+                    }
+                });
             } catch (error) {
                 console.error('Error while retrieving/parsing data:', error);
             }
@@ -95,7 +96,6 @@ function Home({ user }) {
     
             return menstrualDates;
         }
-
 
         const countOvlDates = async (nextDate) => {
             let ovlDates = [];
