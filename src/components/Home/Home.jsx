@@ -57,7 +57,7 @@ function Home({ user }) {
         const fetchData = async () => {
             try {
                 // const data = await asyncStorageGetItem("UserDataAnswers");
-                const data = WebApp.CloudStorage.getItem("UserDataAnswers")
+                const data = await WebApp.CloudStorage.getItem("UserDataAnswers")
                 if(data) {  
                     const jsonData = JSON.parse(data); 
                     console.log('Retrieved & parsed data:', jsonData);
