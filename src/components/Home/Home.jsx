@@ -48,14 +48,9 @@ function Home({ user }) {
             return dateObj
         }
 
-        // if (!isInitialRender.current) {
-           
-        // }
-        try{
+        if (!isInitialRender.current) {
             const nextDate = startNewPeriod(userDataAnswers)
-           setDate(nextDate)
-        } catch(e){
-            console.log(e)
+            setDate(nextDate)
         }
     },[userDataAnswers])
     
