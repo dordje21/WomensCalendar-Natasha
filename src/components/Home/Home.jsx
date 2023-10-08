@@ -28,11 +28,6 @@ function Home({ user }) {
         setDaysDates(newDates);
     };
 
-    useEffect(() => {
-        setTopDates(-2, 4)
-    },[])
-
-    
     const handleCalendar = () => {
         if(openCalendar){
             setOpenCalendar(false)
@@ -72,7 +67,6 @@ function Home({ user }) {
                     const jsonData = JSON.parse(data); 
                     console.log('Retrieved & parsed data:', jsonData);
                     setUserDataAnswers(jsonData); 
-                    isInitialRender.current = false;
                 } else {
                     console.log("No data available");
                 }
@@ -80,6 +74,8 @@ function Home({ user }) {
                 console.error('Error while retrieving/parsing data:', error);
             }
         };
+        isInitialRender.current = false;
+        setTopDates(-2, 4)
         fetchData();
     }, []);
 
@@ -168,20 +164,7 @@ function Home({ user }) {
         const timeDifference = nextDate - todayDate;
         const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         return daysDifference
-      }
-
-      const checkIsToDay = (givenDate, currentDate) => {
-        if (
-            givenDate.getDate() === currentDate.getDate() &&
-            givenDate.getMonth() === currentDate.getMonth() &&
-            givenDate.getFullYear() === currentDate.getFullYear()
-          ){
-            return true
-          }
-
-          return false
-      }
-      
+      }      
 
       const dataInfo = (todayDate, menstruationDates, ovulationDates) => {
         let currentResult = 'Hello!'
