@@ -95,11 +95,11 @@ function Home({ user }) {
     return (
         <div className="app-wrapper">
 
-            {!openCalendar ? <><div style={{display: 'flex', justifyContent: 'space-around'}}>
+            {!openCalendar ? <><div className='box-dates'>
                 {dates.map((date, index) => (
-                    <div key={index} style={{margin: '0 20px'}}>
-                        <h2>{date.toDateString() === todayDate.toDateString() ? 'Today' : GetDaysFirstLetter(date)}</h2>
-                        <h2>{date.getDate()}</h2>
+                    <div key={index} className='box-date'>
+                        <div className='day'>{date.toDateString() === todayDate.toDateString() ? 'Today' : GetDaysFirstLetter(date)}</div>
+                        <div className='date-day'>{date.getDate()}</div>
                     </div>
                 ))}
             </div>
@@ -107,10 +107,10 @@ function Home({ user }) {
             <div className="dateinfo-round-wrap">
                     <div className="dateinfo-round">
                         data info
-                        <button onClick={handleCalendar}>Open Calendar</button>
+                        <button className='btn-m' onClick={handleCalendar}>Open Calendar</button>
                     </div>
             </div></> : <>
-            <button onClick={handleCalendar}>Back</button>
+            <button onClick={handleCalendar} className='btn-m'>Back</button>
             <CalendarMi nextDate={new Date()} periodLength={5} cycleLength={30}/>
             </>  }
 

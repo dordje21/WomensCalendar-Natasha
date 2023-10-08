@@ -106,9 +106,73 @@ abbr[title] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #3498db; /* Background color for the round div */
+  background: rgb(61,255,240);
+  background: radial-gradient(circle, rgba(61,255,240,1) 
+  0%, rgba(27,190,177,1) 100%);
+
+  /* background: rgb(196,47,171);
+background: radial-gradient(circle, rgba(196,47,171,1) 0%, rgba(153,44,135,1) 100%); */
+
+
+/* background: rgb(187,12,47);
+background: radial-gradient(circle, rgba(187,12,47,1) 0%, rgba(161,17,45,1) 100%); */
+
   border-radius: 50%; /* Makes it a circle */
   padding: 20px; /* Adjust padding as needed */
   color: #fff; /* Text color */
   font-size: 18px; /* Text size */
+}
+
+.box-dates{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.box-date{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.day{
+   color: #232323;
+}
+
+.date-day{
+  border-radius: 100%;
+  background-color: #fff;
+  color: #232323;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.btn-m{
+  background-color: aliceblue;
+  border-radius: 14px;
+  padding: 5px 25px;
+  color: #c42fab;
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 3px #2323238b;
+  cursor: pointer;
+  transition: .3s all;
+  font-size: 16px;
+}
+
+.btn-m:hover{
+  box-shadow: 1px 1px 3px #8400008b;
+}
+
+.btn-m:active{
+  box-shadow: 1px 1px 3px #8400008b;
+  box-shadow: none;
+  outline: none;
 }

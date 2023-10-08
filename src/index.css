@@ -5,13 +5,15 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #6ef7ff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
 }
 
 a {
@@ -28,7 +30,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 150vh;
+  min-height: 100vh;
 }
 
 h1 {
