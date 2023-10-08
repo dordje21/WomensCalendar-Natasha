@@ -77,7 +77,8 @@ function Home({ user }) {
     const getDaysFirstLetter = (date) => {
         return daysFirstLetter[date.getDay()];
     }
-      const countMenstDates = async (nextDate) => {
+
+    const countMenstDates = async (nextDate) => {
 		let menstrualDates = [];
 		for( let m = -12; m < 24; m++ ){
 			const actualDate = new Date(nextDate);
@@ -119,7 +120,9 @@ function Home({ user }) {
 			setOvulationDates(ovlDates);
 		};
 	
-		fetchData();
+        if (!isInitialRender.current) {
+		    fetchData();
+        }
 	}, [periodLength, cycleLength]);
 	
     const arrayContainsDate = (dateArray, targetDate) => {
