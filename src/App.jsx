@@ -19,6 +19,7 @@ function App() {
 	const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+		window.scrollTo(0,document.body.scrollHeight);
     setUser(WebApp.initDataUnsafe.user)
 		setTimeout(() => {
 			setLoading(false)

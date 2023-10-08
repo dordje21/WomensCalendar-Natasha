@@ -45,6 +45,70 @@ abbr[title] {
 }
 
 
-.-highlight{
-  color: orange!important;
+.-menstruation{
+  color: #fff!important;
+}
+
+.-menstruation::before{
+  background-color: #e7264d!important;
+  opacity: 1!important;
+}
+
+.-ovulations{
+  color: #fff!important;
+}
+
+.-ovulations::before{
+  background-color: #f984e5!important;
+  opacity: 1!important;
+}
+
+.-today{
+  color: #fff!important;
+}
+
+.-today::before{
+  background-color: #a91b37!important;
+  opacity: 1!important;
+}
+
+.-today.-menstruation::before{
+  background-color: #b40024!important;
+  opacity: 1!important;
+}
+
+.-today.-ovulations::before{
+  background-color: #c42fab!important;
+  opacity: 1!important;
+}
+
+.-today.-selected::before:hover{
+  background: #a91b37!important;
+  background-color: #a91b37!important;
+  opacity: 1!important;
+}
+
+.dateinfo-round-wrap{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 50px 0;
+}
+
+.dateinfo-round-wrap .dateinfo-round{
+  width: 50vw;
+  height: 50vw;
+  max-width: 300px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #3498db; /* Background color for the round div */
+  border-radius: 50%; /* Makes it a circle */
+  padding: 20px; /* Adjust padding as needed */
+  color: #fff; /* Text color */
+  font-size: 18px; /* Text size */
 }

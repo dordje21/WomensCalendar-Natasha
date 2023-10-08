@@ -1,8 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../../App.css'
-// import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
+import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
-import CalendarPrediction from '../CalendarPrediction'
  
 function Home({ user }) {
     const [count, setCount] = useState(0);
@@ -10,45 +9,58 @@ function Home({ user }) {
     const [date, setDate] = useState(new Date());
     const [userDataAnswers, setUserDataAnswers] = useState([]);
 
-    const [period, setPeriod] = useState()
+    const [openCalendar, setOpenCalendar] = useState(false);
 
-     const isInitialRender = useRef(true);
+    const [periodLength, setPeriodLength] = useState()
+    const [cycleLength, setCycleLength] = useState()
 
-    // useEffect(() => {
-    //     const startNewPeriod = (data) => {
-    //         const cycle = data[2].answer
-    //         const period = data[3].answer
-    //         const lastDate = data[4].answer
-    //         setPeriod(period)
-    //         const dateObj = new Date(lastDate);
-    //         dateObj.setDate(dateObj.getDate() + (parseInt(cycle) - parseInt(period)));
-    //         return dateObj
-    //     }
+    const isInitialRender = useRef(true);
 
-    //     if (!isInitialRender.current) {
-    //        const nextDate = startNewPeriod(userDataAnswers)
-    //        setDate(nextDate)
-    //     }
-    // },[userDataAnswers])
+    const handleCalendar = () => {
+        console.log('test')
+        if(openCalendar){
+            setOpenCalendar(false)
+        } else {
+            setOpenCalendar(true)
+        }
+    }
+ 
+    useEffect(() => {
+        const startNewPeriod = (data) => {
+            const cycle = data[2].answer
+            const period = data[3].answer
+            const lastDate = data[4].answer
+            setPeriodLength(period)
+            setCycleLength(cycle)
+            const dateObj = new Date(lastDate);
+            dateObj.setDate(dateObj.getDate() + (parseInt(cycle) - parseInt(period)));
+            return dateObj
+        }
+
+        if (!isInitialRender.current) {
+           const nextDate = startNewPeriod(userDataAnswers)
+           setDate(nextDate)
+        }
+    },[userDataAnswers])
     
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const data = await asyncStorageGetItem("UserDataAnswers");
-    //             if(data) {  
-    //                 const jsonData = JSON.parse(data); 
-    //                 console.log('Retrieved & parsed data:', jsonData);
-    //                 setUserDataAnswers(jsonData); 
-    //                 isInitialRender.current = false;
-    //             } else {
-    //                 console.log("No data available");
-    //             }
-    //         } catch (error) {
-    //             console.error('Error while retrieving/parsing data:', error);
-    //         }
-    //     };
-    //     fetchData();
-    // }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await asyncStorageGetItem("UserDataAnswers");
+                if(data) {  
+                    const jsonData = JSON.parse(data); 
+                    console.log('Retrieved & parsed data:', jsonData);
+                    setUserDataAnswers(jsonData); 
+                    isInitialRender.current = false;
+                } else {
+                    console.log("No data available");
+                }
+            } catch (error) {
+                console.error('Error while retrieving/parsing data:', error);
+            }
+        };
+        fetchData();
+    }, []);
 
     let daysFirstLetter = ["S", "M", "T", "W", "T", "F", "S"];
 
@@ -83,7 +95,7 @@ function Home({ user }) {
     return (
         <div className="app-wrapper">
 
-            <div style={{display: 'flex', justifyContent: 'space-around'}}>
+            {!openCalendar ? <><div style={{display: 'flex', justifyContent: 'space-around'}}>
                 {dates.map((date, index) => (
                     <div key={index} style={{margin: '0 20px'}}>
                         <h2>{date.toDateString() === todayDate.toDateString() ? 'Today' : GetDaysFirstLetter(date)}</h2>
@@ -91,6 +103,18 @@ function Home({ user }) {
                     </div>
                 ))}
             </div>
+
+            <div className="dateinfo-round-wrap">
+                    <div className="dateinfo-round">
+                        data info
+                        <button onClick={handleCalendar}>Open Calendar</button>
+                    </div>
+            </div></> : <>
+            <button onClick={handleCalendar}>Back</button>
+            <CalendarMi nextDate={new Date()} periodLength={5} cycleLength={30}/>
+            </>  }
+
+
             {/* <ul>
                {showJson()}
             </ul> */}
@@ -100,8 +124,6 @@ function Home({ user }) {
             <p>{user?.last_name}</p>
             <p>{user?.username}</p>
             <p>{user?.is_premium}</p> */}
-            <CalendarMi nextDate={date}/> 
-            <CalendarPrediction/>
         </div>
     );
 }
