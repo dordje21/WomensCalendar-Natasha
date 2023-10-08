@@ -4,7 +4,7 @@ import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
  
 function Home({ user }) {
-    const [date, setDate] = useState();
+    const [date, setDate] = useState(new Date());
     const [userDataAnswers, setUserDataAnswers] = useState([]);
     const [openCalendar, setOpenCalendar] = useState(false);
     const [periodLength, setPeriodLength] = useState(5)
@@ -204,12 +204,26 @@ function Home({ user }) {
         )
       }
 
+      const showJson = () => {
+        if(userDataAnswers) {
+          return Object.values(userDataAnswers).map((item, index) => {
+            return (
+              <li key={index}>
+                <p>{item.question}</p>
+                <p>{item.answer}</p>
+              </li>
+            )
+          })
+        }
+        return null;
+      }
+
     return (
         <div className="app-wrapper">
             {!openCalendar ? <><div className='box-dates'>
                 {showTopDates(menstruationDates, ovulationDates)}
             </div>
-
+{showJson()}
             <div className="dateinfo-round-wrap">
                     <div className="dateinfo-round">
                         {dataInfo(todayDate, menstruationDates, ovulationDates)}
