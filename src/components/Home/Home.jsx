@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import '../../App.css'
-import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
  
 function Home({ user }) {
@@ -57,7 +56,8 @@ function Home({ user }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await asyncStorageGetItem("UserDataAnswers");
+                // const data = await asyncStorageGetItem("UserDataAnswers");
+                const data = WebApp.CloudStorage.getItem("UserDataAnswers")
                 if(data) {  
                     const jsonData = JSON.parse(data); 
                     console.log('Retrieved & parsed data:', jsonData);
