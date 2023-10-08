@@ -1,7 +1,8 @@
 import { default as WebApp } from '@twa-dev/sdk'
 import React, { useEffect, useState } from 'react'
 import Home from '../src/components/Home/Home'
-// import Start from '../src/components/Start/Start'
+import Preloader from '../src/components/Preloader'
+import Start from '../src/components/Start/Start'
 
 
 // WebApp.CloudStorage.setItem("Test", "2");
@@ -19,7 +20,7 @@ function App() {
 	const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-		window.scrollTo(0,document.body.scrollHeight);
+
     setUser(WebApp.initDataUnsafe.user)
 		setTimeout(() => {
 			setLoading(false)
@@ -43,8 +44,7 @@ function App() {
 
   return (
 		<>
-		<Home user={user}/> 
-		{/* { loading ? <Preloader/> : customRouts() } */}
+		{ loading ? <Preloader/> : customRouts() }
 		</>
 	);
 }

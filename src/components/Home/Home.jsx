@@ -5,17 +5,39 @@ import CalendarMi from '../Calendar'
  
 function Home({ user }) {
     const [count, setCount] = useState(0);
-    // const [data, setData] = useState({});
+//     const currentDate = new Date();
+// const newDate = new Date(currentDate);
+// newDate.setDate(currentDate.getDate() - 1);
+
     const [date, setDate] = useState(new Date());
     const [userDataAnswers, setUserDataAnswers] = useState([]);
-
     const [openCalendar, setOpenCalendar] = useState(false);
+    const [periodLength, setPeriodLength] = useState(5)
+    const [cycleLength, setCycleLength] = useState(30)
 
-    const [periodLength, setPeriodLength] = useState()
-    const [cycleLength, setCycleLength] = useState()
+    const [menstruationDates, setMenstruationDates] = useState([]);
+    const [ovulationDates, setOvulationDates] = useState([]);
 
     const isInitialRender = useRef(true);
+    const [todayDate, setTodayDate] = useState(new Date());
+    const [daysFirstLetter, setDaysFirstLetter] = useState(["S", "M", "T", "W", "T", "F", "S"]);
+    const [daysDates, setDaysDates] = useState([]);
 
+    const setTopDates = (minimalDate, maximalDate) => {
+        const newDates = [];
+            for (let i = minimalDate; i <= maximalDate; i++) {
+                let date = new Date();
+                date.setDate(date.getDate() + i);
+                newDates.push(date);
+            }
+        setDaysDates(newDates);
+    };
+
+    useEffect(() => {
+        setTopDates(-2, 4)
+    },[])
+
+    
     const handleCalendar = () => {
         console.log('test')
         if(openCalendar){
@@ -62,68 +84,182 @@ function Home({ user }) {
         fetchData();
     }, []);
 
-    let daysFirstLetter = ["S", "M", "T", "W", "T", "F", "S"];
-
-    function GetDaysFirstLetter(date) {
+    const getDaysFirstLetter = (date) => {
         return daysFirstLetter[date.getDay()];
     }
 
-    let todayDate = new Date();
-    let minimalDate = -2
-    let maximalDate = 4
-    let dates = [];
-    for (let i = minimalDate; i <= maximalDate; i++) {
-        let date = new Date();
-        date.setDate(date.getDate() + i);
-        dates.push(date);
-    }
+    // const showJson = () => {
+    //     if(userDataAnswers) {
+    //       return Object.values(userDataAnswers).map((item, index) => {
+    //         return (
+    //           <li key={index}>
+    //             <p>{item.question}</p>
+    //             <p>{item.answer}</p>
+    //           </li>
+    //         )
+    //       })
+    //     }
+    //     return null;
+    //   }
 
-    const showJson = () => {
-        if(userDataAnswers) {
-          return Object.values(userDataAnswers).map((item, index) => {
-            return (
-              <li key={index}>
-                <p>{item.question}</p>
-                <p>{item.answer}</p>
-              </li>
-            )
-          })
+      const countMenstDates = async (nextDate) => {
+		let menstrualDates = [];
+		for( let m = -12; m < 24; m++ ){
+			const actualDate = new Date(nextDate);
+			actualDate.setDate(nextDate.getDate() + (cycleLength * m))
+			for (let i = 0; i < periodLength; i++) {
+				const newDate = new Date(actualDate);
+				newDate.setDate(actualDate.getDate() + i);
+				menstrualDates.push(newDate);
+			}
+		}
+
+		return menstrualDates;
+	}
+
+	const countOvlDates = async (nextDate) => {
+		let ovlDates = [];
+		const startOvl = new Date(nextDate);
+		startOvl.setDate(startOvl.getDate() + cycleLength - 14 - 3); 
+	
+		for( let m = -12; m < 24; m++ ){
+			const actualDate = new Date(startOvl);
+			actualDate.setDate(startOvl.getDate() + (cycleLength * m))
+			for (let i = 0; i < 6; i++) {
+				const newDate = new Date(actualDate);
+				newDate.setDate(actualDate.getDate() + i);
+				ovlDates.push(newDate);
+			}
+		}
+	
+		return ovlDates;
+	}
+
+    useEffect(() => {
+		const fetchData = async () => {
+			const menstruationDates = await countMenstDates(date);
+			setMenstruationDates(menstruationDates);
+
+			const ovlDates = await countOvlDates(date);
+			setOvulationDates(ovlDates);
+		};
+	
+		fetchData();
+	}, [periodLength, cycleLength]);
+	
+    const arrayContainsDate = (dateArray, targetDate) => {
+        const targetDateString = targetDate.toDateString();
+        return dateArray.some((date) => date.toDateString() === targetDateString);
+      };
+      
+
+      const showTopDates = (menstruationDates, ovulationDates) => {
+        return daysDates.map((date, index) => {
+          let classDay = 'simple';
+      
+          if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
+            classDay = 'menstruationDay';
+          }
+      
+          if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
+            classDay = 'ovulationDay';
+          } 
+      
+          return (
+            <div key={index} className='box-date'>
+              <div className='day'>{date.toDateString() === todayDate.toDateString() ? 'Today' : getDaysFirstLetter(date)}</div>
+              <div className={`${classDay} date-day`}>{date.getDate()}</div>
+            </div>
+          );
+        });
+      }
+
+      const findClosestBiggerDate = (dateArray, currentDate) => {
+        const futureDates = dateArray.filter((date) => date > currentDate);
+        futureDates.sort((a, b) => a - b);
+        return futureDates[0];
+      }
+
+      const getDaysDiff = (todayDate, nextDate) => {
+        const timeDifference = nextDate - todayDate;
+        const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        return daysDifference
+      }
+
+      const checkIsToDay = (givenDate, currentDate) => {
+        if (
+            givenDate.getDate() === currentDate.getDate() &&
+            givenDate.getMonth() === currentDate.getMonth() &&
+            givenDate.getFullYear() === currentDate.getFullYear()
+          ){
+            return true
+          }
+
+          return false
+      }
+      
+
+      const dataInfo = (todayDate, menstruationDates, ovulationDates) => {
+        let currentResult = 'Hello!'
+
+        if (menstruationDates && arrayContainsDate(menstruationDates, todayDate)) {
+            currentResult = 'menstruationDay';
         }
-        return null;
+      
+        if (ovulationDates && arrayContainsDate(ovulationDates, todayDate)) {
+            currentResult = 'ovulationDay';
+        } 
+
+        const closestBiggerDateMenstruation = findClosestBiggerDate(menstruationDates, todayDate);
+
+        const closestBiggerDateOvulation = findClosestBiggerDate(ovulationDates, todayDate);
+        
+        if (closestBiggerDateMenstruation > closestBiggerDateOvulation) {
+          
+            if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
+                currentResult = `<h2>Ovulation!</h2> High chance of getting pregnant`;
+            } else {
+                currentResult = `<h2>Ovulation</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateOvulation)} days!</p>`;
+            }
+        }
+        
+        if (closestBiggerDateMenstruation < closestBiggerDateOvulation) {
+            
+            if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
+                currentResult = `<h2>Period!</h2> <p>Low chance of getting pregnant</p>`;
+            } else {
+                currentResult = `<h2>Period</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateMenstruation)} days!</p>` ;
+            }
+        }
+
+        return (
+            <div>
+            <div dangerouslySetInnerHTML={{ __html: currentResult }} />
+            </div>
+        )
       }
 
     return (
         <div className="app-wrapper">
-
             {!openCalendar ? <><div className='box-dates'>
-                {dates.map((date, index) => (
-                    <div key={index} className='box-date'>
-                        <div className='day'>{date.toDateString() === todayDate.toDateString() ? 'Today' : GetDaysFirstLetter(date)}</div>
-                        <div className='date-day'>{date.getDate()}</div>
-                    </div>
-                ))}
+                {showTopDates(menstruationDates, ovulationDates)}
             </div>
 
             <div className="dateinfo-round-wrap">
                     <div className="dateinfo-round">
-                        data info
+                        {dataInfo(todayDate, menstruationDates, ovulationDates)}
                         <button className='btn-m' onClick={handleCalendar}>Open Calendar</button>
                     </div>
             </div></> : <>
             <button onClick={handleCalendar} className='btn-m'>Back</button>
-            <CalendarMi nextDate={new Date()} periodLength={5} cycleLength={30}/>
+            <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
             </>  }
-
-
-            {/* <ul>
-               {showJson()}
-            </ul> */}
-            {date.toString()}
-            {/* <p>{user?.id}</p>
+    
+            <p>{user?.id}</p>
             <p>{user?.first_name}</p>
             <p>{user?.last_name}</p>
             <p>{user?.username}</p>
-            <p>{user?.is_premium}</p> */}
+            <p>{user?.is_premium}</p>
         </div>
     );
 }

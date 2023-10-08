@@ -23,7 +23,7 @@ function Start({handleShowStart}) {
      useEffect(() => {
        if (!isInitialRender.current) {
          console.log(selectedValues);
-        //  WebApp.CloudStorage.setItem("UserDataAnswers", selectedValues) 
+         WebApp.CloudStorage.setItem("UserDataAnswers", selectedValues) 
         WebApp.CloudStorage.setItem("UserDataAnswers", JSON.stringify(selectedValues)) 
          handleShowStart();
        }
