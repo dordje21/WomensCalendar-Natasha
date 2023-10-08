@@ -223,7 +223,7 @@ function Home({ user }) {
             {!openCalendar ? <><div className='box-dates'>
                 {showTopDates(menstruationDates, ovulationDates)}
             </div>
-{showJson()}
+{/* {showJson()} */}
             <div className="dateinfo-round-wrap">
                     <div className="dateinfo-round">
                         {dataInfo(todayDate, menstruationDates, ovulationDates)}
@@ -234,11 +234,11 @@ function Home({ user }) {
             <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
             </>  }
     
-            <p>{user?.id}</p>
+            {/* <p>{user?.id}</p>
             <p>{user?.first_name}</p>
             <p>{user?.last_name}</p>
             <p>{user?.username}</p>
-            <p>{user?.is_premium}</p>
+            <p>{user?.is_premium}</p> */}
         </div>
     );
 }
