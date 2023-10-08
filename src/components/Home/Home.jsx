@@ -69,49 +69,51 @@ function Home({ user }) {
                 console.error('Error while retrieving/parsing data:', error);
             }
         };
-        isInitialRender.current = false;
         setTopDates(-2, 4)
         fetchData();
+        isInitialRender.current = false;
     }, []);
 
     const getDaysFirstLetter = (date) => {
         return daysFirstLetter[date.getDay()];
     }
 
-    const countMenstDates = async (nextDate) => {
-		let menstrualDates = [];
-		for( let m = -12; m < 24; m++ ){
-			const actualDate = new Date(nextDate);
-			actualDate.setDate(nextDate.getDate() + (cycleLength * m))
-			for (let i = 0; i < periodLength; i++) {
-				const newDate = new Date(actualDate);
-				newDate.setDate(actualDate.getDate() + i);
-				menstrualDates.push(newDate);
-			}
-		}
-
-		return menstrualDates;
-	}
-
-	const countOvlDates = async (nextDate) => {
-		let ovlDates = [];
-		const startOvl = new Date(nextDate);
-		startOvl.setDate(startOvl.getDate() + cycleLength - 14 - 3); 
-	
-		for( let m = -12; m < 24; m++ ){
-			const actualDate = new Date(startOvl);
-			actualDate.setDate(startOvl.getDate() + (cycleLength * m))
-			for (let i = 0; i < 6; i++) {
-				const newDate = new Date(actualDate);
-				newDate.setDate(actualDate.getDate() + i);
-				ovlDates.push(newDate);
-			}
-		}
-	
-		return ovlDates;
-	}
-
     useEffect(() => {
+        if (!isInitialRender.current) {
+        const countMenstDates = async (nextDate) => {
+            let menstrualDates = [];
+            for( let m = -12; m < 24; m++ ){
+                const actualDate = new Date(nextDate);
+                actualDate.setDate(nextDate.getDate() + (cycleLength * m))
+                for (let i = 0; i < periodLength; i++) {
+                    const newDate = new Date(actualDate);
+                    newDate.setDate(actualDate.getDate() + i);
+                    menstrualDates.push(newDate);
+                }
+            }
+    
+            return menstrualDates;
+        }
+
+
+        const countOvlDates = async (nextDate) => {
+            let ovlDates = [];
+            const startOvl = new Date(nextDate);
+            startOvl.setDate(startOvl.getDate() + cycleLength - 14 - 3); 
+        
+            for( let m = -12; m < 24; m++ ){
+                const actualDate = new Date(startOvl);
+                actualDate.setDate(startOvl.getDate() + (cycleLength * m))
+                for (let i = 0; i < 6; i++) {
+                    const newDate = new Date(actualDate);
+                    newDate.setDate(actualDate.getDate() + i);
+                    ovlDates.push(newDate);
+                }
+            }
+        
+            return ovlDates;
+        }
+
 		const fetchData = async () => {
 			const menstruationDates = await countMenstDates(date);
 			setMenstruationDates(menstruationDates);
@@ -119,8 +121,6 @@ function Home({ user }) {
 			const ovlDates = await countOvlDates(date);
 			setOvulationDates(ovlDates);
 		};
-	
-        if (!isInitialRender.current) {
 		    fetchData();
         }
 	}, [periodLength, cycleLength]);
