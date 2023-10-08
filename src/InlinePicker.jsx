@@ -21,7 +21,7 @@ export default function InlinePicker({selectionsValue, selectedValue, question})
 
     useEffect(() => {
         selectedValue(selectionsValue[0]);
-    })
+    },[])
 
     return <>
         <div

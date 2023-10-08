@@ -119,7 +119,6 @@ function Start({handleShowStart}) {
 
         setCurrentQuestionIndex(currentQuestionIndex + 1);
        
-
         if (questionsData.length <= currentQuestionIndex + 1) {
             // handleShowStart()
             setShowPickers(true)
