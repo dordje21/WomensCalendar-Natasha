@@ -4,7 +4,7 @@ import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
  
 function Home({ user }) {
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState();
     const [userDataAnswers, setUserDataAnswers] = useState([]);
     const [openCalendar, setOpenCalendar] = useState(false);
     const [periodLength, setPeriodLength] = useState(5)
@@ -53,9 +53,14 @@ function Home({ user }) {
             return dateObj
         }
 
-        if (!isInitialRender.current) {
-           const nextDate = startNewPeriod(userDataAnswers)
+        // if (!isInitialRender.current) {
+           
+        // }
+        try{
+            const nextDate = startNewPeriod(userDataAnswers)
            setDate(nextDate)
+        } catch(e){
+            console.log(e)
         }
     },[userDataAnswers])
     
