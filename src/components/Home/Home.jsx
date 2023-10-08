@@ -1,3 +1,4 @@
+import { default as WebApp } from '@twa-dev/sdk'
 import React, { useEffect, useRef, useState } from 'react'
 import '../../App.css'
 import CalendarMi from '../Calendar'
