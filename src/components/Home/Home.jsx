@@ -190,7 +190,7 @@ function Home({user, handleReset}) {
 
     const getDaysDiff = (todayDate, nextDate) => {
         const timeDifference = nextDate - todayDate;
-        const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+        const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         return daysDifference
     }
 

@@ -269,8 +269,9 @@ abbr[title] {
 }
 
 .DatePickerCal-box{
+  padding: 5px;
   background-color: #ffe9ec;
-  border-radius: 8px;
+  border-radius: 18px;
 }
 
 .btn-m-back{
