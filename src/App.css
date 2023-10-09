@@ -281,15 +281,15 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 
 /*  */
 
-
-
 .container {
   position: absolute;
-  width: 15rem;
+  /* width: 15rem; */
   height: 10rem;
-  left: 50%;
+  left: 0;
   top: 50%;
-  transform: translate(-50%, -50%) scale(0.5);
+  transform: translateY(-50%) scale(.5);
+  width: 70vw;
+  /* transform: translate(-50%, -50%) scale(0.5); */
 }
 
 .text {
