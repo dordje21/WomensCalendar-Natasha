@@ -128,9 +128,6 @@ function Start({handleShowStart}) {
 
     return (
         <>
-            <div>Start</div>
-
-
             {/* {Object.values(selectedValues).map((el, index) => {
                 return <div key={index}>{el.question}{el.answer}</div>
             })} */}

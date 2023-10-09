@@ -180,7 +180,7 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 
 .btn-m{
   background-color: var(--tg-theme-button-color);
-  border-radius: 4px;
+  border-radius: 8px;
   width: 100%;
   display: block;
   padding: 15px;
@@ -216,9 +216,42 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 
 
 .calendar-wrapper{
-  min-width: 380px;
+  width: 100%;
+  min-width: 350px;
+  max-width: 400px;
 }
 
 .dateinfo-round-wrap h2, .dateinfo-round-wrap p{
   color: #fff!important;
+}
+
+.answers-q .label{
+  background-color: var(--tg-theme-button-color);
+  border-radius: 8px;
+  width: 100%;
+  display: block;
+  padding: 15px;
+  color: var(--tg-theme-button-text-color);
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 3px #2323238b;
+  cursor: pointer;
+  transition: .3s all;
+  font-size: 16px;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.answers-q .label input{
+  opacity: 0;
+}
+
+.answers-q .label:hover{
+  box-shadow: 1px 1px 3px #8400008b;
+}
+
+.answers-q .label:active{
+  box-shadow: 1px 1px 3px #8400008b;
+  box-shadow: none;
+  outline: none;
 }
