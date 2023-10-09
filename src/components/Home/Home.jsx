@@ -134,20 +134,7 @@ function Home({user, handleReset}) {
 
 
     const showTopDates = (menstruationDates, ovulationDates) => {
-        let todayBg = 'simple-cycle';
-      
-        // Update todayBg outside of the map function
-        if (date.toDateString() === todayDate.toDateString()) {
-          todayBg = 'simple-cycle'; // Default value if not menstruation or ovulation
-          if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
-            todayBg = 'menstruationDay-cycle';
-          }
-          if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
-            todayBg = 'ovulationDay-cycle';
-          }
-        }
-      
-        const htmlDates = daysDates.map((date, index) => {
+        return daysDates.map((date, index) => {
           let classDay = 'simple';
       
           if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
@@ -165,12 +152,34 @@ function Home({user, handleReset}) {
             </div>
           );
         });
-      
-        // Update the state after mapping
-        setBgPeriod(todayBg);
-        return htmlDates;
       };
-      
+
+
+      useEffect(()=>{
+
+        const findBgCycle = (menstruationDates, ovulationDates) => {
+            let todayBg = 'simple-cycle';
+            daysDates.map((date, index) => {
+              let classDay = 'simple';
+          
+              if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
+                classDay = 'menstruationDay';
+              }
+          
+              if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
+                classDay = 'ovulationDay';
+              }
+
+              if (date.toDateString() === todayDate.toDateString()) {
+                todayBg = `${classDay}-cycle`;
+              }
+            });
+            setBgPeriod(todayBg);
+          };
+
+          findBgCycle(menstruationDates, ovulationDates)
+
+      },[menstruationDates, ovulationDates])
       
 
     const findClosestBiggerDate = (dateArray, currentDate) => {
