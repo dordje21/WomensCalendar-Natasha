@@ -538,10 +538,12 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 
 
 
-
+.pulsating-circle{
+  position: relative;
+}
 .pulsating-circle:before {
   content: "";
-  position: relative;
+  position: absolute;
   display: block;
   width: 300%;
   height: 300%;

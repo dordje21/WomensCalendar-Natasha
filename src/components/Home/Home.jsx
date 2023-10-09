@@ -182,7 +182,7 @@ function Home({user, handleReset}) {
 
         if (closestBiggerDateMenstruation > closestBiggerDateOvulation) {
 
-            if (getDaysDiff(todayDate, closestBiggerDateOvulation) === 0) {
+            if (getDaysDiff(todayDate, closestBiggerDateOvulation) < 1) {
                 currentResult = `<h2>Ovulation!</h2> High chance of getting pregnant`;
             } else {
                 currentResult = `<h2>Ovulation</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateOvulation)} days!</p>`;
@@ -191,7 +191,7 @@ function Home({user, handleReset}) {
 
         if (closestBiggerDateMenstruation < closestBiggerDateOvulation) {
 
-            if (getDaysDiff(todayDate, closestBiggerDateMenstruation) === 0) {
+            if (getDaysDiff(todayDate, closestBiggerDateMenstruation) < 1) {
                 currentResult = `<h2>Period!</h2> <p>Low chance of getting pregnant</p>`;
             } else {
                 currentResult = `<h2>Period</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateMenstruation)} days!</p>`;
@@ -226,8 +226,8 @@ function Home({user, handleReset}) {
                     {showTopDates(menstruationDates, ovulationDates)}
                 </div>
                 {/* {showJson()} */}
-                <div className="dateinfo-round-wrap pulsating-circle">
-                    <div className="dateinfo-round">
+                <div className="dateinfo-round-wrap">
+                    <div className="dateinfo-round pulsating-circle">
                         {dataInfo(todayDate, menstruationDates, ovulationDates)}
                         <button className='btn-m-cal' onClick={handleCalendar}>Open Calendar</button>
                     </div>
