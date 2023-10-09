@@ -134,7 +134,8 @@ function Home({user, handleReset}) {
 
 
     const showTopDates = (menstruationDates, ovulationDates) => {
-        return daysDates.map((date, index) => {
+        let todayBg = 'simple-cycle'
+        const htmlDates = daysDates.map((date, index) => {
             let classDay = 'simple';
 
             if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
@@ -145,8 +146,9 @@ function Home({user, handleReset}) {
                 classDay = 'ovulationDay';
             }
             // simple-cycle , menstruationDay-cycle , ovulationDay-cycle
-            setBgPeriod(`${classDay}-cycle`)
-
+            if(date.toDateString() === todayDate.toDateString()){
+                todayBg = `${classDay}-cycle`
+            }
             return (
                 <div key={index} className='box-date'>
                     <div
@@ -155,6 +157,9 @@ function Home({user, handleReset}) {
                 </div>
             );
         });
+
+        setBgPeriod(todayBg)
+        return htmlDates;
     }
 
     const findClosestBiggerDate = (dateArray, currentDate) => {

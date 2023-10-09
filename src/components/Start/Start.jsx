@@ -33,18 +33,18 @@ function Start({handleShowStart}) {
             id: 1,
             question: "Are you pregnant??",
             options: {
-                variant1: "Yes, I am",
-                variant2: "No, but want to be",
-                variant3: "No, I'm here to understand my body better"
+                variant1: "Yes, I am.",
+                variant2: "No, but want to be.",
+                variant3: "I'm here to self-discover."
             }
         },
         {
             id: 2,
             question: "Is your menstrual cycle regular \n (varies by no more than 7 days) ?",
             options: {
-                variant1: "My cycle is regular",
-                variant2: "My cycle is irregular",
-                variant3: "I don't know"
+                variant1: "My cycle is regular.",
+                variant2: "My cycle is irregular.",
+                variant3: "I don't know."
             }
         }
     ];
@@ -66,7 +66,7 @@ function Start({handleShowStart}) {
             days: daysOfCycle
         },
         {
-            question: "Enter the average length of your periods",
+            question: "Enter the average length of your periods.",
             days: daysOfPeriod
         }
     ]
