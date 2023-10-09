@@ -181,7 +181,7 @@ function Home({ user }) {
         
         if (closestBiggerDateMenstruation > closestBiggerDateOvulation) {
           
-            if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
+            if (getDaysDiff(todayDate, closestBiggerDateOvulation) === 0) {
                 currentResult = `<h2>Ovulation!</h2> High chance of getting pregnant`;
             } else {
                 currentResult = `<h2>Ovulation</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateOvulation)} days!</p>`;
@@ -190,7 +190,7 @@ function Home({ user }) {
         
         if (closestBiggerDateMenstruation < closestBiggerDateOvulation) {
             
-            if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
+            if (getDaysDiff(todayDate, closestBiggerDateMenstruation) === 0) {
                 currentResult = `<h2>Period!</h2> <p>Low chance of getting pregnant</p>`;
             } else {
                 currentResult = `<h2>Period</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateMenstruation)} days!</p>` ;
