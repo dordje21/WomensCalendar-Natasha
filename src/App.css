@@ -159,13 +159,14 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   background-color: aliceblue;
   border-radius: 14px;
   padding: 5px 25px;
-  color: #c42fab;
+  color: #FF69B4;
   border: none;
   outline: none;
   box-shadow: 1px 1px 3px #2323238b;
   cursor: pointer;
   transition: .3s all;
   font-size: 16px;
+  font-weight: bold;
 }
 
 .btn-m-cal:hover{
@@ -212,7 +213,7 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 
 .ovulationDay{
   color: #fff!important;
-  background-color: #c42fab!important;
+  background-color: #FF69B4!important;
 }
 
 
@@ -284,15 +285,15 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 
 .container {
   position: absolute;
-  width: 35rem;
+  width: 15rem;
   height: 10rem;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.5);
 }
 
 .text {
-  color: #fff;
+  color: var(--tg-theme-text-color);
   font-size: 6rem;
   font-weight: 900;
   display: inline-block;
