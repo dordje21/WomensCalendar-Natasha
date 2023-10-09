@@ -278,7 +278,7 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 }
 
 
-/*  */
+/* container animation */
 
 .container {
   position: absolute;
@@ -536,10 +536,10 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   }
 }
 
-
-
+/* circle animation */
 .pulsating-circle{
   position: relative;
+  z-index: 3;
 }
 .pulsating-circle:before {
   content: "";
@@ -547,10 +547,13 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   display: block;
   width: 300%;
   height: 300%;
+  left: 0;
+  top: 0;
+  z-index: 1;
   box-sizing: border-box;
   margin-left: -100%;
   margin-top: -100%;
-  border-radius: 45px;
+  border-radius: 100%;
   background-color: #01a4e9;
   -webkit-animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
           animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
@@ -560,11 +563,12 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   position: absolute;
   left: 0;
   top: 0;
+  z-index: 2;
   display: block;
   width: 100%;
   height: 100%;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 100%;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
   -webkit-animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
           animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
