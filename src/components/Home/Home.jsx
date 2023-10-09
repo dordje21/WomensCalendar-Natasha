@@ -229,7 +229,7 @@ function Home({user, handleReset}) {
                 <div className="dateinfo-round-wrap">
                     <div className="dateinfo-round">
                         {dataInfo(todayDate, menstruationDates, ovulationDates)}
-                        <button className='btn-m' onClick={handleCalendar}>Open Calendar</button>
+                        <button className='btn-m-cal' onClick={handleCalendar}>Open Calendar</button>
                     </div>
                 </div>
                 <p>
