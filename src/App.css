@@ -68,23 +68,22 @@ abbr[title] {
 }
 
 .calendar-wrapper .-today::before{
-  background-color: #a91b37!important;
+  background-color: #e9fff1!important;
   opacity: 1!important;
 }
 
 .-today.-menstruation::before{
-  background-color: #b40024!important;
+  background-color: #FF69B4!important;
   opacity: 1!important;
 }
 
 .-today.-ovulations::before{
-  background-color: #c42fab!important;
+  background-color: #15c7fa!important;
   opacity: 1!important;
 }
 
 .-today.-selected::before:hover{
-  background: #a91b37!important;
-  background-color: #a91b37!important;
+  background-color: #e9fff1!important;
   opacity: 1!important;
 }
 
