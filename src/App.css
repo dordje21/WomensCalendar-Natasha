@@ -126,7 +126,7 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 .box-dates{
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .box-date{
@@ -134,11 +134,11 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  margin: 0 5px;
 }
 
 .day{
-   color: #232323;
+  color: var(--tg-theme-text-color);
 }
 
 .date-day{
@@ -152,6 +152,7 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   align-items: center;
   justify-content: center;
   margin-top: 15px;
+  box-shadow: 1px 1px 1px #2323238b;
 }
 
 .btn-m-cal{
@@ -218,6 +219,6 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   min-width: 380px;
 }
 
-.dateinfo-round-wrap h2{
-
+.dateinfo-round-wrap h2, .dateinfo-round-wrap p{
+  color: #fff!important;
 }

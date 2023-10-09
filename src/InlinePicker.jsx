@@ -26,6 +26,11 @@ export default function InlinePicker({selectionsValue, selectedValue, question, 
         selectedValue(selectionsValue[0]);
     },[])
 
+    const btnActions = () => {
+        pickersNext()
+        setShowBtn(false)
+    }
+
     return <>
         <div
             className="
@@ -44,7 +49,7 @@ export default function InlinePicker({selectionsValue, selectedValue, question, 
             </Picker.Column>
         </Picker>
         {showBtn ? <div>
-        <button className='btn-m' onClick={pickersNext}>Next</button>
+        <button className='btn-m' onClick={btnActions}>Next</button>
         </div> : <></>}
     </>
 }
