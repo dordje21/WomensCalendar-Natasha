@@ -19,6 +19,9 @@ abbr[title] {
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
+  font-weight: 400;
+  min-width: 350px;
+  width: 100%;
 }
 
 @keyframes logo-spin {
