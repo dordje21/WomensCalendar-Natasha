@@ -12,12 +12,14 @@ export default function DatePickerCal({selectedValue, question, saveData}) {
 }
 
   return (
-    <div>
+    <div className='DatePickerCal'>
       <p>{question}</p>
       {/* <p>
         Selected date: {date ? format(date, 'dd MMM yyyy', { locale: enGB }) : 'none'}.
       </p> */}
-      <DatePickerCalendar date={date} onDateChange={handleChange} locale={enGB} />
+      <div className="DatePickerCal-box" >
+        <DatePickerCalendar date={date} onDateChange={handleChange} locale={enGB} />
+      </div>
       {date ? <button className='btn-m' onClick={saveData}>Save</button> : <></>}
     </div>
   )

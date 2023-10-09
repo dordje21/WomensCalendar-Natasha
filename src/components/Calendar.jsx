@@ -34,7 +34,7 @@ export default function CalendarMi({nextDate, menstruationDates, ovulationDates}
     setSelectedDates([...selectedDates, date])
   }
   return (
-		<div className='calendar-wrapper'>
+		<div className='calendar-wrapper DatePickerCal-box'>
     <Calendar 
 		// onDayClick={handleDayClick} 
 		modifiers={modifiers} 

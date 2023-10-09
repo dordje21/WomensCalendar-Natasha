@@ -226,12 +226,13 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 }
 
 .answers-q label{
+  color: var(--tg-theme-button-text-color)!important;
   margin-bottom: 20px;
   background-color: var(--tg-theme-button-color);
   border-radius: 8px;
   width: 100%;
   display: block;
-  padding: 15px;
+  padding: 15px 0;
   color: var(--tg-theme-button-text-color);
   border: none;
   outline: none;
@@ -255,4 +256,18 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   box-shadow: 1px 1px 3px #8400008b;
   box-shadow: none;
   outline: none;
+}
+
+.DatePickerCal p{
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.DatePickerCal .btn-m {
+  margin-top: 15px;
+}
+
+.DatePickerCal-box{
+  background-color: #fff;
+  border-radius: 18px;
 }
