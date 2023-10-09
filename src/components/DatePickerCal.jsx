@@ -4,7 +4,7 @@ import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale'
 import React, { useState } from 'react'
 
-export default function DatePickerCal({selectedValue, question}) {
+export default function DatePickerCal({selectedValue, question, saveData}) {
   const [date, setDate] = useState()
 
   const handleChange = (newValue) => {
@@ -19,6 +19,7 @@ export default function DatePickerCal({selectedValue, question}) {
         Selected date: {date ? format(date, 'dd MMM yyyy', { locale: enGB }) : 'none'}.
       </p>
       <DatePickerCalendar date={date} onDateChange={handleChange} locale={enGB} />
+      {date ? <button className='btn-m' onClick={saveData}>Save</button> : <></>}
     </div>
   )
 }

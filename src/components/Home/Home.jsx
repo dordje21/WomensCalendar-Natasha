@@ -1,9 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../../App.css'
 import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
 
-function Home({user}) {
+function Home({user, handleReset}) {
     const [date, setDate] = useState(new Date());
     const [userDataAnswers, setUserDataAnswers] = useState([]);
     const [openCalendar, setOpenCalendar] = useState(false);
@@ -232,11 +232,13 @@ function Home({user}) {
                         <button className='btn-m' onClick={handleCalendar}>Open Calendar</button>
                     </div>
                 </div>
+                <p>
+                <button onClick={handleReset} className='btn-m'>RESET</button>
+                </p>
             </> : <>
                 <button onClick={handleCalendar} className='btn-m'>Back</button>
                 <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
             </>}
-
             {/* <p>{user?.id}</p>
             <p>{user?.first_name}</p>
             <p>{user?.last_name}</p>

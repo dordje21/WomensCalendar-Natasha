@@ -1,7 +1,6 @@
 import { default as WebApp } from '@twa-dev/sdk'
 import React, { useEffect, useState } from 'react'
 import Home from '../src/components/Home/Home'
-import Preloader from '../src/components/Preloader'
 import Start from '../src/components/Start/Start'
 
 
@@ -31,6 +30,12 @@ function App() {
 		WebApp.expand();
 	}
 
+	const handleReset = () => {
+		console.log('reset')
+		WebApp.CloudStorage.removeItem("UserDataAnswers") 
+		setShowStart(true)
+	}
+
 
 	const handleShowStart = () => {
 		setShowStart(false)
@@ -44,7 +49,8 @@ function App() {
 
   return (
 		<>
-		{ loading ? <Preloader/> : customRouts() }
+		 <Home user={user} handleReset={handleReset}/>
+		{/* { loading ? <Preloader/> : customRouts() } */}
 		</>
 	);
 }

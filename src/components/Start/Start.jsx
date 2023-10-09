@@ -151,7 +151,7 @@ function Start({handleShowStart}) {
                         <InlinePicker selectionsValue={currentDataPickers.days} question={currentDataPickers.question} 
                         selectedValue={(e) => selectedValuePicker(e, `${currentDataPickers.question}`)}
                         />
-                        <button onClick={pickersNext}>Next</button>
+                        <button className='btn-m' onClick={pickersNext}>Next</button>
                     </div>
             ) : <></>}
 
@@ -159,8 +159,8 @@ function Start({handleShowStart}) {
          <div className="question-data">
             <DatePickerCal selectedValue={(e) => {
                 selectedValuePicker(e.toDateString(), 'Select the start date of your last period?')
-            }} question='Select the start date of your last period?' /> 
-            <button onClick={saveData}>Save</button>
+            }} question='Select the start date of your last period?' saveData={saveData}/> 
+            {/* <button className='btn-m' onClick={saveData}>Save</button> */}
             </div> : <></>}            
         </>
     );
