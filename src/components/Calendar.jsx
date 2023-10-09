@@ -1,6 +1,6 @@
 import { Calendar } from '@bjarkehs/react-nice-dates'
 import '@bjarkehs/react-nice-dates/build/style.css'
-import { getDay, isSameDay } from 'date-fns'
+import { isSameDay } from 'date-fns'
 import { enGB } from 'date-fns/locale'
 import React, { useEffect, useState } from 'react'
 export default function CalendarMi({nextDate, menstruationDates, ovulationDates}) {
@@ -9,7 +9,6 @@ export default function CalendarMi({nextDate, menstruationDates, ovulationDates}
 
   const modifiers = {
     selected: date => selectedDates.some(selectedDate => isSameDay(selectedDate, date)),
-		disabled: date => getDay(date) === 1, 
 		menstruation: date => menstruationDates.some(menstruationDates => isSameDay(menstruationDates, date)),
 		ovulations: date => ovulationDates.some(ovulationDates => isSameDay(ovulationDates, date))
   }
