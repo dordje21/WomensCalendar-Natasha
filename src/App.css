@@ -547,8 +547,8 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   content: "";
   position: absolute;
   display: block;
-  width: 150%;
-  height: 150%;
+  width: 300%;
+  height: 300%;
   left: 0;
   top: 0;
   z-index: -2;
@@ -571,8 +571,8 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   height: 100%;
   border-radius: 100%;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  -webkit-animation: pulse-dot 2.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
-          animation: pulse-dot 2.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+  -webkit-animation: pulse-dot 3.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+          animation: pulse-dot 3.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
 
           background: rgb(12,105,187);
           background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 100%);
