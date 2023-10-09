@@ -10,8 +10,7 @@ function RadioButton({ question, options, selectedValue, onChangeValue }) {
             value={option}
             checked={selectedValue === option}
             onChange={onChangeValue}
-          />{" "}
-          {options[option]}
+          />{options[option]}
         </label>
       ))}
       </div>

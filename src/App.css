@@ -225,7 +225,8 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   color: #fff!important;
 }
 
-.answers-q .label{
+.answers-q label{
+  margin-bottom: 20px;
   background-color: var(--tg-theme-button-color);
   border-radius: 8px;
   width: 100%;
@@ -239,18 +240,18 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   transition: .3s all;
   font-size: 16px;
   text-transform: capitalize;
-  text-align: center;
+  text-align: center!important;
 }
 
-.answers-q .label input{
+.answers-q label input{
   opacity: 0;
 }
 
-.answers-q .label:hover{
+.answers-q label:hover{
   box-shadow: 1px 1px 3px #8400008b;
 }
 
-.answers-q .label:active{
+.answers-q label:active{
   box-shadow: 1px 1px 3px #8400008b;
   box-shadow: none;
   outline: none;

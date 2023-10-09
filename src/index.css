@@ -2,7 +2,8 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  min-width: 350px;
+  width: 100%;
   color-scheme: light dark;
   color: var(--tg-theme-text-color);
   background-color: var(--tg-theme-bg-color);
@@ -110,8 +111,6 @@ button:focus-visible {
     opacity: 0;
   }
 }
-
-
 .question-data{
   min-width: 350px;
   height: 400px;
@@ -121,8 +120,4 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.answers-q label{
-  text-align: left;
 }
