@@ -11,12 +11,15 @@ function renderOptions(options, selectedColor) {
     ))
 }
 
-export default function InlinePicker({selectionsValue, selectedValue, question}) {
+export default function InlinePicker({selectionsValue, selectedValue, question, pickersNext}) {
     const [pickerValue, setPickerValue] = useState({title: selectionsValue[0]});
+
+    const [showBtn, setShowBtn] = useState(false)
 
     const handleChange = (newValue) => {
         setPickerValue(newValue);
         selectedValue(newValue.title);
+        setShowBtn(true)
     }
 
     useEffect(() => {
@@ -40,5 +43,8 @@ export default function InlinePicker({selectionsValue, selectedValue, question})
                 {renderOptions(selectionsValue, 'text-red-600')}
             </Picker.Column>
         </Picker>
+        {showBtn ? <div>
+        <button className='btn-m' onClick={pickersNext}>Next</button>
+        </div> : <></>}
     </>
 }

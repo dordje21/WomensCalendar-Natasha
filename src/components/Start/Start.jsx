@@ -149,9 +149,10 @@ function Start({handleShowStart}) {
             {showPickers ? currentDataPickers && (
                     <div className="question">
                         <InlinePicker selectionsValue={currentDataPickers.days} question={currentDataPickers.question} 
-                        selectedValue={(e) => selectedValuePicker(e, `${currentDataPickers.question}`)}
+                        selectedValue={(e) => selectedValuePicker(e, `${currentDataPickers.question}`)} 
+                        pickersNext={pickersNext}
                         />
-                        <button className='btn-m' onClick={pickersNext}>Next</button>
+                        {/* <button className='btn-m' onClick={pickersNext}>Next</button> */}
                     </div>
             ) : <></>}
 

@@ -182,7 +182,7 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   border-radius: 4px;
   width: 100%;
   display: block;
-  padding: 5px 25px;
+  padding: 15px;
   color: var(--tg-theme-button-text-color);
   border: none;
   outline: none;
