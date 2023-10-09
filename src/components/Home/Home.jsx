@@ -237,7 +237,7 @@ function Home({user, handleReset}) {
                 </p>
             </> : <>
                 <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
-                <button onClick={handleCalendar} className='btn-m'>Back</button>
+                <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
             </>}
             {/* <p>{user?.id}</p>
             <p>{user?.first_name}</p>
