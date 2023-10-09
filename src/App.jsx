@@ -43,14 +43,14 @@ function App() {
 
 	const customRouts = () => {
 		return (
-			showStart ? <Start user={user} handleShowStart={handleShowStart} /> : <Home user={user}/> 
+			showStart ? <Start user={user} handleShowStart={handleShowStart} /> : <Home user={user} handleReset={handleReset}/> 
 		)
 	}
 
   return (
 		<>
-		 <Home user={user} handleReset={handleReset}/>
-		{/* { loading ? <Preloader/> : customRouts() } */}
+		 {/* <Home user={user} handleReset={handleReset}/> */}
+		{ loading ? <Preloader/> : customRouts() }
 		</>
 	);
 }
