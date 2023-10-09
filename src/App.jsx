@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Home from '../src/components/Home/Home'
 import Preloader from '../src/components/Preloader'
 import Start from '../src/components/Start/Start'
+import asyncStorageGetItem from '../src/hooks/asyncStorageGetItem'
 
 // WebApp.CloudStorage.setItem("Test", "2");
 // WebApp.CloudStorage.setItem("Test", "221");
