@@ -38,7 +38,9 @@ function App() {
 				} catch (error) {
 						console.error('Error while retrieving/parsing data:', error);
 				} finally {
-					setLoading(false)
+						setTimeout(() => {
+							setLoading(false)
+						}, 2000)
 				}
 		};
 		setUser(WebApp.initDataUnsafe.user)
