@@ -10,7 +10,7 @@ function Home({user, handleReset}) {
     const [periodLength, setPeriodLength] = useState(5)
     const [cycleLength, setCycleLength] = useState(30)
 
-    const [bgPeriod, setBgPeriod] = useState()
+    const [bgPeriod, setBgPeriod] = useState('simple-cycle')
 
     const [menstruationDates, setMenstruationDates] = useState([]);
     const [ovulationDates, setOvulationDates] = useState([]);
@@ -160,7 +160,7 @@ function Home({user, handleReset}) {
         });
       
         // Update the state after mapping
-        setBgPeriod(todayBg);
+        // setBgPeriod(todayBg);
         return htmlDates;
       };
       
