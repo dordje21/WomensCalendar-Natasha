@@ -18,13 +18,31 @@ function App() {
 
 	const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+  // useEffect(() => {
+    // setUser(WebApp.initDataUnsafe.user)
+		// setTimeout(() => {
+		// 	setLoading(false)
+		// }, 2000000)
+  // }, [])
 
-    setUser(WebApp.initDataUnsafe.user)
-		setTimeout(() => {
-			setLoading(false)
-		}, 2000000)
-  }, [])
+	useEffect(() => {
+		const fetchData = async () => {
+				try {
+						const data = await asyncStorageGetItem("UserDataAnswers");
+						if (data) {
+							handleShowStart()
+						} else {
+								console.log("No data available");
+						}
+				} catch (error) {
+						console.error('Error while retrieving/parsing data:', error);
+				} finally {
+					setLoading(false)
+				}
+		};
+		setUser(WebApp.initDataUnsafe.user)
+		fetchData();
+}, []);
 	
 	if(!WebApp.isExpanded){
 		WebApp.expand();
