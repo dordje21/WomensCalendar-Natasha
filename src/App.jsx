@@ -23,7 +23,7 @@ function App() {
     setUser(WebApp.initDataUnsafe.user)
 		setTimeout(() => {
 			setLoading(false)
-		}, 1000)
+		}, 2000)
   }, [])
 	
 	if(!WebApp.isExpanded){
