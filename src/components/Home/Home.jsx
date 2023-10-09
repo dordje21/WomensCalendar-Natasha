@@ -134,33 +134,36 @@ function Home({user, handleReset}) {
 
 
     const showTopDates = (menstruationDates, ovulationDates) => {
-        let todayBg = 'simple-cycle'
+        let todayBg = 'simple-cycle';
         const htmlDates = daysDates.map((date, index) => {
-            let classDay = 'simple';
-
-            if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
-                classDay = 'menstruationDay';
-            }
-
-            if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
-                classDay = 'ovulationDay';
-            }
-            // simple-cycle , menstruationDay-cycle , ovulationDay-cycle
-            if(date.toDateString() === todayDate.toDateString()){
-                todayBg = `${classDay}-cycle`
-            }
-            return (
-                <div key={index} className='box-date'>
-                    <div
-                        className='day'>{date.toDateString() === todayDate.toDateString() ? 'Today' : getDaysFirstLetter(date)}</div>
-                    <div className={`${classDay} date-day`}>{date.getDate()}</div>
-                </div>
-            );
+          let classDay = 'simple';
+      
+          if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
+            classDay = 'menstruationDay';
+          }
+      
+          if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
+            classDay = 'ovulationDay';
+          }
+      
+          // Set todayBg only if it's the current date
+          if (date.toDateString() === todayDate.toDateString()) {
+            todayBg = `${classDay}-cycle`;
+          }
+      
+          return (
+            <div key={index} className='box-date'>
+              <div className='day'>{date.toDateString() === todayDate.toDateString() ? 'Today' : getDaysFirstLetter(date)}</div>
+              <div className={`${classDay} date-day`}>{date.getDate()}</div>
+            </div>
+          );
         });
-
-        setBgPeriod(todayBg)
+      
+        // Update the state after mapping
+        setBgPeriod(todayBg);
         return htmlDates;
-    }
+      };
+      
 
     const findClosestBiggerDate = (dateArray, currentDate) => {
         const futureDates = dateArray.filter((date) => date > currentDate);
