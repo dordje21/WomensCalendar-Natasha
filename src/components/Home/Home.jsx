@@ -10,6 +10,8 @@ function Home({user, handleReset}) {
     const [periodLength, setPeriodLength] = useState(5)
     const [cycleLength, setCycleLength] = useState(30)
 
+    const [bgPeriod, setBgPeriod] = useState()
+
     const [menstruationDates, setMenstruationDates] = useState([]);
     const [ovulationDates, setOvulationDates] = useState([]);
 
@@ -142,6 +144,8 @@ function Home({user, handleReset}) {
             if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
                 classDay = 'ovulationDay';
             }
+            // simple-cycle , menstruationDay-cycle , ovulationDay-cycle
+            setBgPeriod(`${classDay}-cycle`)
 
             return (
                 <div key={index} className='box-date'>
@@ -212,9 +216,9 @@ function Home({user, handleReset}) {
                     {showTopDates(menstruationDates, ovulationDates)}
                 </div>
                 <div className="dateinfo-round-wrap">
-                    <div className="dateinfo-round pulsating-circle">
+                    <div className={`dateinfo-round pulsating-circle ${bgPeriod}`}>
                         {dataInfo(todayDate, menstruationDates, ovulationDates)}
-                        <button className='btn-m-cal' onClick={handleCalendar}>Open Calendar</button>
+                        <button className='btn-m-cal' onClick={handleCalendar}>Calendar</button> 
                     </div>
                 </div>
                 <p>

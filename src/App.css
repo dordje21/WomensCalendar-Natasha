@@ -107,16 +107,9 @@ abbr[title] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background: rgb(61,255,240);
-  background: radial-gradient(circle, rgba(61,255,240,1) 
-  0%, rgba(27,190,177,1) 100%); */
 
-  /* background: rgb(196,47,171);
-background: radial-gradient(circle, rgba(196,47,171,1) 0%, rgba(153,44,135,1) 100%); */
-
-
-background: rgb(12,105,187);
-background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 100%);
+  background: rgb(12,105,187);
+  background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 100%);
 
   border-radius: 50%; /* Makes it a circle */
   padding: 20px; /* Adjust padding as needed */
@@ -540,6 +533,9 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   }
 }
 
+
+
+
 /* circle animation */
 .pulsating-circle{
   position: relative;
@@ -581,6 +577,51 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
           background: rgb(12,105,187);
           background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 100%);
 }
+
+.dateinfo-round-wrap .dateinfo-round.simple-cycle{
+  background: rgb(38,214,134);
+  background: radial-gradient(circle, rgba(38,214,134,1) 0%, rgba(0,150,180,1) 100%);
+} 
+.dateinfo-round-wrap .dateinfo-round.menstruationDay-cycle{
+  background: rgb(142,71,107);
+  background: radial-gradient(circle, rgba(142,71,107,1) 0%, rgba(255,116,186,1) 100%);
+}
+.dateinfo-round-wrap .dateinfo-round.ovulationDay-cycle{
+  background: rgb(37,112,210);
+  background: radial-gradient(circle, rgba(37,112,210,1) 0%, rgba(21,199,250,1) 100%);
+}
+
+
+.dateinfo-round-wrap .dateinfo-round.simple-cycle.pulsating-circle:before{
+  background: rgb(38,214,134);
+  background: radial-gradient(circle, rgba(38,214,134,1) 0%, rgba(0,150,180,1) 100%);
+}
+
+.dateinfo-round-wrap .dateinfo-round.menstruationDay-cycle.pulsating-circle:before{
+  background: rgb(142,71,107);
+  background: radial-gradient(circle, rgba(142,71,107,1) 0%, rgba(255,116,186,1) 100%);
+}
+
+.dateinfo-round-wrap .dateinfo-round.ovulationDay-cycle.pulsating-circle:before{
+  background: rgb(37,112,210);
+  background: radial-gradient(circle, rgba(37,112,210,1) 0%, rgba(21,199,250,1) 100%);
+}
+
+.dateinfo-round-wrap .dateinfo-round.simple-cycle.pulsating-circle:after {
+  background: rgb(38,214,134);
+  background: radial-gradient(circle, rgba(38,214,134,1) 0%, rgba(0,150,180,1) 100%);
+}
+
+.dateinfo-round-wrap .dateinfo-round.menstruationDay-cycle.pulsating-circle:after {
+  background: rgb(142,71,107);
+  background: radial-gradient(circle, rgba(142,71,107,1) 0%, rgba(255,116,186,1) 100%);
+}
+
+.dateinfo-round-wrap .dateinfo-round.ovulationDay-cycle.pulsating-circle:after {
+  background: rgb(37,112,210);
+  background: radial-gradient(circle, rgba(37,112,210,1) 0%, rgba(21,199,250,1) 100%);
+}
+
 
 @-webkit-keyframes pulse-ring {
   0% {
@@ -624,5 +665,11 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 
 .currentResult p{
   padding-top: 0!important;
+  margin-top: 0!important;
   font-size: 12px;
+}
+
+.currentResult h2{
+  margin-bottom: 5px!important;
+  padding-bottom: 0!important;
 }
