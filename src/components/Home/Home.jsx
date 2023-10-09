@@ -226,7 +226,7 @@ function Home({user, handleReset}) {
                     {showTopDates(menstruationDates, ovulationDates)}
                 </div>
                 {/* {showJson()} */}
-                <div className="dateinfo-round-wrap">
+                <div className="dateinfo-round-wrap pulsating-circle">
                     <div className="dateinfo-round">
                         {dataInfo(todayDate, menstruationDates, ovulationDates)}
                         <button className='btn-m-cal' onClick={handleCalendar}>Open Calendar</button>

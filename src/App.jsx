@@ -5,26 +5,11 @@ import Preloader from '../src/components/Preloader'
 import Start from '../src/components/Start/Start'
 import asyncStorageGetItem from '../src/hooks/asyncStorageGetItem'
 
-// WebApp.CloudStorage.setItem("Test", "2");
-// WebApp.CloudStorage.setItem("Test", "221");
-// WebApp.CloudStorage.setItem("Testas", "1");
-
-// WebApp.CloudStorage.getKeys();
-// WebApp.CloudStorage.getItems("Test");
-// WebApp.CloudStorage.getItem("Test");
-
 function App() {
 	const [user, setUser] = useState('')
 	const [showStart, setShowStart] = useState(true)
 
 	const [loading, setLoading] = useState(true)
-
-  // useEffect(() => {
-    // setUser(WebApp.initDataUnsafe.user)
-		// setTimeout(() => {
-		// 	setLoading(false)
-		// }, 2000000)
-  // }, [])
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -57,7 +42,6 @@ function App() {
 		setShowStart(true)
 	}
 
-
 	const handleShowStart = () => {
 		setShowStart(false)
 	}
@@ -70,7 +54,6 @@ function App() {
 
   return (
 		<>
-		 {/* <Home user={user} handleReset={handleReset}/> */}
 		{ loading ? <Preloader/> : customRouts() }
 		</>
 	);
