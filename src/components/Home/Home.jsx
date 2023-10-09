@@ -160,7 +160,7 @@ function Home({user, handleReset}) {
         });
       
         // Update the state after mapping
-        // setBgPeriod(todayBg);
+        setBgPeriod(todayBg);
         return htmlDates;
       };
       
