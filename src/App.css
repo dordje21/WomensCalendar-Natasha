@@ -157,10 +157,10 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 }
 
 .btn-m-cal{
-  background-color: aliceblue;
+  background-color: #fff;
   border-radius: 14px;
-  padding: 5px 25px;
-  color: #FF69B4;
+  padding: 8px 15px;
+  color: #232323;
   border: none;
   outline: none;
   box-shadow: 1px 1px 3px #2323238b;
@@ -168,10 +168,12 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   transition: .3s all;
   font-size: 16px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .btn-m-cal:hover{
   box-shadow: 1px 1px 3px #8400008b;
+  outline: none;
 }
 
 .btn-m-cal:active{
@@ -545,6 +547,7 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 }
 .pulsating-circle:before {
   content: "";
+  pointer-events: none;
   position: absolute;
   display: block;
   width: 300%;
@@ -562,6 +565,7 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
 }
 .pulsating-circle:after {
   content: "";
+  pointer-events: none;
   position: absolute;
   left: 0;
   top: 0;
@@ -571,8 +575,8 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   height: 100%;
   border-radius: 100%;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  -webkit-animation: pulse-dot 3.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
-          animation: pulse-dot 3.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  -webkit-animation: pulse-dot 3.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+          animation: pulse-dot 3.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
 
           background: rgb(12,105,187);
           background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 100%);
@@ -616,4 +620,9 @@ background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 10
   100% {
     transform: scale(0.8);
   }
+}
+
+.currentResult p{
+  padding-top: 0!important;
+  font-size: 12px;
 }

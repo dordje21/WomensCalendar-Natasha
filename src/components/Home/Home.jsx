@@ -199,24 +199,10 @@ function Home({user, handleReset}) {
         }
 
         return (
-            <div>
+            <div className='currentResult'>
                 <div dangerouslySetInnerHTML={{__html: currentResult}}/>
             </div>
         )
-    }
-
-    const showJson = () => {
-        if (userDataAnswers) {
-            return Object.values(userDataAnswers).map((item, index) => {
-                return (
-                    <li key={index}>
-                        <p>{item.question}</p>
-                        <p>{item.answer}</p>
-                    </li>
-                )
-            })
-        }
-        return null;
     }
 
     return (
@@ -225,7 +211,6 @@ function Home({user, handleReset}) {
                 <div className='box-dates'>
                     {showTopDates(menstruationDates, ovulationDates)}
                 </div>
-                {/* {showJson()} */}
                 <div className="dateinfo-round-wrap">
                     <div className="dateinfo-round pulsating-circle">
                         {dataInfo(todayDate, menstruationDates, ovulationDates)}
@@ -239,11 +224,6 @@ function Home({user, handleReset}) {
                 <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
                 <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
             </>}
-            {/* <p>{user?.id}</p>
-            <p>{user?.first_name}</p>
-            <p>{user?.last_name}</p>
-            <p>{user?.username}</p>
-            <p>{user?.is_premium}</p> */}
         </div>
     );
 }
