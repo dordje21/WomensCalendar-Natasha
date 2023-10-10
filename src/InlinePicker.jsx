@@ -1,4 +1,5 @@
-﻿import { useEffect, useState } from 'react'
+﻿import { motion } from "framer-motion"
+import { useEffect, useState } from 'react'
 import Picker from 'react-mobile-picker'
 
 function renderOptions(options, selectedColor) {
@@ -31,13 +32,12 @@ export default function InlinePicker({selectionsValue, selectedValue, question, 
         setShowBtn(false)
     }
 
-    return <>
-        <div
-            className="
-        mb-2 px-4 h-12 flex items-center bg-white
-        border-t border-b border-gray-200 border-solid
-      "
-        >{question}</div>
+    return <motion.div 
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            >
+        <div className="mb-2 px-4 h-12 flex items-center bg-white border-t border-b border-gray-200 border-solid" >{question}</div>
         <Picker
             className="px-4"
             value={pickerValue}
@@ -49,7 +49,13 @@ export default function InlinePicker({selectionsValue, selectedValue, question, 
             </Picker.Column>
         </Picker>
         {showBtn ? <div>
-        <button className='btn-m' onClick={btnActions}>Next</button>
+        <motion.button 
+            className='btn-m' 
+            onClick={btnActions}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            >Next</motion.button>
         </div> : <></>}
-    </>
+    </motion.div>
 }

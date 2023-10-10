@@ -96,7 +96,7 @@ abbr[title] {
     align-items: center;
     justify-content: center;
     overflow: visible;
-    padding: 50px 0;
+    padding: 50px 0 20px;
 }
 
 .dateinfo-round-wrap .dateinfo-round {

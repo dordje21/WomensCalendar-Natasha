@@ -1,6 +1,12 @@
+import { motion } from "framer-motion"
+
 function RadioButton({ question, options, selectedValue, onChangeValue }) {
   return (
-    <div>
+    <motion.div 
+    initial={{ opacity: 0, scale: 0.5 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}
+    >
       <p>{question}</p>
       <div className='answers-q'>
       {Object.keys(options).map((option, index) => (
@@ -14,7 +20,7 @@ function RadioButton({ question, options, selectedValue, onChangeValue }) {
         </label>
       ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
