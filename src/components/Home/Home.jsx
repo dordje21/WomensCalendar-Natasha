@@ -73,10 +73,6 @@ function Home({handleReset, advice}) {
         isInitialRender.current = false;
     }, []);
 
-    // const getDaysFirstLetter = (date, daysFirstLetter) => {
-    //     return daysFirstLetter[date.getDay()];
-    // };
-
     useEffect(() => {
         if (!isInitialRender.current) {
             const countMenstDates = async (nextDate) => {
@@ -141,7 +137,6 @@ function Home({handleReset, advice}) {
         });
     };
 
-
     useEffect(() => {
         const findBgCycle = (menstruationDates, ovulationDates) => {
             let todayBg = 'simple-cycle';
@@ -162,43 +157,17 @@ function Home({handleReset, advice}) {
             });
             setBgPeriod(todayBg);
         };
-
         findBgCycle(menstruationDates, ovulationDates)
-
     }, [menstruationDates, ovulationDates])
-
-
-    // const findClosestBiggerDate = (dateArray, currentDate) => {
-    //     const futureDates = dateArray.filter((date) => date > currentDate);
-    //     futureDates.sort((a, b) => a - b);
-    //     return futureDates[0];
-    // }
-
-    // const resetTime = date => {
-    //     if (!date) return null;
-    //     const copy = new Date(date.getTime());
-    //     copy.setHours(0, 0, 0, 0);
-    //     return copy;
-    // };
-
-    // const getDaysDiff = (todayDate, nextDate) => {
-    //     const [todayWithoutTime, nextWithoutTime] = [todayDate, nextDate].map(resetTime);
-    //     const timeDifference = nextWithoutTime - todayWithoutTime
-    //     const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) - 1;
-    //     return daysDifference
-    // }
 
     const dataInfo = (todayDate, menstruationDates, ovulationDates) => {
         let currentResult = 'Hello!'
-
         if (menstruationDates && arrayContainsDate(menstruationDates, todayDate)) {
             currentResult = 'menstruationDay';
         }
-
         if (ovulationDates && arrayContainsDate(ovulationDates, todayDate)) {
             currentResult = 'ovulationDay';
         }
-       
         if (arrayContainsDate(menstruationDates, todayDate)) {
             currentResult = `<h2>Period!</h2> <p>Low chance of getting pregnant</p>`;
         } else if (arrayContainsDate(ovulationDates, todayDate)) {
@@ -220,18 +189,6 @@ function Home({handleReset, advice}) {
             <div dangerouslySetInnerHTML={{__html: currentResult}}/>
         </div>)
     }
-
-    const CalendarComponent = props => {
-        const handleScroll = (event) => {
-            event.stopPropagation();
-        };
-
-        return (
-            <div onWheel={handleScroll}>
-                <CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
-            </div>
-        );
-    };
     
     return (
     <motion.div className="app-wrapper" 
@@ -262,7 +219,7 @@ function Home({handleReset, advice}) {
                 transition={{ duration: 0.5 }}>RESET</button>
             </p>
         </> : <>
-            {CalendarComponent()}
+        <CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
             <motion.button 
                 onClick={handleCalendar} 
                 className='btn-m btn-m-back'

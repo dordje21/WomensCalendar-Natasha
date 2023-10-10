@@ -27,7 +27,12 @@ export default function CalendarMi({nextDate, menstruationDates, ovulationDates}
 		ovulations: '-ovulations'
 	}
 	
+	const handleScroll = (event) => {
+		event.stopPropagation();
+	};
+
   return (
+		<div onWheel={handleScroll}>
 		<motion.div className='calendar-wrapper DatePickerCal-box'
 		initial={{ opacity: 0, scale: 0.5 }}
 		animate={{ opacity: 1, scale: 1 }}
@@ -53,5 +58,6 @@ export default function CalendarMi({nextDate, menstruationDates, ovulationDates}
 		locale={enGB} 
 		/>
 		</motion.div>
+		</div>
   )
 }
