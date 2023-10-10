@@ -198,7 +198,7 @@ function Home({user, handleReset}) {
         const [todayWithoutTime, nextWithoutTime] = [todayDate, nextDate].map(resetTime);
 
         const timeDifference = todayWithoutTime - nextWithoutTime;
-        const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24)) -1;
+        const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24)) ;
         console.log("TodayDate :"+ todayDate+" NextDate :"+ nextDate+" DaysDifference: "+daysDifference)
         return daysDifference
     }
