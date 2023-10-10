@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import React, { useEffect, useRef, useState } from 'react'
 import '../../App.css'
+import { findClosestBiggerDate, getDaysDiff, getDaysFirstLetter, resetTime } from '../../actions/Time.js'
 import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
 
@@ -72,9 +73,9 @@ function Home({handleReset, advice}) {
         isInitialRender.current = false;
     }, []);
 
-    const getDaysFirstLetter = (date) => {
-        return daysFirstLetter[date.getDay()];
-    };
+    // const getDaysFirstLetter = (date) => {
+    //     return daysFirstLetter[date.getDay()];
+    // };
 
     useEffect(() => {
         if (!isInitialRender.current) {
@@ -167,25 +168,25 @@ function Home({handleReset, advice}) {
     }, [menstruationDates, ovulationDates])
 
 
-    const findClosestBiggerDate = (dateArray, currentDate) => {
-        const futureDates = dateArray.filter((date) => date > currentDate);
-        futureDates.sort((a, b) => a - b);
-        return futureDates[0];
-    }
+    // const findClosestBiggerDate = (dateArray, currentDate) => {
+    //     const futureDates = dateArray.filter((date) => date > currentDate);
+    //     futureDates.sort((a, b) => a - b);
+    //     return futureDates[0];
+    // }
 
-    const resetTime = date => {
-        if (!date) return null;
-        const copy = new Date(date.getTime());
-        copy.setHours(0, 0, 0, 0);
-        return copy;
-    };
+    // const resetTime = date => {
+    //     if (!date) return null;
+    //     const copy = new Date(date.getTime());
+    //     copy.setHours(0, 0, 0, 0);
+    //     return copy;
+    // };
 
-    const getDaysDiff = (todayDate, nextDate) => {
-        const [todayWithoutTime, nextWithoutTime] = [todayDate, nextDate].map(resetTime);
-        const timeDifference = nextWithoutTime - todayWithoutTime
-        const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) - 1;
-        return daysDifference
-    }
+    // const getDaysDiff = (todayDate, nextDate) => {
+    //     const [todayWithoutTime, nextWithoutTime] = [todayDate, nextDate].map(resetTime);
+    //     const timeDifference = nextWithoutTime - todayWithoutTime
+    //     const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) - 1;
+    //     return daysDifference
+    // }
 
     const dataInfo = (todayDate, menstruationDates, ovulationDates) => {
         let currentResult = 'Hello!'
