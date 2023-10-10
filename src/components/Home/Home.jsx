@@ -245,9 +245,15 @@ function Home({user, handleReset}) {
             const closestBiggerDateOvulation = findClosestBiggerDate(ovulationDates, todayDate);
 
             if (closestBiggerDateMenstruation > closestBiggerDateOvulation) {
-                currentResult = `<h2>Ovulation</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateOvulation)} days!</p>`;
+                const daysDiff = getDaysDiff(todayDate, closestBiggerDateOvulation);
+                currentResult = daysDiff === 0
+                    ? `<h2>Ovulation</h2> <p>Tomorrow!</p>`
+                    : `<h2>Ovulation</h2> <p>in ${daysDiff} days!</p>`;
             } else {
-                currentResult = `<h2>Period</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateMenstruation)} days!</p>`;
+                const daysDiff = getDaysDiff(todayDate, closestBiggerDateMenstruation);
+                currentResult = daysDiff === 0
+                    ? `<h2>Period</h2> <p>Tomorrow!</p>`
+                    : `<h2>Period</h2> <p>in ${daysDiff} days!</p>`;
             }
         }
 
