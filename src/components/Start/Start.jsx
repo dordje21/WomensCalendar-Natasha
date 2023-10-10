@@ -9,16 +9,12 @@ import RadioButton from '../RadioButton'
 function Start({handleShowStart}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
-
     const [dataPickersIndex, setDataPickersIndex] = useState(0);
-
     const [showPickers, setShowPickers] = useState(false);
     const [showCal, setShowCal] = useState(false);
     const [dataPickerVal, setDataPickerVal] = useState({});
     const [readyToSave, setReadyToSave] = useState(false);
-
-
-     const isInitialRender = useRef(true);
+    const isInitialRender = useRef(true);
 
      useEffect(() => {
        if (!isInitialRender.current) {
@@ -108,14 +104,11 @@ function Start({handleShowStart}) {
 
 
     const handleRadioChange = (value, question) => {
-        // console.log(questionsData[currentQuestionIndex].options[value], question)
-
         setSelectedValues({...selectedValues, [currentQuestionIndex]: {
             question: question,
             answer: questionsData[currentQuestionIndex].options[value]
             }
         });
-
         setCurrentQuestionIndex(currentQuestionIndex + 1);
        
         if (questionsData.length <= currentQuestionIndex + 1) {
@@ -152,7 +145,6 @@ function Start({handleShowStart}) {
                         selectedValue={(e) => selectedValuePicker(e, `${currentDataPickers.question}`)} 
                         pickersNext={pickersNext}
                         />
-                        {/* <button className='btn-m' onClick={pickersNext}>Next</button> */}
                     </div>
             ) : <></>}
 

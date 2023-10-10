@@ -34,9 +34,18 @@ export default function CalendarMi({nextDate, menstruationDates, ovulationDates}
 		transition={{ duration: 0.5 }}
 		>
 			<div className='instruct-cycle'>
-				<div className='cycle'><div className='t-cycle'></div> Today </div>
-				<div className='cycle'><div className='m-cycle'></div> Menstruation</div>
-				<div className='cycle'><div className='ov-cycle'></div> Ovulation</div>
+				<div className='cycle'>
+					<div className='t-cycle'></div>
+					<div>Today</div>
+				</div>
+				<div className='cycle'>
+					<div className='m-cycle'></div>
+					<div>Menstruation</div>
+				</div>
+				<div className='cycle'>
+					<div className='ov-cycle'></div>
+					<div>Ovulation</div>
+				</div>
 			</div>
     <Calendar 
 		modifiers={modifiers} 

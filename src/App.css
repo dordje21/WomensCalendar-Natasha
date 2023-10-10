@@ -723,7 +723,7 @@ abbr[title] {
     height: 15px;
     border-radius: 100%;
     overflow: hidden;
-    background-color: #fff;
+    background-color: #e9fff1;
     box-shadow: 1px 1px 3px #8400008b;
 }
 .instruct-cycle .m-cycle{
@@ -744,10 +744,10 @@ abbr[title] {
     margin: 4px 0;
 }
 
-.instruct-cycle  .cycle{
+.instruct-cycle .cycle{
     text-align: center;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
