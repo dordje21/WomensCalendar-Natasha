@@ -1,4 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react'
+import { motion } from "framer-motion"
+import React, { useEffect, useRef, useState } from 'react'
 import '../../App.css'
 import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
@@ -275,7 +276,15 @@ function Home({user, handleReset}) {
         );
     };
     
-    return (<div className="app-wrapper">
+    return (
+    <motion.div className="app-wrapper" 
+    initial={{ scale: 0 }}
+    animate={{ scale: 1 }}
+    transition={{
+    type: "spring",
+    stiffness: 260,
+    damping: 20 }}
+    >
         {!openCalendar ? <>
             <div className='box-dates'>
                 {showTopDates(menstruationDates, ovulationDates)}
@@ -296,7 +305,8 @@ function Home({user, handleReset}) {
             {/*<CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>*/}
             <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
         </>}
-    </div>);
+    </motion.div>
+    );
 }
 
 export default Home;

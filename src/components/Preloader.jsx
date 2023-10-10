@@ -20,8 +20,8 @@ export default function Preloader(){
   <div className="text text-e">a</div>
  <div className="text text-u">s</div> 
  <div className="text text-love">h</div> 
- <div class="text text-j">a</div> 
- <div class="text text-ja"><img src={img} width="100rem"/></div> 
+ <div className="text text-j">a</div> 
+ <div className="text text-ja"><img src={img} width="100rem"/></div> 
 </div>
 	)
 }

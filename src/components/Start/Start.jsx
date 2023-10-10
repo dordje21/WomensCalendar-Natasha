@@ -1,4 +1,6 @@
 import { default as WebApp } from '@twa-dev/sdk'
+// import { AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import React, { useEffect, useRef, useState } from 'react'
 import InlinePicker from "../../InlinePicker.jsx"
 import DatePickerCal from '../DatePickerCal.jsx'
@@ -127,7 +129,15 @@ function Start({handleShowStart}) {
     const currentQuestion = questionsData[currentQuestionIndex];
 
     return (
-        <>
+        // <AnimatePresence initial={false} mode={'wait'}>
+        <motion.div className='question-wrapper'
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20
+        }}>
             {/* {Object.values(selectedValues).map((el, index) => {
                 return <div key={index}>{el.question}{el.answer}</div>
             })} */}
@@ -160,7 +170,8 @@ function Start({handleShowStart}) {
             }} question='Select the start date of your last period?' saveData={saveData}/> 
             {/* <button className='btn-m' onClick={saveData}>Save</button> */}
             </div> : <></>}            
-        </>
+        </motion.div>
+        // </AnimatePresence>
     );
 }
 

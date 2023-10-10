@@ -15,10 +15,12 @@
     "@twa-dev/sdk": "^6.9.0",
     "@vitejs/plugin-basic-ssl": "^1.0.1",
     "date-fns": "^2.30.0",
+    "framer-motion": "^10.16.4",
     "react": "^18.2.0",
     "react-calendar": "^4.6.0",
     "react-dom": "^18.2.0",
-    "react-mobile-picker": "^1.0.0"
+    "react-mobile-picker": "^1.0.0",
+    "react-spring": "^9.7.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
