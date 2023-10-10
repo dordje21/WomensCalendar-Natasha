@@ -702,18 +702,3 @@ abbr[title] {
     margin-bottom: 5px !important;
     padding-bottom: 0 !important;
 }
-
-
-/* .question-wrapper{
-    animation: appear-block 2s;
-}
-
-
-@-webkit-keyframes appear-block {
-    0% {
-        opacity: 0;
-    }
-    80%, 100% {
-        opacity: 1;
-    }
-} */
