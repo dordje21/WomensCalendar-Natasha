@@ -711,3 +711,34 @@ abbr[title] {
     width: 100%;
     display: block;
 }
+
+.instruct-cycle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.instruct-cycle .t-cycle{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px #8400008b;
+}
+.instruct-cycle .m-cycle{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: #FF69B4;
+    box-shadow: 1px 1px 3px #8400008b;
+}
+.instruct-cycle .ov-cycle{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: #15c7fa;
+    box-shadow: 1px 1px 3px #8400008b;
+}

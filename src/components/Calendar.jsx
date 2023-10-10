@@ -41,6 +41,11 @@ export default function CalendarMi({nextDate, menstruationDates, ovulationDates}
 		animate={{ opacity: 1, scale: 1 }}
 		transition={{ duration: 0.5 }}
 		>
+			<div className='instruct-cycle'>
+				<div><div className='t-cycle'></div> Today </div>
+				<div><div className='m-cycle'></div> Menstruation</div>
+				<div><div className='ov-cycle'></div> Ovulation</div>
+			</div>
     <Calendar 
 		// onDayClick={handleDayClick} 
 		modifiers={modifiers} 
