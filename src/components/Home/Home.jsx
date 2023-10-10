@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import '../../App.css'
 import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
@@ -134,52 +134,51 @@ function Home({user, handleReset}) {
 
     const showTopDates = (menstruationDates, ovulationDates) => {
         return daysDates.map((date, index) => {
-          let classDay = 'simple';
-      
-          if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
-            classDay = 'menstruationDay';
-          }
-      
-          if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
-            classDay = 'ovulationDay';
-          }
-      
-          return (
-            <div key={index} className='box-date'>
-              <div className='day'>{date.toDateString() === todayDate.toDateString() ? 'Today' : getDaysFirstLetter(date)}</div>
-              <div className={`${classDay} date-day`}>{date.getDate()}</div>
-            </div>
-          );
+            let classDay = 'simple';
+
+            if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
+                classDay = 'menstruationDay';
+            }
+
+            if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
+                classDay = 'ovulationDay';
+            }
+
+            return (<div key={index} className='box-date'>
+                <div
+                    className='day'>{date.toDateString() === todayDate.toDateString() ? 'Today' : getDaysFirstLetter(date)}</div>
+                <div className={`${classDay} date-day`}>{date.getDate()}</div>
+            </div>);
         });
-      };
+    };
 
 
-      useEffect(()=>{
+    useEffect(() => {
 
         const findBgCycle = (menstruationDates, ovulationDates) => {
             let todayBg = 'simple-cycle';
             daysDates.map((date, index) => {
-              let classDay = 'simple';
-          
-              if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
-                classDay = 'menstruationDay';
-              }
-          
-              if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
-                classDay = 'ovulationDay';
-              }
+                let classDay = 'simple';
 
-              if (date.toDateString() === todayDate.toDateString()) {
-                todayBg = `${classDay}-cycle`;
-              }
+                if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
+                    classDay = 'menstruationDay';
+                }
+
+                if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
+                    classDay = 'ovulationDay';
+                }
+
+                if (date.toDateString() === todayDate.toDateString()) {
+                    todayBg = `${classDay}-cycle`;
+                }
             });
             setBgPeriod(todayBg);
-          };
+        };
 
-          findBgCycle(menstruationDates, ovulationDates)
+        findBgCycle(menstruationDates, ovulationDates)
 
-      },[menstruationDates, ovulationDates])
-      
+    }, [menstruationDates, ovulationDates])
+
 
     const findClosestBiggerDate = (dateArray, currentDate) => {
         const futureDates = dateArray.filter((date) => date > currentDate);
@@ -195,12 +194,12 @@ function Home({user, handleReset}) {
     };
 
     const getDaysDiff = (todayDate, nextDate) => {
-        
+
         const [todayWithoutTime, nextWithoutTime] = [todayDate, nextDate].map(resetTime);
 
-        const timeDifference = nextWithoutTime - todayWithoutTime 
-        const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) - 1 ;
-        console.log("TodayDate :"+ todayDate+" NextDate :"+ nextDate+" DaysDifference: "+daysDifference)
+        const timeDifference = nextWithoutTime - todayWithoutTime
+        const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) - 1;
+        console.log("TodayDate :" + todayDate + " NextDate :" + nextDate + " DaysDifference: " + daysDifference)
         return daysDifference
     }
 
@@ -246,22 +245,16 @@ function Home({user, handleReset}) {
 
             if (closestBiggerDateMenstruation > closestBiggerDateOvulation) {
                 const daysDiff = getDaysDiff(todayDate, closestBiggerDateOvulation);
-                currentResult = daysDiff === 0
-                    ? `<h2>Ovulation</h2> <p>Tomorrow!</p>`
-                    : `<h2>Ovulation</h2> <p>in ${daysDiff} days!</p>`;
+                currentResult = daysDiff === 0 ? `<h2>Ovulation</h2> <p>Tomorrow!</p>` : `<h2>Ovulation</h2> <p>in ${daysDiff} days!</p>`;
             } else {
                 const daysDiff = getDaysDiff(todayDate, closestBiggerDateMenstruation);
-                currentResult = daysDiff === 0
-                    ? `<h2>Period</h2> <p>Tomorrow!</p>`
-                    : `<h2>Period</h2> <p>in ${daysDiff} days!</p>`;
+                currentResult = daysDiff === 0 ? `<h2>Period</h2> <p>Tomorrow!</p>` : `<h2>Period</h2> <p>in ${daysDiff} days!</p>`;
             }
         }
 
-        return (
-            <div className='currentResult'>
-                <div dangerouslySetInnerHTML={{__html: currentResult}}/>
-            </div>
-        )
+        return (<div className='currentResult'>
+            <div dangerouslySetInnerHTML={{__html: currentResult}}/>
+        </div>)
     }
     const [advice, setAdvice] = useState('');
     useEffect(() => {
@@ -271,29 +264,27 @@ function Home({user, handleReset}) {
             .catch(err => console.error(err));
     }, []);
 
-    return (
-        <div className="app-wrapper">
-            {!openCalendar ? <>
-                <div className='box-dates'>
-                    {showTopDates(menstruationDates, ovulationDates)}
+    return (<div className="app-wrapper">
+        {!openCalendar ? <>
+            <div className='box-dates'>
+                {showTopDates(menstruationDates, ovulationDates)}
+            </div>
+            <div className="dateinfo-round-wrap">
+                <div className={`dateinfo-round pulsating-circle ${bgPeriod}`}>
+                    {dataInfo(todayDate, menstruationDates, ovulationDates)}
+                    <button className='btn-m-cal' onClick={handleCalendar}>Calendar</button>
                 </div>
-                <div className="dateinfo-round-wrap">
-                    <div className={`dateinfo-round pulsating-circle ${bgPeriod}`}>
-                        {dataInfo(todayDate, menstruationDates, ovulationDates)}
-                        <button className='btn-m-cal' onClick={handleCalendar}>Calendar</button> 
-                    </div>
-                </div>
-                <p>
+            </div>
+            <p>
+                <h1>Advice Slip</h1>
+                <div>{advice}?</div>
                 <button onClick={handleReset} className='btn-m'>RESET</button>
-                    <h1>Advice Slip</h1>
-                    <div >{advice}?</div>
-                </p>
-            </> : <>
-                <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
-                <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
-            </>}
-        </div>
-    );
+            </p>
+        </> : <>
+            <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
+            <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
+        </>}
+    </div>);
 }
 
 export default Home;
