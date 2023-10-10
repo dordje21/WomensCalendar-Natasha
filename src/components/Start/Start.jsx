@@ -14,9 +14,7 @@ function Start({handleShowStart}) {
 
     const [showPickers, setShowPickers] = useState(false);
     const [showCal, setShowCal] = useState(false);
-
     const [dataPickerVal, setDataPickerVal] = useState({});
-
     const [readyToSave, setReadyToSave] = useState(false);
 
 
