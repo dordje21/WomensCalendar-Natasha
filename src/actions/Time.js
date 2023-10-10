@@ -22,6 +22,6 @@ export const arrayContainsDate = (dateArray, date) => {
 	return dateArray.some(d => resetTime(d).getTime() === resetTime(date).getTime())
 }
 
-export const getDaysFirstLetter = (date) => {
+export const getDaysFirstLetter = (date, daysFirstLetter) => {
 	return daysFirstLetter[date.getDay()]
 }

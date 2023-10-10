@@ -73,7 +73,7 @@ function Home({handleReset, advice}) {
         isInitialRender.current = false;
     }, []);
 
-    // const getDaysFirstLetter = (date) => {
+    // const getDaysFirstLetter = (date, daysFirstLetter) => {
     //     return daysFirstLetter[date.getDay()];
     // };
 
@@ -135,7 +135,7 @@ function Home({handleReset, advice}) {
             }
             return (<div key={index} className='box-date'>
                 <div
-                    className='day'>{date.toDateString() === todayDate.toDateString() ? 'Today' : getDaysFirstLetter(date)}</div>
+                    className='day'>{date.toDateString() === todayDate.toDateString() ? 'Today' : getDaysFirstLetter(date, daysFirstLetter)}</div>
                 <div className={`${classDay} date-day`}>{date.getDate()}</div>
             </div>);
         });
