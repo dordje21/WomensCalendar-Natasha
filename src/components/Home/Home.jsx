@@ -4,7 +4,7 @@ import '../../App.css'
 import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
 
-function Home({user, handleReset}) {
+function Home({user, handleReset, advice}) {
     const [date, setDate] = useState(new Date());
     const [userDataAnswers, setUserDataAnswers] = useState([]);
     const [openCalendar, setOpenCalendar] = useState(false);
@@ -254,13 +254,7 @@ function Home({user, handleReset}) {
             <div dangerouslySetInnerHTML={{__html: currentResult}}/>
         </div>)
     }
-    const [advice, setAdvice] = useState('');
-    useEffect(() => {
-        fetch('https://api.adviceslip.com/advice')
-            .then(response => response.json())
-            .then(data => setAdvice(data.slip.advice))
-            .catch(err => console.error(err));
-    }, []);
+
 
 
     // Assuming 'Calendar' is your calendar component
@@ -296,8 +290,8 @@ function Home({user, handleReset}) {
                 </div>
             </div>
             <p>
-                <h1>Advice Slip</h1>
-                <div>{advice}</div>
+                <h3>Advice Slip</h3>
+                <p>Natasha saying: {advice}</p>
                 <button onClick={handleReset} className='btn-m'>RESET</button>
             </p>
         </> : <>

@@ -11,6 +11,8 @@ function App() {
 
 	const [loading, setLoading] = useState(true)
 
+	const [advice, setAdvice] = useState('');
+
 	useEffect(() => {
 		const fetchData = async () => {
 				try {
@@ -30,6 +32,12 @@ function App() {
 		};
 		setUser(WebApp.initDataUnsafe.user)
 		fetchData();
+
+
+		fetch('https://api.adviceslip.com/advice')
+		.then(response => response.json())
+		.then(data => setAdvice(data.slip.advice))
+		.catch(err => console.error(err));
 }, []);
 	
 	if(!WebApp.isExpanded){
@@ -48,7 +56,7 @@ function App() {
 
 	const customRouts = () => {
 		return (
-			showStart ? <Start user={user} handleShowStart={handleShowStart} /> : <Home user={user} handleReset={handleReset}/> 
+			showStart ? <Start user={user} handleShowStart={handleShowStart} /> : <Home user={user} handleReset={handleReset} advice={advice} /> 
 		)
 	}
 
