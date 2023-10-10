@@ -290,7 +290,7 @@ function Home({user, handleReset}) {
                 <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
                 <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
                 <h1>Advice Slip</h1>
-                <div>{advice}</div>
+                <div className={test}>{advice}?</div>
             </>}
         </div>
     );
