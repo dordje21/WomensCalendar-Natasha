@@ -2,7 +2,7 @@
 
 # 🌺 WomensCalendar-Natasha
 
-WomensCalendar-Natasha is a 🥼 women's period and ovulation tracker app functioning as a mini app on Telegram 📲. It allows users to keep track of their menstruation cycle 📅 and predict ovulation dates, all through a user-friendly 👩‍💻 and intuitive interface.
+WomensCalendar-Natasha is a 🥼 women's period and ovulation tracker app functioning as a mini app on Telegram 📲. It allows users to keep track of their menstruation cycle 📅 and predict ovulation dates, all through a user-friendly 👩‍💻 and intuitive interface. There are also some funny advices from bot natasha in main page
 
 ## 🔎 Features
 
