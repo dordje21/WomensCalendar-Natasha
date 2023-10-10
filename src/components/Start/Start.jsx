@@ -121,7 +121,6 @@ function Start({handleShowStart}) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
        
         if (questionsData.length <= currentQuestionIndex + 1) {
-            // handleShowStart()
             setShowPickers(true)
         }
     };
@@ -129,7 +128,6 @@ function Start({handleShowStart}) {
     const currentQuestion = questionsData[currentQuestionIndex];
 
     return (
-        // <AnimatePresence initial={false} mode={'wait'}>
         <motion.div className='question-wrapper'
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -138,9 +136,6 @@ function Start({handleShowStart}) {
         stiffness: 260,
         damping: 20
         }}>
-            {/* {Object.values(selectedValues).map((el, index) => {
-                return <div key={index}>{el.question}{el.answer}</div>
-            })} */}
 
             {currentQuestion && (
                 <div className="question">
@@ -168,10 +163,8 @@ function Start({handleShowStart}) {
             <DatePickerCal selectedValue={(e) => {
                 selectedValuePicker(e.toDateString(), 'Select the start date of your last period?')
             }} question='Select the start date of your last period?' saveData={saveData}/> 
-            {/* <button className='btn-m' onClick={saveData}>Save</button> */}
             </div> : <></>}            
         </motion.div>
-        // </AnimatePresence>
     );
 }
 

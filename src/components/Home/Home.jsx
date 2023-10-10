@@ -271,21 +271,14 @@ function Home({user, handleReset, advice}) {
     };
     
     return (
-    <motion.div className="app-wrapper" 
-    initial={{ scale: 0 }}
-    animate={{ scale: 1 }}
-    transition={{
-    type: "spring",
-    stiffness: 260,
-    damping: 0 }}
-    >
+    <div className="app-wrapper">
         {!openCalendar ? <motion.div 
          initial={{ scale: 0 }}
          animate={{ scale: 1 }}
          transition={{
          type: "spring",
          stiffness: 260,
-         damping: 20 }}
+         damping: 0 }}
          >
             <div className='box-dates'>
                 {showTopDates(menstruationDates, ovulationDates)}
@@ -312,7 +305,7 @@ function Home({user, handleReset, advice}) {
              transition={{ duration: 0.5 }}
              >Back</motion.button>
         </>}
-    </motion.div>
+    </div>
     );
 }
 

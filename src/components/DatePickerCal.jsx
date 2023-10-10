@@ -20,9 +20,6 @@ export default function DatePickerCal({selectedValue, question, saveData}) {
             transition={{ duration: 0.5 }}
             >
       <p>{question}</p>
-      {/* <p>
-        Selected date: {date ? format(date, 'dd MMM yyyy', { locale: enGB }) : 'none'}.
-      </p> */}
       <div className="DatePickerCal-box" >
         <DatePickerCalendar date={date} onDateChange={handleChange} locale={enGB} />
       </div>
