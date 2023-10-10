@@ -725,6 +725,7 @@ abbr[title] {
     overflow: hidden;
     background-color: #e9fff1;
     box-shadow: 1px 1px 3px #8400008b;
+    margin-right: 4px;
 }
 .instruct-cycle .m-cycle{
     width: 15px;
@@ -733,6 +734,7 @@ abbr[title] {
     overflow: hidden;
     background-color: #FF69B4;
     box-shadow: 1px 1px 3px #8400008b;
+    margin-right: 4px;
 }
 .instruct-cycle .ov-cycle{
     width: 15px;
@@ -741,13 +743,14 @@ abbr[title] {
     overflow: hidden;
     background-color: #15c7fa;
     box-shadow: 1px 1px 3px #8400008b;
+    margin-right: 4px;
 }
 
 .instruct-cycle .cycle{
     text-align: center;
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
 }
 
