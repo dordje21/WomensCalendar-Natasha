@@ -127,9 +127,8 @@ function Home({user, handleReset}) {
         }
     }, [periodLength, cycleLength]);
 
-    const arrayContainsDate = (dateArray, targetDate) => {
-        const targetDateString = targetDate.toDateString();
-        return dateArray.some((date) => date.toDateString() === targetDateString);
+    const arrayContainsDate = (dateArray, date) => {
+        return dateArray.some(d => resetTime(d).getTime() === resetTime(date).getTime());
     };
 
 
@@ -218,19 +217,33 @@ function Home({user, handleReset}) {
 
         const closestBiggerDateOvulation = findClosestBiggerDate(ovulationDates, todayDate);
 
-        if (closestBiggerDateMenstruation > closestBiggerDateOvulation) {
+        // if (closestBiggerDateMenstruation > closestBiggerDateOvulation) {
+        //
+        //     if (getDaysDiff(todayDate, closestBiggerDateOvulation) < 1) {
+        //         currentResult = `<h2>Ovulation!</h2> High chance of getting pregnant`;
+        //     } else {
+        //         currentResult = `<h2>Ovulation</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateOvulation)} days!</p>`;
+        //     }
+        // }
+        //
+        // if (closestBiggerDateMenstruation < closestBiggerDateOvulation) {
+        //
+        //     if (getDaysDiff(todayDate, closestBiggerDateMenstruation) < 1) {
+        //         currentResult = `<h2>Period!</h2> <p>Low chance of getting pregnant</p>`;
+        //     } else {
+        //         currentResult = `<h2>Period</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateMenstruation)} days!</p>`;
+        //     }
+        // }
+        if (arrayContainsDate(menstruationDates, todayDate)) {
+            currentResult = `<h2>Period!</h2> <p>Low chance of getting pregnant</p>`;
+        } else if (arrayContainsDate(ovulationDates, todayDate)) {
+            currentResult = `<h2>Ovulation!</h2> High chance of getting pregnant`;
+        } else {
+            const closestBiggerDateMenstruation = findClosestBiggerDate(menstruationDates, todayDate);
+            const closestBiggerDateOvulation = findClosestBiggerDate(ovulationDates, todayDate);
 
-            if (getDaysDiff(todayDate, closestBiggerDateOvulation) < 1) {
-                currentResult = `<h2>Ovulation!</h2> High chance of getting pregnant`;
-            } else {
+            if (closestBiggerDateMenstruation > closestBiggerDateOvulation) {
                 currentResult = `<h2>Ovulation</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateOvulation)} days!</p>`;
-            }
-        }
-
-        if (closestBiggerDateMenstruation < closestBiggerDateOvulation) {
-
-            if (getDaysDiff(todayDate, closestBiggerDateMenstruation) < 1) {
-                currentResult = `<h2>Period!</h2> <p>Low chance of getting pregnant</p>`;
             } else {
                 currentResult = `<h2>Period</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateMenstruation)} days!</p>`;
             }
