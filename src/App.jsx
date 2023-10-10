@@ -34,10 +34,12 @@ function App() {
 		fetchData();
 
 
-		fetch('https://api.adviceslip.com/advice')
-		.then(response => response.json())
-		.then(data => setAdvice(data.slip.advice))
-		.catch(err => console.error(err));
+		setTimeout(() => {
+			fetch('https://api.adviceslip.com/advice')
+			.then(response => response.json())
+			.then(data => setAdvice(data.slip.advice))
+			.catch(err => console.error(err));
+		}, 60000)
 }, []);
 	
 	if(!WebApp.isExpanded){

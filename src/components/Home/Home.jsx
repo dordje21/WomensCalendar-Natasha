@@ -277,7 +277,7 @@ function Home({user, handleReset, advice}) {
     transition={{
     type: "spring",
     stiffness: 260,
-    damping: 20 }}
+    damping: 0 }}
     >
         {!openCalendar ? <>
             <div className='box-dates'>
@@ -290,8 +290,8 @@ function Home({user, handleReset, advice}) {
                 </div>
             </div>
             <p>
-                <h3>Advice Slip</h3>
-                <p>Natasha saying: {advice}</p>
+                {advice ? <><h3>Advice Slip</h3>
+                <p>Natasha saying: {advice}</p></> : <></>}
                 <button onClick={handleReset} className='btn-m'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
