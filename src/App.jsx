@@ -4,11 +4,11 @@ import Home from '../src/components/Home/Home'
 import Preloader from '../src/components/Preloader'
 import Start from '../src/components/Start/Start'
 import asyncStorageGetItem from '../src/hooks/asyncStorageGetItem'
+const apiAdvice = 'https://api.adviceslip.com/advice'
 
 function App() {
-	// const [user, setUser] = useState('')
-	const [showStart, setShowStart] = useState(true)
-	const [loading, setLoading] = useState(true)
+	const [showStart, setShowStart] = useState(true);
+	const [loading, setLoading] = useState(true);
 	const [advice, setAdvice] = useState('');
 
 	useEffect(() => {
@@ -28,13 +28,17 @@ function App() {
 						}, 2000)
 				}
 		};
-		// setUser(WebApp.initDataUnsafe.user)
 		fetchData();
 
-		fetch('https://api.adviceslip.com/advice')
+		try{
+			fetch(apiAdvice)
 			.then(response => response.json())
 			.then(data => setAdvice(data.slip.advice))
 			.catch(err => console.error(err));
+		} catch(err){
+			console(err)
+		}
+	
 }, []);
 	
 	if(!WebApp.isExpanded){

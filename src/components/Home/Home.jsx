@@ -8,14 +8,11 @@ function Home({handleReset, advice}) {
     const [date, setDate] = useState(new Date());
     const [userDataAnswers, setUserDataAnswers] = useState([]);
     const [openCalendar, setOpenCalendar] = useState(false);
-    const [periodLength, setPeriodLength] = useState(5)
-    const [cycleLength, setCycleLength] = useState(30)
-
-    const [bgPeriod, setBgPeriod] = useState('simple-cycle')
-
+    const [periodLength, setPeriodLength] = useState(5);
+    const [cycleLength, setCycleLength] = useState(30);
+    const [bgPeriod, setBgPeriod] = useState('simple-cycle');
     const [menstruationDates, setMenstruationDates] = useState([]);
     const [ovulationDates, setOvulationDates] = useState([]);
-
     const isInitialRender = useRef(true);
     const [todayDate, setTodayDate] = useState(new Date());
     const [daysFirstLetter, setDaysFirstLetter] = useState(["S", "M", "T", "W", "T", "F", "S"]);
@@ -37,7 +34,7 @@ function Home({handleReset, advice}) {
         } else {
             setOpenCalendar(true)
         }
-    }
+    };
 
     useEffect(() => {
         const startNewPeriod = (data) => {
@@ -77,7 +74,7 @@ function Home({handleReset, advice}) {
 
     const getDaysFirstLetter = (date) => {
         return daysFirstLetter[date.getDay()];
-    }
+    };
 
     useEffect(() => {
         if (!isInitialRender.current) {
@@ -92,10 +89,8 @@ function Home({handleReset, advice}) {
                         menstrualDates.push(newDate);
                     }
                 }
-
                 return menstrualDates;
             }
-
 
             const countOvlDates = async (nextDate) => {
                 let ovlDates = [];
@@ -111,14 +106,12 @@ function Home({handleReset, advice}) {
                         ovlDates.push(newDate);
                     }
                 }
-
                 return ovlDates;
             }
 
             const fetchData = async () => {
                 const menstruationDates = await countMenstDates(date);
                 setMenstruationDates(menstruationDates);
-
                 const ovlDates = await countOvlDates(date);
                 setOvulationDates(ovlDates);
             };
@@ -130,19 +123,15 @@ function Home({handleReset, advice}) {
         return dateArray.some(d => resetTime(d).getTime() === resetTime(date).getTime());
     };
 
-
     const showTopDates = (menstruationDates, ovulationDates) => {
         return daysDates.map((date, index) => {
             let classDay = 'simple';
-
             if (menstruationDates && arrayContainsDate(menstruationDates, date)) {
                 classDay = 'menstruationDay';
             }
-
             if (ovulationDates && arrayContainsDate(ovulationDates, date)) {
                 classDay = 'ovulationDay';
             }
-
             return (<div key={index} className='box-date'>
                 <div
                     className='day'>{date.toDateString() === todayDate.toDateString() ? 'Today' : getDaysFirstLetter(date)}</div>
@@ -153,7 +142,6 @@ function Home({handleReset, advice}) {
 
 
     useEffect(() => {
-
         const findBgCycle = (menstruationDates, ovulationDates) => {
             let todayBg = 'simple-cycle';
             daysDates.map((date, index) => {
@@ -193,9 +181,7 @@ function Home({handleReset, advice}) {
     };
 
     const getDaysDiff = (todayDate, nextDate) => {
-
         const [todayWithoutTime, nextWithoutTime] = [todayDate, nextDate].map(resetTime);
-
         const timeDifference = nextWithoutTime - todayWithoutTime
         const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) - 1;
         return daysDifference
