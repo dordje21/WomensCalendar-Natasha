@@ -295,7 +295,7 @@ function Home({user, handleReset}) {
                 <button onClick={handleReset} className='btn-m'>RESET</button>
             </p>
         </> : <>
-            {CalendarComponent}
+            {CalendarComponent()}
             {/*<CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>*/}
             <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
         </>}
