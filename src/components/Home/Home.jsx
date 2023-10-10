@@ -62,10 +62,8 @@ function Home({user, handleReset}) {
                 const data = await asyncStorageGetItem("UserDataAnswers");
                 if (data) {
                     const jsonData = JSON.parse(data);
-                    console.log('Retrieved & parsed data:', jsonData);
                     setUserDataAnswers(jsonData);
                 } else {
-                    console.log("No data available");
                 }
             } catch (error) {
                 console.error('Error while retrieving/parsing data:', error);
@@ -199,7 +197,6 @@ function Home({user, handleReset}) {
 
         const timeDifference = nextWithoutTime - todayWithoutTime
         const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) - 1;
-        console.log("TodayDate :" + todayDate + " NextDate :" + nextDate + " DaysDifference: " + daysDifference)
         return daysDifference
     }
 
