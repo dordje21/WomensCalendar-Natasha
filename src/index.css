@@ -7,7 +7,8 @@
   color-scheme: light dark;
   color: var(--tg-theme-text-color);
   background-color: var(--tg-theme-bg-color);
-
+  overflow-y: scroll;
+  overflow-x: hidden;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -34,8 +35,10 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  width: 100%;
   min-width: 320px;
   min-height: 100vh;
+  overflow-y: scroll;
   overflow-x: hidden;
 }
 
@@ -44,15 +47,15 @@ h1 {
   line-height: 1.1;
 }
 
-button:hover {
+/* button:hover {
   border-color: #646cff;
-}
-button:focus,
+} */
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -63,7 +66,7 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
 
 
 .lds-ripple {

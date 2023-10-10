@@ -4,7 +4,6 @@ import { enGB } from 'date-fns/locale'
 import { motion } from "framer-motion"
 import React, { useState } from 'react'
 
-
 export default function DatePickerCal({selectedValue, question, saveData}) {
   const [date, setDate] = useState()
 

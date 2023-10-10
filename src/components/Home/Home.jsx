@@ -211,28 +211,7 @@ function Home({user, handleReset, advice}) {
         if (ovulationDates && arrayContainsDate(ovulationDates, todayDate)) {
             currentResult = 'ovulationDay';
         }
-
-        const closestBiggerDateMenstruation = findClosestBiggerDate(menstruationDates, todayDate);
-
-        const closestBiggerDateOvulation = findClosestBiggerDate(ovulationDates, todayDate);
-
-        // if (closestBiggerDateMenstruation > closestBiggerDateOvulation) {
-        //
-        //     if (getDaysDiff(todayDate, closestBiggerDateOvulation) < 1) {
-        //         currentResult = `<h2>Ovulation!</h2> High chance of getting pregnant`;
-        //     } else {
-        //         currentResult = `<h2>Ovulation</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateOvulation)} days!</p>`;
-        //     }
-        // }
-        //
-        // if (closestBiggerDateMenstruation < closestBiggerDateOvulation) {
-        //
-        //     if (getDaysDiff(todayDate, closestBiggerDateMenstruation) < 1) {
-        //         currentResult = `<h2>Period!</h2> <p>Low chance of getting pregnant</p>`;
-        //     } else {
-        //         currentResult = `<h2>Period</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateMenstruation)} days!</p>`;
-        //     }
-        // }
+       
         if (arrayContainsDate(menstruationDates, todayDate)) {
             currentResult = `<h2>Period!</h2> <p>Low chance of getting pregnant</p>`;
         } else if (arrayContainsDate(ovulationDates, todayDate)) {
@@ -255,9 +234,6 @@ function Home({user, handleReset, advice}) {
         </div>)
     }
 
-
-
-    // Assuming 'Calendar' is your calendar component
     const CalendarComponent = props => {
         const handleScroll = (event) => {
             event.stopPropagation();
@@ -300,13 +276,13 @@ function Home({user, handleReset, advice}) {
             </p>
         </> : <>
             {CalendarComponent()}
-            {/*<CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>*/}
-            <motion.button onClick={handleCalendar} 
-            className='btn-m btn-m-back'
-            initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      >Back</motion.button>
+            <motion.button 
+                onClick={handleCalendar} 
+                className='btn-m btn-m-back'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+            >Back</motion.button>
         </>}
     </motion.div>
     );

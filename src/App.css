@@ -273,7 +273,10 @@ abbr[title] {
 
 .DatePickerCal-box {
     padding: 5px;
-    background-color: #ffe9ec;
+    background-image: url('./assets/calbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right center;
     border-radius: 18px;
 }
 

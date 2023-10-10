@@ -8,9 +8,7 @@ import asyncStorageGetItem from '../src/hooks/asyncStorageGetItem'
 function App() {
 	const [user, setUser] = useState('')
 	const [showStart, setShowStart] = useState(true)
-
 	const [loading, setLoading] = useState(true)
-
 	const [advice, setAdvice] = useState('');
 
 	useEffect(() => {
@@ -33,13 +31,10 @@ function App() {
 		setUser(WebApp.initDataUnsafe.user)
 		fetchData();
 
-
-		setTimeout(() => {
-			fetch('https://api.adviceslip.com/advice')
+		fetch('https://api.adviceslip.com/advice')
 			.then(response => response.json())
 			.then(data => setAdvice(data.slip.advice))
 			.catch(err => console.error(err));
-		}, 60000)
 }, []);
 	
 	if(!WebApp.isExpanded){

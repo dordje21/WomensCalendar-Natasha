@@ -136,7 +136,7 @@ function Start({handleShowStart}) {
         stiffness: 260,
         damping: 20
         }}>
-
+            
             {currentQuestion && (
                 <div className="question">
                     <RadioButton
