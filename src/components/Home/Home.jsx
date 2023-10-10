@@ -263,6 +263,13 @@ function Home({user, handleReset}) {
             </div>
         )
     }
+    const [advice, setAdvice] = useState('');
+    useEffect(() => {
+        fetch('https://api.adviceslip.com/advice')
+            .then(response => response.json())
+            .then(data => setAdvice(data.slip.advice))
+            .catch(err => console.error(err));
+    }, []);
 
     return (
         <div className="app-wrapper">
@@ -282,6 +289,8 @@ function Home({user, handleReset}) {
             </> : <>
                 <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
                 <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
+                <h1>Advice Slip</h1>
+                <div>{advice}</div>
             </>}
         </div>
     );
