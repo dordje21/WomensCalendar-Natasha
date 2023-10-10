@@ -275,9 +275,10 @@ function Home({user, handleReset, advice}) {
     initial={{ scale: 0 }}
     animate={{ scale: 1 }}
     transition={{
-    type: "spring",
-    stiffness: 260,
-    damping: 0 }}
+      type: "spring",
+      stiffness: 150,
+      damping: 50
+    }}
     >
         {!openCalendar ? <>
             <div className='box-dates'>
