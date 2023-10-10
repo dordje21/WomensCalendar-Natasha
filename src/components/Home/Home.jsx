@@ -188,8 +188,10 @@ function Home({user, handleReset}) {
     }
 
     const resetTime = date => {
-        date.setHours(0, 0, 0, 0);
-        return date;
+        if (!date) return null;
+        const copy = new Date(date.getTime());
+        copy.setHours(0, 0, 0, 0);
+        return copy;
     };
 
     const getDaysDiff = (todayDate, nextDate) => {
