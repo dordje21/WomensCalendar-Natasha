@@ -23,6 +23,7 @@ export default function DatePickerCal({selectedValue, question, saveData}) {
       <div className="DatePickerCal-box" >
         <DatePickerCalendar date={date} onDateChange={handleChange} locale={enGB} />
       </div>
+      <div className='btn-wrapper'>
       {date ? <motion.button 
       className='btn-m' 
       onClick={saveData}
@@ -30,6 +31,7 @@ export default function DatePickerCal({selectedValue, question, saveData}) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       >Save</motion.button> : <></>}
+      </div>
     </motion.div>
   )
 }

@@ -702,3 +702,9 @@ abbr[title] {
     margin-bottom: 5px !important;
     padding-bottom: 0 !important;
 }
+
+.btn-wrapper{
+    min-height: 50px;
+    width: 100%;
+    display: block;
+}

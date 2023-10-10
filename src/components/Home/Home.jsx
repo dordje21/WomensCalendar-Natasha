@@ -292,12 +292,20 @@ function Home({user, handleReset, advice}) {
             <p>
                 <h3>Advice Slip</h3>
                 <p>Natasha saying: {advice}</p>
-                <button onClick={handleReset} className='btn-m'>RESET</button>
+                <button onClick={handleReset} className='btn-m'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}>RESET</button>
             </p>
         </> : <>
             {CalendarComponent()}
             {/*<CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>*/}
-            <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
+            <motion.button onClick={handleCalendar} 
+            className='btn-m btn-m-back'
+            initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      >Back</motion.button>
         </>}
     </motion.div>
     );
