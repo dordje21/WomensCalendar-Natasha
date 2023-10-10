@@ -183,18 +183,6 @@ The component's structure can be described as follows:
 
 This `Preloader` component can be used as an introductory loading screen in a web application to engage users while content is being fetched or assets are being loaded. The combination of wave animations and text formation provides an attractive and creative loading experience.
 
-```jsx
-import img from '../assets/calendar.svg'
-
-export default function Preloader(){
-	return (
-		<div className="container">
-			<!-- ...Waves and text elements... -->
-			<div className="text text-ja"><img src={img} width="100rem"/></div>
-		</div>
-	)
-}
-
 # InlinePicker Component
 
 The `InlinePicker` component is a React component that provides a user interface for selecting values from a list of options. It integrates animations and state management to create an engaging and interactive selection experience.
@@ -238,10 +226,3 @@ The structure of the `InlinePicker` component can be broken down into several pa
 ## Usage
 
 The `InlinePicker` component is designed to create an interactive option selection interface that can be integrated into a larger application. Users can select from a list of options, and when an option is chosen, they can advance to the next step or action by clicking the "Next" button. This component enhances the user experience by combining animation and user interaction.
-
-```jsx
-import { motion } from "framer-motion";
-
-export default function InlinePicker({ selectionsValue, selectedValue, question, pickersNext }) {
-	// ... Component code ...
-}
