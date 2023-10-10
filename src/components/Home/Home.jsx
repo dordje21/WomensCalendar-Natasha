@@ -277,7 +277,7 @@ function Home({user, handleReset, advice}) {
     transition={{
     type: "spring",
     stiffness: 260,
-    damping: 20 }}
+    damping: 0 }}
     >
         {!openCalendar ? <motion.div 
          initial={{ scale: 0 }}
@@ -304,7 +304,13 @@ function Home({user, handleReset, advice}) {
         </motion.div> : <>
             {CalendarComponent()}
             {/*<CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>*/}
-            <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
+            <motion.button 
+            onClick={handleCalendar} 
+            className='btn-m btn-m-back' 
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             transition={{ duration: 0.5 }}
+             >Back</motion.button>
         </>}
     </motion.div>
     );

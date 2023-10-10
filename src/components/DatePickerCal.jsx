@@ -29,8 +29,8 @@ export default function DatePickerCal({selectedValue, question, saveData}) {
       {date ? <motion.button 
       className='btn-m' 
       onClick={saveData}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       >Save</motion.button> : <></>}
     </motion.div>

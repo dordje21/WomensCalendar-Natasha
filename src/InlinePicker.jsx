@@ -52,8 +52,8 @@ export default function InlinePicker({selectionsValue, selectedValue, question, 
         <motion.button 
             className='btn-m' 
             onClick={btnActions}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
             >Next</motion.button>
         </div> : <></>}
