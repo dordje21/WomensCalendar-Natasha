@@ -2,7 +2,10 @@ import { Calendar } from '@bjarkehs/react-nice-dates'
 import '@bjarkehs/react-nice-dates/build/style.css'
 import { isSameDay } from 'date-fns'
 import { enGB } from 'date-fns/locale'
+import { motion } from "framer-motion"
 import React, { useEffect, useState } from 'react'
+
+
 export default function CalendarMi({nextDate, menstruationDates, ovulationDates}) {
 
   const [selectedDates, setSelectedDates] = useState([])
@@ -33,13 +36,17 @@ export default function CalendarMi({nextDate, menstruationDates, ovulationDates}
     setSelectedDates([...selectedDates, date])
   }
   return (
-		<div className='calendar-wrapper DatePickerCal-box'>
+		<motion.div className='calendar-wrapper DatePickerCal-box'
+		initial={{ opacity: 0, scale: 0.5 }}
+		animate={{ opacity: 1, scale: 1 }}
+		transition={{ duration: 0.5 }}
+		>
     <Calendar 
 		// onDayClick={handleDayClick} 
 		modifiers={modifiers} 
 		modifiersClassNames={modifiersClassNames}
 		locale={enGB} 
 		/>
-		</div>
+		</motion.div>
   )
 }

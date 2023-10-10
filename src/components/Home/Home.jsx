@@ -279,7 +279,14 @@ function Home({user, handleReset, advice}) {
     stiffness: 260,
     damping: 20 }}
     >
-        {!openCalendar ? <>
+        {!openCalendar ? <motion.div 
+         initial={{ scale: 0 }}
+         animate={{ scale: 1 }}
+         transition={{
+         type: "spring",
+         stiffness: 260,
+         damping: 20 }}
+         >
             <div className='box-dates'>
                 {showTopDates(menstruationDates, ovulationDates)}
             </div>
@@ -294,7 +301,7 @@ function Home({user, handleReset, advice}) {
                 <p>Natasha saying: {advice}</p>
                 <button onClick={handleReset} className='btn-m'>RESET</button>
             </p>
-        </> : <>
+        </motion.div> : <>
             {CalendarComponent()}
             {/*<CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>*/}
             <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
