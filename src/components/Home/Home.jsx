@@ -194,8 +194,11 @@ function Home({user, handleReset}) {
     };
 
     const getDaysDiff = (todayDate, nextDate) => {
-        const timeDifference = nextDate.setHours(0, 0, 0, 0) - todayDate.setHours(0, 0, 0, 0);
-        const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        
+        const [todayWithoutTime, nextWithoutTime] = [todayDate, nextDate].map(resetTime);
+
+        const timeDifference = todayWithoutTime - nextWithoutTime;
+        const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24)) -1;
         console.log("TodayDate :"+ todayDate+" NextDate :"+ nextDate+" DaysDifference: "+daysDifference)
         return daysDifference
     }
@@ -217,7 +220,7 @@ function Home({user, handleReset}) {
 
         if (closestBiggerDateMenstruation > closestBiggerDateOvulation) {
 
-            if (getDaysDiff(todayDate, closestBiggerDateOvulation) < 2) {
+            if (getDaysDiff(todayDate, closestBiggerDateOvulation) < 1) {
                 currentResult = `<h2>Ovulation!</h2> High chance of getting pregnant`;
             } else {
                 currentResult = `<h2>Ovulation</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateOvulation)} days!</p>`;
@@ -226,7 +229,7 @@ function Home({user, handleReset}) {
 
         if (closestBiggerDateMenstruation < closestBiggerDateOvulation) {
 
-            if (getDaysDiff(todayDate, closestBiggerDateMenstruation) < 2) {
+            if (getDaysDiff(todayDate, closestBiggerDateMenstruation) < 1) {
                 currentResult = `<h2>Period!</h2> <p>Low chance of getting pregnant</p>`;
             } else {
                 currentResult = `<h2>Period</h2> <p>in ${getDaysDiff(todayDate, closestBiggerDateMenstruation)} days!</p>`;
