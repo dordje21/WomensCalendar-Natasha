@@ -271,15 +271,15 @@ function Home({user, handleReset, advice}) {
     };
     
     return (
-    <div className="app-wrapper">
-        {!openCalendar ? <motion.div 
-         initial={{ scale: 0 }}
-         animate={{ scale: 1 }}
-         transition={{
-         type: "spring",
-         stiffness: 260,
-         damping: 0 }}
-         >
+    <motion.div className="app-wrapper" 
+    initial={{ scale: 0 }}
+    animate={{ scale: 1 }}
+    transition={{
+    type: "spring",
+    stiffness: 260,
+    damping: 20 }}
+    >
+        {!openCalendar ? <>
             <div className='box-dates'>
                 {showTopDates(menstruationDates, ovulationDates)}
             </div>
@@ -294,18 +294,12 @@ function Home({user, handleReset, advice}) {
                 <p>Natasha saying: {advice}</p>
                 <button onClick={handleReset} className='btn-m'>RESET</button>
             </p>
-        </motion.div> : <>
+        </> : <>
             {CalendarComponent()}
             {/*<CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>*/}
-            <motion.button 
-            onClick={handleCalendar} 
-            className='btn-m btn-m-back' 
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ duration: 0.5 }}
-             >Back</motion.button>
+            <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
         </>}
-    </div>
+    </motion.div>
     );
 }
 
