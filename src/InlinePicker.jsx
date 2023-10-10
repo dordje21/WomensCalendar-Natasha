@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import Picker from 'react-mobile-picker'
 
+// Function to render options for Picker
 function renderOptions(options, selectedColor) {
     return options.map((option) => (
         <Picker.Item key={option} value={option}>
@@ -12,26 +13,32 @@ function renderOptions(options, selectedColor) {
     ))
 }
 
+// Define InlinePicker component
 export default function InlinePicker({selectionsValue, selectedValue, question, pickersNext}) {
     const [pickerValue, setPickerValue] = useState({title: selectionsValue[0]});
 
+    // Local state for button visibility
     const [showBtn, setShowBtn] = useState(false)
 
+    // Function to handle Picker value changes
     const handleChange = (newValue) => {
         setPickerValue(newValue);
         selectedValue(newValue.title);
         setShowBtn(true)
     }
 
+    // Initialize the selected value with the first selection value
     useEffect(() => {
         selectedValue(selectionsValue[0]);
     },[])
 
+    // Function to handle button actions
     const btnActions = () => {
         pickersNext()
         setShowBtn(false)
     }
 
+    // Return the structure of the InlinePicker component
     return <motion.div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}

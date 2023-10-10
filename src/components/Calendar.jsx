@@ -8,12 +8,14 @@ import React, { useEffect, useState } from 'react'
 export default function CalendarMi({nextDate, menstruationDates, ovulationDates}) {
 
   const [selectedDates, setSelectedDates] = useState([])
+	// Function to compare selected date with dates in menstruation and ovulation dates
   const modifiers = {
     selected: date => selectedDates.some(selectedDate => isSameDay(selectedDate, date)),
 		menstruation: date => menstruationDates.some(menstruationDates => isSameDay(menstruationDates, date)),
 		ovulations: date => ovulationDates.some(ovulationDates => isSameDay(ovulationDates, date))
   }
-	
+
+	// Side effect to set the selected dates when the nextDate property changes
 	useEffect(() => {
 		const fetchData = async () => {
 			setSelectedDates([nextDate]);
@@ -22,16 +24,19 @@ export default function CalendarMi({nextDate, menstruationDates, ovulationDates}
 		fetchData();
 	}, [nextDate]);
 
+	// Define classes for menstruation and ovulation dates
 	const modifiersClassNames = {
 		menstruation: '-menstruation',
 		ovulations: '-ovulations'
 	}
-	
+
+	// Handle scroll event
 	const handleScroll = (event) => {
 		event.stopPropagation();
 	};
 
-  return (
+	// Return the structure of the Calendar
+	return (
 		<div onWheel={handleScroll}>
 		<motion.div className='calendar-wrapper DatePickerCal-box'
 		initial={{ opacity: 0, scale: 0.5 }}

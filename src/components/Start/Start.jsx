@@ -1,5 +1,4 @@
 import { default as WebApp } from '@twa-dev/sdk'
-// import { AnimatePresence } from "framer-motion"
 import { motion } from "framer-motion"
 import React, { useEffect, useRef, useState } from 'react'
 import InlinePicker from "../../InlinePicker.jsx"
@@ -7,6 +6,7 @@ import DatePickerCal from '../DatePickerCal.jsx'
 import RadioButton from '../RadioButton'
 
 function Start({handleShowStart}) {
+    // Initializing state values using the useState hook
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
     const [dataPickersIndex, setDataPickersIndex] = useState(0);
@@ -16,13 +16,17 @@ function Start({handleShowStart}) {
     const [readyToSave, setReadyToSave] = useState(false);
     const isInitialRender = useRef(true);
 
+    // Using the useEffect hook to persist data to cloud storage and handling the start of the app
      useEffect(() => {
-       if (!isInitialRender.current) {
-        WebApp.CloudStorage.setItem("UserDataAnswers", JSON.stringify(selectedValues)) 
+         // Don't run this effect on initial render
+         if (!isInitialRender.current) {
+             // onSave of user data, store data in the cloud storage
+             WebApp.CloudStorage.setItem("UserDataAnswers", JSON.stringify(selectedValues)) 
          handleShowStart();
        }
      }, [readyToSave]);
 
+    // Questions data
     const questionsData = [
         {
             id: 1,
@@ -43,7 +47,8 @@ function Start({handleShowStart}) {
             }
         }
     ];
-    
+
+    // Function to generate the range of days
     const daysInPeriod = (minDays, maxDays) =>{
         let result = []
         for(let i = minDays; i <= maxDays; i++){
@@ -52,9 +57,11 @@ function Start({handleShowStart}) {
         return result
     }
 
+    // Generate days of cycle and period
     const daysOfCycle = daysInPeriod(21, 56);
     const daysOfPeriod = daysInPeriod(1, 12);
 
+    // Definitions for data picker questions
     const dataPickers = [
         {
             question: "How many days on average is your cycle?",
@@ -65,7 +72,7 @@ function Start({handleShowStart}) {
             days: daysOfPeriod
         }
     ]
-
+    // Move to the next question for data picking
     const pickersNext = () => {
         setSelectedValues({...selectedValues, [currentQuestionIndex]: {
             question: dataPickerVal.question,
@@ -74,23 +81,29 @@ function Start({handleShowStart}) {
         });
         setCurrentQuestionIndex(currentQuestionIndex + 1);
 
-      setDataPickersIndex(dataPickersIndex + 1)
-      if (dataPickers.length <= dataPickersIndex + 1) {
+        // Move to the next data picker
+        setDataPickersIndex(dataPickersIndex + 1)
+
+        // If there are no more data pickers, show the calendar
+        if (dataPickers.length <= dataPickersIndex + 1) {
         setShowPickers(false)
         setShowCal(true)
         }
     }
 
+    // Save the data
     const saveData = () => {
         setSelectedValues({...selectedValues, [currentQuestionIndex]: {
             question: dataPickerVal.question,
             answer: dataPickerVal.answer
             }
         })
+        // Indicate that the initial render is past and that data is ready to save
         isInitialRender.current = false;
         setReadyToSave(true)   
     }
 
+    // Store the selected value from data picker
     const selectedValuePicker = (value, question) => {
         setDataPickerVal({
             question: question,
@@ -100,7 +113,7 @@ function Start({handleShowStart}) {
 
     const currentDataPickers = dataPickers[dataPickersIndex];
 
-
+    // Manage radio button selection
     const handleRadioChange = (value, question) => {
         setSelectedValues({...selectedValues, [currentQuestionIndex]: {
             question: question,
@@ -114,9 +127,11 @@ function Start({handleShowStart}) {
         }
     };
 
+    // Fetch the current question
     const currentQuestion = questionsData[currentQuestionIndex];
 
     return (
+        // Render the questions, radio buttons, data pickers and calendars as needed
         <motion.div className='question-wrapper'
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
