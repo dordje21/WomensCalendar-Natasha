@@ -18,7 +18,6 @@ function Start({handleShowStart}) {
 
      useEffect(() => {
        if (!isInitialRender.current) {
-         console.log(selectedValues);
         WebApp.CloudStorage.setItem("UserDataAnswers", JSON.stringify(selectedValues)) 
          handleShowStart();
        }
@@ -93,7 +92,6 @@ function Start({handleShowStart}) {
     }
 
     const selectedValuePicker = (value, question) => {
-        // console.log(value, question)
         setDataPickerVal({
             question: question,
             answer: value

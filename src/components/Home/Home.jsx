@@ -4,7 +4,7 @@ import '../../App.css'
 import asyncStorageGetItem from '../../hooks/asyncStorageGetItem'
 import CalendarMi from '../Calendar'
 
-function Home({user, handleReset, advice}) {
+function Home({handleReset, advice}) {
     const [date, setDate] = useState(new Date());
     const [userDataAnswers, setUserDataAnswers] = useState([]);
     const [openCalendar, setOpenCalendar] = useState(false);

@@ -6,7 +6,7 @@ import Start from '../src/components/Start/Start'
 import asyncStorageGetItem from '../src/hooks/asyncStorageGetItem'
 
 function App() {
-	const [user, setUser] = useState('')
+	// const [user, setUser] = useState('')
 	const [showStart, setShowStart] = useState(true)
 	const [loading, setLoading] = useState(true)
 	const [advice, setAdvice] = useState('');
@@ -28,7 +28,7 @@ function App() {
 						}, 2000)
 				}
 		};
-		setUser(WebApp.initDataUnsafe.user)
+		// setUser(WebApp.initDataUnsafe.user)
 		fetchData();
 
 		fetch('https://api.adviceslip.com/advice')
@@ -53,7 +53,7 @@ function App() {
 
 	const customRouts = () => {
 		return (
-			showStart ? <Start user={user} handleShowStart={handleShowStart} /> : <Home user={user} handleReset={handleReset} advice={advice} /> 
+			showStart ? <Start handleShowStart={handleShowStart} /> : <Home handleReset={handleReset} advice={advice} /> 
 		)
 	}
 
