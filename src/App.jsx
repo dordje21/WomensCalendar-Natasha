@@ -1,5 +1,4 @@
 import { default as WebApp } from '@twa-dev/sdk'
-import { AnimatePresence } from "framer-motion"
 import React, { useEffect, useState } from 'react'
 import Home from '../src/components/Home/Home'
 import Preloader from '../src/components/Preloader'
@@ -62,9 +61,9 @@ function App() {
 	}
 
   return (
-		<AnimatePresence initial={false} mode={'wait'}>
+		<>
 		{ loading ? <Preloader/> : customRouts() }
-		</AnimatePresence>
+		</>
 	);
 }
 
