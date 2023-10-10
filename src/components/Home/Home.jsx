@@ -188,9 +188,14 @@ function Home({user, handleReset}) {
         return futureDates[0];
     }
 
+    const resetTime = date => {
+        date.setHours(0, 0, 0, 0);
+        return date;
+    };
+
     const getDaysDiff = (todayDate, nextDate) => {
         const timeDifference = nextDate.setHours(0, 0, 0, 0) - todayDate.setHours(0, 0, 0, 0);
-        const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+        const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         console.log("TodayDate :"+ todayDate+" NextDate :"+ nextDate+" DaysDifference: "+daysDifference)
         return daysDifference
     }
