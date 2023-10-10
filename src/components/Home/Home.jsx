@@ -285,12 +285,12 @@ function Home({user, handleReset}) {
                 </div>
                 <p>
                 <button onClick={handleReset} className='btn-m'>RESET</button>
+                    <h1>Advice Slip</h1>
+                    <div >{advice}?</div>
                 </p>
             </> : <>
                 <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
                 <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
-                <h1>Advice Slip</h1>
-                <div className={test}>{advice}?</div>
             </>}
         </div>
     );
