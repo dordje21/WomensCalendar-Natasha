@@ -197,7 +197,7 @@ function Home({user, handleReset}) {
         
         const [todayWithoutTime, nextWithoutTime] = [todayDate, nextDate].map(resetTime);
 
-        const timeDifference = todayWithoutTime - nextWithoutTime;
+        const timeDifference = nextWithoutTime - todayWithoutTime 
         const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) ;
         console.log("TodayDate :"+ todayDate+" NextDate :"+ nextDate+" DaysDifference: "+daysDifference)
         return daysDifference
