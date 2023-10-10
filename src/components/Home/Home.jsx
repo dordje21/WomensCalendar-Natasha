@@ -264,6 +264,20 @@ function Home({user, handleReset}) {
             .catch(err => console.error(err));
     }, []);
 
+
+    // Assuming 'Calendar' is your calendar component
+    const CalendarComponent = props => {
+        const handleScroll = (event) => {
+            event.stopPropagation();
+        };
+
+        return (
+            <div onWheel={handleScroll}>
+                <CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
+            </div>
+        );
+    };
+    
     return (<div className="app-wrapper">
         {!openCalendar ? <>
             <div className='box-dates'>
@@ -281,7 +295,8 @@ function Home({user, handleReset}) {
                 <button onClick={handleReset} className='btn-m'>RESET</button>
             </p>
         </> : <>
-            <CalendarMi nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>
+            {CalendarComponent}
+            {/*<CalendarMi  nextDate={date} ovulationDates={ovulationDates} menstruationDates={menstruationDates}/>*/}
             <button onClick={handleCalendar} className='btn-m btn-m-back'>Back</button>
         </>}
     </div>);
