@@ -111,8 +111,10 @@ abbr[title] {
   align-items: center;
   justify-content: center;
 
-  background: rgb(12,105,187);
-  background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 100%);
+  /*background: rgb(12,105,187);*/
+  /*background: radial-gradient(circle, rgba(12,105,187,1) 0%, rgba(49,113,150,1) 100%);*/
+  background: rgb(25,199,115);
+  background: radial-gradient(circle, rgba(25,199,115,1) 0%, rgba(185,255,215,1) 100%);
 
   border-radius: 50%; /* Makes it a circle */
   padding: 20px; /* Adjust padding as needed */
