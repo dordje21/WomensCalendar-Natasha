@@ -750,3 +750,8 @@ abbr[title] {
     flex-direction: column;
     justify-content: flex-start;
 }
+
+p h3{
+    margin-bottom: 0!important;
+    padding-bottom: 0!important;
+}
