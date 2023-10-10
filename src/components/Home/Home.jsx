@@ -277,7 +277,7 @@ function Home({user, handleReset}) {
             </div>
             <p>
                 <h1>Advice Slip</h1>
-                <div>{advice}?</div>
+                <div>{advice}</div>
                 <button onClick={handleReset} className='btn-m'>RESET</button>
             </p>
         </> : <>
